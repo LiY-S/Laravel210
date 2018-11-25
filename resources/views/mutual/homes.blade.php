@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>@yield('title')</title>
+<!-- for-mobile-apps -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Best Store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+        function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- //for-mobile-apps -->
+<link href="/homes/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/homes/css/style.css" rel="stylesheet" type="text/css" media="all" />
+<!-- js -->
+<script src="/homes/js/jquery.min.js"></script>
+<!-- //js -->
+<!-- cart -->
+<script src="/homes/js/simpleCart.min.js"></script>
+<!-- cart -->
+<!-- for bootstrap working -->
+<script type="text/javascript" src="/homes/js/bootstrap-3.1.1.min.js"></script>
+<!-- //for bootstrap working -->
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+<!-- timer -->
+<link rel="stylesheet" href="/homes/css/jquery.countdown.css" />
+<!-- //timer -->
+<!-- animation-effect -->
+<link href="/homes/css/animate.min.css" rel="stylesheet">
+<script src="/homes/js/wow.min.js"></script>
+<script>
+ new WOW().init();
+</script>
+<!-- //animation-effect -->
+</head>
+
+<body>
+<!-- header -->
+    <div class="header">
+        <div class="container">
+            <!-- 登录与注册 -->
+            <div class="header-grid">
+                <div class="header-grid-left animated wow slideInLeft" data-wow-delay=".5s" style="float:right;">
+                    <ul>
+                        <li><i class="glyphicon glyphicon-log-in" aria-hidden="true"></i><a href="/home/login">登录</a></li>
+                        <li><i class="glyphicon glyphicon-book" aria-hidden="true"></i><a href="/home/regist">注册</a></li>
+                    </ul>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+            <div class="logo-nav">
+                <div class="logo-nav-left animated wow zoomIn" data-wow-delay=".5s">
+                    <h1><a href="/">淘 鞋 吧<span></span></a></h1>
+                </div>
+                <div class="logo-nav-left1">
+                    <nav class="navbar navbar-default">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+                        <ul class="nav navbar-nav">
+                            <li class="active"><a href="index.html" class="act">Home</a></li>
+                            <!-- Mega Menu -->
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">顶级分类 <b class="caret"></b></a>
+                                <ul class="dropdown-menu multi-column columns-2">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <ul class="multi-column-dropdown">
+                                                <h6>分类概括</h6>
+                                                <li><a href="products.html">二级分类</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    </nav>
+                </div>
+                <div class="logo-nav-right">
+                    <div class="search-box">
+                        <div id="sb-search" class="sb-search">
+                            <form>
+                                <input class="sb-search-input" placeholder="Enter your search term..." type="search" id="search">
+                                <input class="sb-search-submit" type="submit" value="">
+                                <span class="sb-icon-search"> </span>
+                            </form>
+                        </div>
+                    </div>
+                        <!-- search-scripts -->
+                        <script src="/homes/js/classie.js"></script>
+                        <script src="/homes/js/uisearch.js"></script>
+                            <script>
+                                new UISearch( document.getElementById( 'sb-search' ) );
+                            </script>
+                        <!-- //search-scripts -->
+                </div>
+                <div class="header-right">
+                    <div class="cart box_1">
+                        <a href="checkout.html">
+                            <h3> <div class="total">
+                                (共有<span id="simpleCart_quantity" class="simpleCart_quantity"></span> 件)</div>
+                                <img src="/homes/images/bag.png" alt="" />
+                            </h3>
+                        </a>
+                        <div class="clearfix"> </div>
+                    </div>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+    </div>
+<!-- //header -->
+    @section('content')
+
+
+
+    @show
+<!-- footer -->
+    <div class="footer">
+        <div class="container">
+            <div class="footer-grids">
+                <div class="col-md-3 footer-grid animated wow slideInLeft" data-wow-delay=".5s">
+                    <h3>关于我们</h3>
+                    <p><span>多 ---- 品类齐全</span><span>快 ---- 极速配送</span><span>好 ---- 正品行货</span><span>省 ---- 天天低价</span></p>
+                </div>
+                <div class="col-md-3 footer-grid animated wow slideInLeft" data-wow-delay=".5s">
+                    <h3>特色服务</h3>
+                    <p><span>淘鞋Q卡</span><span>保障服务</span><span>淘鞋社区</span></p>
+                </div>
+                <div class="col-md-3 footer-grid animated wow slideInLeft" data-wow-delay=".6s">
+                    <h3>联系方式</h3>
+                    <ul>
+                        <li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>北京市 &nbsp; 昌平区<span>XDL</span></li>
+                        <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i>97693650@qq.com</li>
+                        <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>+177 1314 8904</li>
+                    </ul>
+                </div>
+
+                <!-- 十二个小图组合成一张大图的logo -->
+                <div class="col-md-3 footer-grid animated wow slideInLeft" data-wow-delay=".7s">
+                    <h3>Flickr Posts</h3>
+                    <div class="footer-grid-left">
+                        <a href="single.html"><img src="/homes/images/13.jpg" alt=" " class="img-responsive" /></a>
+                    </div>
+                    <div class="footer-grid-left">
+                        <a href="single.html"><img src="/homes/images/14.jpg" alt=" " class="img-responsive" /></a>
+                    </div>
+                    <div class="footer-grid-left">
+                        <a href="single.html"><img src="/homes/images/15.jpg" alt=" " class="img-responsive" /></a>
+                    </div>
+                    <div class="footer-grid-left">
+                        <a href="single.html"><img src="/homes/images/16.jpg" alt=" " class="img-responsive" /></a>
+                    </div>
+                    <div class="footer-grid-left">
+                        <a href="single.html"><img src="/homes/images/13.jpg" alt=" " class="img-responsive" /></a>
+                    </div>
+                    <div class="footer-grid-left">
+                        <a href="single.html"><img src="/homes/images/14.jpg" alt=" " class="img-responsive" /></a>
+                    </div>
+                    <div class="footer-grid-left">
+                        <a href="single.html"><img src="/homes/images/15.jpg" alt=" " class="img-responsive" /></a>
+                    </div>
+                    <div class="footer-grid-left">
+                        <a href="single.html"><img src="/homes/images/16.jpg" alt=" " class="img-responsive" /></a>
+                    </div>
+                    <div class="footer-grid-left">
+                        <a href="single.html"><img src="/homes/images/13.jpg" alt=" " class="img-responsive" /></a>
+                    </div>
+                    <div class="footer-grid-left">
+                        <a href="single.html"><img src="/homes/images/14.jpg" alt=" " class="img-responsive" /></a>
+                    </div>
+                    <div class="footer-grid-left">
+                        <a href="single.html"><img src="/homes/images/15.jpg" alt=" " class="img-responsive" /></a>
+                    </div>
+                    <div class="footer-grid-left">
+                        <a href="single.html"><img src="/homes/images/16.jpg" alt=" " class="img-responsive" /></a>
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+
+                <div class="clearfix"> </div>
+            </div>
+            <div class="footer-logo animated wow slideInUp" data-wow-delay=".5s">
+                <h2><a href="/">淘 鞋 吧</a></h2>
+            </div>
+        </div>
+    </div>
+<!-- //footer -->
+
+    @section('js')
+
+
+
+    @show
+</body>
+</html>
