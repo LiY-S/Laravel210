@@ -8,17 +8,17 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Le styles -->
-    <link rel="stylesheet" href="/admins/css/style.css">
-    <link rel="stylesheet" href="/admins/css/loader-style.css">
-    <link rel="stylesheet" href="/admins/css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="/admins/js/progress-bar/number-pb.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/loader-style.css">
+    <link rel="stylesheet" href="/assets/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/assets/js/progress-bar/number-pb.css">
     <style type="text/css">
         canvas#canvas4 {
             position: relative;
             top: 20px;
         }
     </style>
-    <link rel="shortcut icon" href="/admins/ico/minus.png">
+    <link rel="shortcut icon" href="/assets/ico/minus.png">
 </head>
     <body>
         <!-- Preloader -->
@@ -190,27 +190,28 @@
 
                 @show
 
+
                 </div>
             </div>
         </div>
         <!-- END OF RIGHT SLIDER CONTENT-->
-        <script type="text/javascript" src="/admins/js/jquery.js"></script>
-        <script src="/admins/js/progress-bar/src/jquery.velocity.min.js"></script>
-        <script src="/admins/js/progress-bar/number-pb.js"></script>
-        <script src="/admins/js/progress-bar/progress-app.js"></script>
+        <script type="text/javascript" src="/assets/js/jquery.js"></script>
+        <script src="/assets/js/progress-bar/src/jquery.velocity.min.js"></script>
+        <script src="/assets/js/progress-bar/number-pb.js"></script>
+        <script src="/assets/js/progress-bar/progress-app.js"></script>
         <!-- MAIN EFFECT -->
-        <script type="text/javascript" src="/admins/js/preloader.js"></script>
-        <script type="text/javascript" src="/admins/js/bootstrap.js"></script>
-        <script type="text/javascript" src="/admins/js/app.js"></script>
-        <script type="text/javascript" src="/admins/js/load.js"></script>
-        <script type="text/javascript" src="/admins/js/main.js"></script>
+        <script type="text/javascript" src="/assets/js/preloader.js"></script>
+        <script type="text/javascript" src="/assets/js/bootstrap.js"></script>
+        <script type="text/javascript" src="/assets/js/app.js"></script>
+        <script type="text/javascript" src="/assets/js/load.js"></script>
+        <script type="text/javascript" src="/assets/js/main.js"></script>
         <!-- GAGE -->
-        <script type="text/javascript" src="/admins/js/chart/jquery.flot.js"></script>
-        <script type="text/javascript" src="/admins/js/chart/jquery.flot.resize.js"></script>
-        <!-- <script type="text/javascript" src="/admins/js/chart/realTime.js"></script> -->
-        <script type="text/javascript" src="/admins/js/speed/canvasgauge-coustom.js"></script>
-        <script type="text/javascript" src="/admins/js/countdown/jquery.countdown.js"></script>
-        <script src="/admins/js/jhere-custom.js"></script>
+        <script type="text/javascript" src="/assets/js/chart/jquery.flot.js"></script>
+        <script type="text/javascript" src="/assets/js/chart/jquery.flot.resize.js"></script>
+        <!-- <script type="text/ja   vascript" src="/assets/js/chart/realTime.js"></script> -->
+        <script type="text/javascript" src="/assets/js/speed/canvasgauge-coustom.js"></script>
+        <script type="text/javascript" src="/assets/js/countdown/jquery.countdown.js"></script>
+        <script src="/assets/js/jhere-custom.js"></script>
         <script>
             var gauge4 = new Gauge("canvas4", {
                 'mode': 'needle',
