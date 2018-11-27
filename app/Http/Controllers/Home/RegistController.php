@@ -16,7 +16,7 @@ class RegistController extends Controller
     }
     public function doregist(Request $request)
     {
-        $data = $request ->all();
-        dd($data);
+        // $data = $request ->all();
+        // dd($data);
     }
 }

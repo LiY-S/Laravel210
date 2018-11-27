@@ -7,47 +7,50 @@ use App\Http\Controllers\Controller;
 use Gregwar\Captcha\PhraseBuilder;
 use Gregwar\Captcha\CaptchaBuilder;
 use Session;
-
+use Hash;
+use DB;
 
 
 class LoginController extends Controller
 {
-    public function login()
+    public function login(Request $request)
     {
     	return view('admin.login.login',['title'=>'后台的登录页面']);
     }
-    /*public function dologin(Request $request)
+    public function dologin(Request $request)
     {
     	//表单验证
-
+        // $rs = $request->all();
+        // dd($rs);
     	//判断用户名
-    	$rs = DB::table('user')->where('username',$request->username)->first();
+    	$rs = DB::table('shop_admin')->where('username',$request->username)->first();
+            
+        	if(!$rs){
 
-
-    	if(!$rs){
-
-    		return back()->with('error','用户名或者密码错误');
-    	}
-
+        		return back()->with('error','用户名或者密码错误');
+        	}
     	//判断密码
-    	//hash
-    	if (!Hash::check($request->password, $rs->password)) {
-		    
-		    return back()->with('error','用户名或者密码错误');
-		}
+    	//hash 
 
+      //   	if (!Hash::check($request->password, $rs->password)) {
+    		    
+    		//     return back()->with('error','用户名或者密码错误');
+    		// }
+        
 		//加密解密
-		if($request->password != decrypt($rs->password)){
+		// if($request->password != decrypt($rs->password)){
 
-		    return back()->with('error','用户名或者密码错误');
+		//     return back()->with('error','用户名或者密码错误');
 			
-		}
+		// }n /;n
 
 		//判断验证码
 		$code = session('code');
-
+        // echo $code;die;
+        // echo $request->code;die;
 		if($code != $request->code){
-		    return back()->with('error','验证码错误');
+            // dd( $request->code);die;
+		  return back()->with('error','验证码错误');
 		}
 
 		//存点信息  session
@@ -56,7 +59,7 @@ class LoginController extends Controller
 
 		return redirect('/admin');
     	
-    }*/
+    }
     public function captcha()
     {
         $phrase = new PhraseBuilder;
@@ -70,7 +73,7 @@ class LoginController extends Controller
         $builder->setMaxBehindLines(0);
         $builder->setMaxFrontLines(0);
         // 可以设置图片宽高及字体
-        $builder->build($width = 130, $height = 50, $font = null);
+        $builder->build($width = 130, $height = 47, $font = null);
         // 获取验证码的内容
         $phrase = $builder->getPhrase();
         // 把内容存入session
@@ -79,5 +82,45 @@ class LoginController extends Controller
         header("Cache-Control: no-cache, must-revalidate");
         header("Content-Type:image/jpeg");
         $builder->output();
+        
+    }
+     public function profile()
+    {
+        return view('admin.login.profile',['title'=>'修改头像']);
+    }
+    
+     public function upload(Request $request)
+    {
+        //获取上传的文件对象
+        $file = $request->file('profile');
+        //判断文件是否有效
+        if($file->isValid()){
+            //上传文件的后缀名
+            $entension = $file->getClientOriginalExtension();
+            //修改名字
+            $newName = date('YmdHis').mt_rand(1000,9999).'.'.$entension;
+            //移动文件
+            $path = $file->move('./uploads',$newName);
+
+            $filepath = '/uploads/'.$newName;
+
+            $res['profile'] = $filepath;
+            DB::table('user')->where('id',session('uid'))->update($res);
+            //返回文件的路径
+            return  $filepath;
+        }
+    }
+    //修改密码
+    public function passchange()
+    {
+        return view('admin.login.passchange',['title'=>'修改密码']);
+    }
+    //退出
+    public function logout()
+    {
+        //清空session
+        session(['uid'=>'']);
+
+        return redirect('/admin/login');
     }
 }

@@ -1,17 +1,12 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="msapplication-tap-highlight" content="no" />
-  <!-- Chrome, Firefox OS and Opera -->
   <meta name="theme-color" content="#49CEFF">
-  <!-- Windows Phone -->
   <meta name="msapplication-navbutton-color" content="#49CEFF" />
-  <!-- iOS Safari -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <title>@yield('title')</title>
@@ -24,15 +19,20 @@
   <link rel="stylesheet" href="/admins/admins/bower_components/toastr/toastr.css">
   <link rel="stylesheet" href="/admins/admins/bower_components/datatables/media/css/jquery.dataTables.min.css">
   <link rel="stylesheet" href="/admins/admins/css/style.css">
-<!--
-  <link rel="icon" href="img/favicon.ico" type="image/x-icon" />
-  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
--->
-    <!--[if lt IE 9]>
-      <script src="/admins/admins/bower_components/html5shiv/dist/html5shiv.min,js"></script>
-      <script src="/admins/admins/bower_components/respondJs/dest/respond.min.js"></script>
-    <![endif]-->
-</head>
+
+  <link rel="stylesheet" href="/admins/admins/bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/admins/admins/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css">
+  <link rel="stylesheet" href="/admins/admins/bower_components/animate.css/animate.min.css">
+  <link rel="stylesheet" href="/admins/admins/bower_components/metisMenu/dist/metisMenu.min.css">
+  <link rel="stylesheet" href="/admins/admins/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css">
+  <link rel="stylesheet" href="/admins/admins/bower_components/Waves/dist/waves.min.css">
+  <link rel="stylesheet" href="/admins/admins/bower_components/toastr/toastr.css">
+  <link rel="stylesheet" href="/admins/admins/js/dropify/css/dropify.min.css">
+  <link rel="stylesheet" href="/admins/admins/css/style.css">
+
+
+  <link rel="stylesheet" href="/admins/admins/js/dropify/css/dropify.min.css">
+  <link rel="stylesheet" href="/admins/admins/css/style.css">
 <body>
   <!--Preloader-->
   <div id="preloader">
@@ -71,9 +71,9 @@
                         <i class="zmdi zmdi-account-circle"></i>
                     </a>
                     <div class="more-opt-container dropdown-menu">
-                        <a href="#"><i class="zmdi zmdi-account-o"></i>账户</a>
-                        <a href="#"><i class="zmdi zmdi-storage"></i>存储</a>
-                        <a href="#"><i class="zmdi zmdi-run"></i>退出</a>
+                        <a href="/admin/profile"><i class="zmdi zmdi-account-o"></i>修改头像</a>
+                        <a href="/admin/passchange"><i class="zmdi zmdi-storage"></i>修改密码</a>
+                        <a href="/admin/logout"><i class="zmdi zmdi-run"></i>退出</a>
                     </div>
                 </li>
             </ul>
@@ -83,17 +83,12 @@
   <aside class="sidebar">
     <ul class="nav metismenu">
       <li>
-        <a href="#"><i class="zmdi zmdi-view-dashboard"></i>Dashboard<span class="zmdi arrow"></span></a>
+        <a href="#"><i class="zmdi zmdi-view-dashboard"></i>角色管理<span class="zmdi arrow"></span></a>
         <ul class="nav nav-inside collapse">
-          <li class="inside-title">Dashboard</li>
-          <li><a href="/admin/user">Dashboard v1</a></li>
-          <li><a href="dashboard-2.html">Dashboard v2</a></li>
-          <li><a href="dashboard-3.html">Dashboard v3</a></li>
-          <li><a href="dashboard-4.html">Dashboard v4</a></li>
+          <li class="inside-title">角色管理</li>
+          <li><a href="">添加角色</a></li>
+          <li><a href="">浏览角色</a></li></li>
         </ul>
-      </li>
-      <li>
-        <a href="starter-page.html"><i class="zmdi zmdi-copy"></i>Starter Page</a>
       </li>
     </ul>
   </aside>
@@ -132,7 +127,6 @@
     </div>
   </div>
 </div>
-    <!-- <footer class="page-footer">Copyright &copy; 2018.Company name All rights reserved.<a target="_blank" href="http://www.17sucai.com/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></footer> -->
   </div>
   <script src="/admins/admins/bower_components/jquery/dist/jquery.min.js"></script>
   <script src="/admins/admins/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
