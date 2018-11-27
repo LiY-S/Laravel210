@@ -71,9 +71,9 @@
                         <i class="zmdi zmdi-account-circle"></i>
                     </a>
                     <div class="more-opt-container dropdown-menu">
-                        <a href="#"><i class="zmdi zmdi-account-o"></i>账户</a>
-                        <a href="#"><i class="zmdi zmdi-storage"></i>存储</a>
-                        <a href="#"><i class="zmdi zmdi-run"></i>退出</a>
+                        <a href="/admin/profile"><i class="zmdi zmdi-account-o"></i>修改头像</a>
+                        <a href="/admin/passchange"><i class="zmdi zmdi-storage"></i>修改密码</a>
+                        <a href="/admin/logout"><i class="zmdi zmdi-run"></i>退出</a>
                     </div>
                 </li>
             </ul>
@@ -83,17 +83,12 @@
   <aside class="sidebar">
     <ul class="nav metismenu">
       <li>
-        <a href="#"><i class="zmdi zmdi-view-dashboard"></i>Dashboard<span class="zmdi arrow"></span></a>
+        <a href="#"><i class="zmdi zmdi-view-dashboard"></i>角色管理<span class="zmdi arrow"></span></a>
         <ul class="nav nav-inside collapse">
-          <li class="inside-title">Dashboard</li>
-          <li><a href="/admin/user">Dashboard v1</a></li>
-          <li><a href="dashboard-2.html">Dashboard v2</a></li>
-          <li><a href="dashboard-3.html">Dashboard v3</a></li>
-          <li><a href="dashboard-4.html">Dashboard v4</a></li>
+          <li class="inside-title">角色管理</li>
+          <li><a href="">添加角色</a></li>
+          <li><a href="">浏览角色</a></li></li>
         </ul>
-      </li>
-      <li>
-        <a href="starter-page.html"><i class="zmdi zmdi-copy"></i>Starter Page</a>
       </li>
     </ul>
   </aside>
