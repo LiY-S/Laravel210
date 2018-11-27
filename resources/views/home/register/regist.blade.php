@@ -38,7 +38,7 @@
                 </form>
             </div>
             <div class="register-home animated wow slideInUp" data-wow-delay=".5s">
-                <a href="index.html">Home</a>
+                <a href="/">Home</a>
             </div>
         </div>
     </div>

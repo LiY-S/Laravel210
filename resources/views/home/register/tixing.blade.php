@@ -17,3 +17,13 @@
     </div>
 </div>
 @stop
+
+@section('js')
+
+<script>
+    setTimeout(function(){
+        window.location.href='http://shop.com/';
+    },6000);
+</script>
+
+@stop

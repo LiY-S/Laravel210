@@ -42,10 +42,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <!-- 登录与注册 -->
             <div class="header-grid">
                 <div class="header-grid-left animated wow slideInLeft" data-wow-delay=".5s" style="float:right;">
+                    @php
+                    $res = DB::table('shop_user')->where('id',session('user')) ->first();
+
+                    @endphp
+                    @if(!session('user'))
                     <ul>
                         <li><i class="glyphicon glyphicon-log-in" aria-hidden="true"></i><a href="/home/login">登录</a></li>
                         <li><i class="glyphicon glyphicon-book" aria-hidden="true"></i><a href="/home/regist">注册</a></li>
                     </ul>
+                    @else
+
+                    <div>欢迎您 , {{$res->username}} <a href="" style="color:#333">我的订单</a> <a href="/home/dologout" style="color:#333">退出</a></div>
+
+                    @endif
                 </div>
                 <div class="clearfix"> </div>
             </div>
@@ -117,6 +127,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 
     @show
+
 <!-- footer -->
     <div class="footer">
         <div class="container">
