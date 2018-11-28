@@ -1,4 +1,4 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -14,7 +14,7 @@
   <!-- iOS Safari -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <title>@yield('title')</title>
+  <title>{{$title}}</title>
   <link rel="stylesheet" href="/admins/admins/bower_components/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="/admins/admins/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css">
   <link rel="stylesheet" href="/admins/admins/bower_components/animate.css/animate.min.css">
@@ -83,11 +83,11 @@
   <aside class="sidebar">
     <ul class="nav metismenu">
       <li>
-        <a href="#"><i class="zmdi zmdi-view-dashboard"></i>Dashboard<span class="zmdi arrow"></span></a>
+        <a href="#"><i class="zmdi zmdi-view-dashboard"></i>管理员管理<span class="zmdi arrow"></span></a>
         <ul class="nav nav-inside collapse">
           <li class="inside-title">Dashboard</li>
-          <li><a href="/admin/user">Dashboard v1</a></li>
-          <li><a href="dashboard-2.html">Dashboard v2</a></li>
+          <li><a href="/admin/user/create">添加用户</a></li>
+          <li><a href="/admin/user">浏览用户</a></li>
           <li><a href="dashboard-3.html">Dashboard v3</a></li>
           <li><a href="dashboard-4.html">Dashboard v4</a></li>
         </ul>
@@ -100,7 +100,7 @@
   <div class="row">
     <div class="col-md-12">
       <ol class="breadcrumb breadcrumb-arrow">
-        <li><a href="#">Dashboards</a></li>
+        <li><a href="#">Dashboard</a></li>
         <li class="active">Dashboard v1</li>
       </ol>
     </div>
