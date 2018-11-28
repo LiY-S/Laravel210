@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-    
+
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,7 +33,7 @@
         <link rel="stylesheet" href="/admins/admins/css/style.css">
         <link rel="stylesheet" href="/admins/admins/js/dropify/css/dropify.min.css">
         <link rel="stylesheet" href="/admins/admins/css/style.css">
-        
+
         <body>
             <!--Preloader-->
             <div id="preloader">
@@ -164,7 +164,7 @@
                                 </li>
                             </ul>
                         </li>
-                    
+
                     </ul>
                 </aside>
                 <div class="row">
@@ -198,7 +198,10 @@
                                 </div>
                             </div>
                             <div class="content">
-                                @section('content') @show
+                                @section('content')
+
+
+                                @show
                             </div>
                         </div>
                     </div>
@@ -436,7 +439,10 @@
             </script>
             <script src="/admins/admins/js/common.js">
             </script>
-            @section('js') @show
+            @section('js')
+
+
+            @show
         </body>
 
 </html>
