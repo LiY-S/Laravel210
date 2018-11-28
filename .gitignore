@@ -13,4 +13,4 @@ yarn-error.log
 
 
 /routes/web.php
-/resource/views/mutual/admins.blade.php
+/resources/views/mutual/admins.blade.php

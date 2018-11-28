@@ -153,12 +153,12 @@
                                     权限管理
                                 </li>
                                 <li>
-                                    <a href="/admin/create">
+                                    <a href="/admin/permission/create">
                                         添加权限
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/admin/show">
+                                    <a href="/admin/permission">
                                         浏览权限
                                     </a>
                                 </li>

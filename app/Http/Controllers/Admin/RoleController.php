@@ -45,13 +45,12 @@ class RoleController extends Controller
     public function store(Request $request)
     {
         //表单验证
-       if (!empty($rs)) {
+       // if (!empty($rs)) {
 
             $rs = $request->only('role_name');
-
+            // dump($rs);die;
             // $data = Role::create($rs);
             // dump($data);die;
-
             try{
 
                 $data = Role::create($rs);
@@ -67,8 +66,8 @@ class RoleController extends Controller
                 return back()->with('error','添加失败');
             }
         }
-       return back()->with('error','添加失败');
-    }
+       // return back()->with('error','添加失败');
+    // }
 
     /**
      * Display the specified resource.
@@ -113,6 +112,9 @@ class RoleController extends Controller
             
             if($data){
                 return redirect('/admin/role')->with('success','修改成功');
+            }else{
+                return redirect('/admin/role')->with('success','修改成功');
+                
             }
 
         }catch(\Exception $e){
