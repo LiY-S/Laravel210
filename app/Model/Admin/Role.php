@@ -35,9 +35,9 @@ class Role extends Model
     /**
      * 获得此角色的权限。
      */
-    // public function pers()
-    // {
-    //     return $this->belongsToMany('App\Model\Admin\Permission','role_permission','role_id','per_id');
-    // }
+    public function pers()
+    {
+        return $this->belongsToMany('App\Model\Admin\Permission','role_permission','role_id','per_id');
+    }
 }
 

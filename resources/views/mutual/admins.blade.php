@@ -88,6 +88,7 @@
                                 <li class="more-options dropdown">
                                     <a class="dropdown-toggle" data-toggle="dropdown">
                                         <i class="zmdi zmdi-account-circle">
+                                            <img src="{{}}">
                                         </i>
                                     </a>
                                     <div class="more-opt-container dropdown-menu">

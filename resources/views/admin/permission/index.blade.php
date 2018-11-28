@@ -72,9 +72,9 @@
                                     {{$v->url}}
                                 </td>
                                 <td>
-                                    <a href="/admin/role_per?id={{$v->id}}" class='btn btn-danger'style="background-color: #ef9a9a;color:#fff; width:100px">
+                                    <!-- <a href="/admin/role_per?id={{$v->id}}" class='btn btn-danger'style="background-color: #ef9a9a;color:#fff; width:100px">
                                         添加权限
-                                    </a>
+                                    </a> -->
                                     
                                     <!-- <form action="/admin/role_per?id={{$v->id}}" method='post' style='display:inline'>
                                         {{csrf_field()}} 

@@ -32,10 +32,10 @@ class LoginController extends Controller
     	//判断密码
     	//hash 
 
-      //   	if (!Hash::check($request->password, $rs->password)) {
+        	if (!Hash::check($request->password, $rs->password)) {
     		    
-    		//     return back()->with('error','用户名或者密码错误');
-    		// }
+    		    return back()->with('error','用户名或者密码错误');
+    		}
         
 		//加密解密
 		// if($request->password != decrypt($rs->password)){

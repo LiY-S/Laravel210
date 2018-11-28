@@ -13,7 +13,7 @@
             <div class="functions-btns pull-right"></div>
         </div>
         <div class="content">
-            <input type="file" class="dropify" data-default-file="">
+            <input type="file" class="dropify" value="{{}}">
         </div>
     </div>
     {{csrf_field()}}
