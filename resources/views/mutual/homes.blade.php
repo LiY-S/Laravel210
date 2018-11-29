@@ -60,20 +60,30 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <ul class="nav navbar-nav">
                             <li class="active"><a href="index.html" class="act">Home</a></li>
                             <!-- Mega Menu -->
+                            @php
+                                $res = DB::table('shop_category')->get();
+                            @endphp
+                            @foreach ($res as $v)
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">顶级分类 <b class="caret"></b></a>
+                                @if ($v->pid == 0)
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{$v->cate_name}} <b class="caret"></b></a>
+                                @endif
                                 <ul class="dropdown-menu multi-column columns-2">
                                     <div class="row">
                                         <div class="col-sm-12">
                                             <ul class="multi-column-dropdown">
-                                                <h6>分类概括</h6>
-                                                <li><a href="products.html">二级分类</a></li>
+                                                @foreach ($res as $val)
+                                                    @if ($val->pid == $v->id)
+                                                        <li><a href="products.html"> &nbsp; &nbsp; &nbsp;{{$val->cate_name}}</a></li>
+                                                    @endif
+                                                @endforeach
                                             </ul>
                                         </div>
                                         <div class="clearfix"></div>
                                     </div>
                                 </ul>
                             </li>
+                            @endforeach
                         </ul>
                     </div>
                     </nav>

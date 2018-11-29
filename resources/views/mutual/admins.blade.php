@@ -101,6 +101,10 @@
           <li class="inside-title">角色管理</li>
           <li><a href="">添加角色</a></li>
           <li><a href="">浏览角色</a></li>
+        <a href="#"><i class="zmdi zmdi-view-dashboard"></i>商品管理<span class="zmdi arrow"></span></a>
+        <ul class="nav nav-inside collapse">
+          <li class="inside-title">商品管理</li>
+          <li><a href="/admins/goods">商品添加</a></li>
         </ul>
       </li>
       <li>
