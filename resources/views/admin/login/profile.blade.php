@@ -4,20 +4,23 @@
 
 @section('content')
 
-
-<div class="col-md-6 col-md-offset-3" style="float: none">
-    <form action="/admin/upload" enctype='multipart/form-data'>
+<div class="col-md-6 col-md-offset-3" style="float: none;height: 740px">
+	<form id='art_form' action="/admin/upload" method="post" class="mws-form" enctype='multipart/form-data'>
+		<center>
+<img src="{{$res->profile}}" id='imgs' alt="上传后显示图片" style="width:200px; ">
+</center><br><br><br> 
     <div class="content-box">
         <div class="head primary-bg clearfix">
             <h5 class="content-title pull-left">修改头像</h5>
             <div class="functions-btns pull-right"></div>
         </div>
         <div class="content">
-            <input type="file" class="dropify" value="{{}}">
+
+            <input id="file_upload" type="file" class="dropify" name='profile'>
         </div>
     </div>
     {{csrf_field()}}
-<button type="button" class="btn btn-primary">提交</button>      
+<a class="btn btn-primary" href="/admin" style="color:#fff; width:100px">修改</a>      
 </form> 
 </div>	
 

@@ -84,12 +84,20 @@
                                     </span>
                                 </form>
                             </div>
+                             @php
+
+                                    $res = DB::table('shop_admin')->where('id',session('uid'))->first();
+                                    
+                                    
+                                    @endphp
                             <ul class="nav pull-right right-menu">
-                                <li class="more-options dropdown">
-                                    <a class="dropdown-toggle" data-toggle="dropdown">
-                                        <i class="zmdi zmdi-account-circle">
-                                            <img src="{{}}">
-                                        </i>
+                                <li class="">
+                                   
+
+                                    <a class="" data-toggle="dropdown" aria-expanded="true">
+                                        <!-- <i class="zmdi zmdi-account-circle"> -->
+                                            <img class="zmdi zmdi-account-circle" src="{{$res->profile}}"style="width: 50px;border-radius: 50%">
+                                        <!-- </i> -->
                                     </a>
                                     <div class="more-opt-container dropdown-menu">
                                         <a href="/admin/profile">
@@ -207,6 +215,8 @@
             </div>
             </div>
             <script src="/admins/admins/bower_components/jquery/dist/jquery.min.js">
+            </script>
+            <script src="/admins/admins/bower_components/jquery/dist/jquery-3.3.1.min.js">
             </script>
             <script src="/admins/admins/bower_components/bootstrap/dist/js/bootstrap.min.js">
             </script>
