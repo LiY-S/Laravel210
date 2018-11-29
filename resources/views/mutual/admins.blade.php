@@ -40,46 +40,74 @@
   </div>
   <div class="wrapper">
   <nav class="navbar">
-    <div class="navbar-header container">
-        <a href="#" class="menu-toggle">
-          <i class="zmdi zmdi-menu"></i>
-        </a>
-        <!-- logo图片 -->
-        <a href="/admin" class="logo">
-            <img src="/admins/admins/img/logo.png" alt="Logo Pacificonis" />
-        </a>
-        <a href="/admin" class="icon-logo"></a>
-    </div>
-    <div class="navbar-container clearfix">
-        <!-- logo -->
-        <div class="pull-left">
-            <a href="#" class="page-title text-uppercase">aaaa</a>
-        </div>
-        <div class="pull-right">
-            <div class="pull-left search-container">
-                <form class="searchbox">
-                    <input type="search" placeholder="Search" name="search" class="searchbox-input" />
-                    <input type="submit" class="searchbox-submit" value="" />
-                    <span class="searchbox-icon">
-                        <span class="zmdi zmdi-search search-icon"></span>
-                    </span>
-                </form>
-            </div>
-            <ul class="nav pull-right right-menu">
-                <li class="more-options dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="zmdi zmdi-account-circle"></i>
-                    </a>
-                    <div class="more-opt-container dropdown-menu">
-                        <a href="/admin/profile"><i class="zmdi zmdi-account-o"></i>修改头像</a>
-                        <a href="/admin/passchange"><i class="zmdi zmdi-storage"></i>修改密码</a>
-                        <a href="/admin/logout"><i class="zmdi zmdi-run"></i>退出</a>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
+      <div class="navbar-header container">
+          <a href="#" class="menu-toggle">
+              <i class="zmdi zmdi-menu">
+              </i>
+          </a>
+          <!-- logo图片 -->
+          <a href="/admin" class="logo">
+              <img src="/admins/admins/img/logo.png" alt="Logo Pacificonis" />
+          </a>
+          <a href="/admin" class="icon-logo">
+          </a>
+      </div>
+      <div class="navbar-container clearfix">
+          <!-- logo -->
+          <div class="pull-left">
+              <a href="#" class="page-title text-uppercase">
+                  aaaa
+              </a>
+          </div>
+          <div class="pull-right">
+              <div class="pull-left search-container">
+                  <form class="searchbox">
+                      <input type="search" placeholder="Search" name="search" class="searchbox-input"
+                      />
+                      <input type="submit" class="searchbox-submit" value="" />
+                      <span class="searchbox-icon">
+                          <span class="zmdi zmdi-search search-icon">
+                          </span>
+                      </span>
+                  </form>
+              </div>
+               @php
+
+                      $res = DB::table('shop_admin')->where('id',session('uid'))->first();
+
+
+                      @endphp
+              <ul class="nav pull-right right-menu">
+                  <li class="">
+
+
+                      <a class="" data-toggle="dropdown" aria-expanded="true">
+                          <!-- <i class="zmdi zmdi-account-circle"> -->
+                              <img class="zmdi zmdi-account-circle" src="{{$res->profile}}"style="width: 50px;border-radius: 50%">
+                          <!-- </i> -->
+                      </a>
+                      <div class="more-opt-container dropdown-menu">
+                          <a href="/admin/profile">
+                              <i class="zmdi zmdi-account-o">
+                              </i>
+                              修改头像
+                          </a>
+                          <a href="/admin/passchange">
+                              <i class="zmdi zmdi-storage">
+                              </i>
+                              修改密码
+                          </a>
+                          <a href="/admin/logout">
+                              <i class="zmdi zmdi-run">
+                              </i>
+                              退出
+                          </a>
+                      </div>
+                  </li>
+              </ul>
+          </div>
+      </div>
+  </nav>
   <aside class="sidebar">
     <ul class="nav metismenu">
       <li>
@@ -87,7 +115,44 @@
         <ul class="nav nav-inside collapse">
           <li class="inside-title">角色管理</li>
           <li><a href="">添加角色</a></li>
-          <li><a href="">浏览角色</a></li></li>
+          <li><a href="">浏览角色</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#"><i class="zmdi zmdi-view-dashboard"></i>管理员管理<span class="zmdi arrow"></span></a>
+        <ul class="nav nav-inside collapse">
+          <li class="inside-title">管理员管理</li>
+          <li><a href="/admin/user/create">添加用户</a></li>
+          <li><a href="/admin/user">浏览用户</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#"><i class="zmdi zmdi-view-dashboard"></i>权限管理<span class="zmdi arrow"></span></a>
+        <ul class="nav metismenu">
+            <li>
+                <a href="#">
+                    <i class="zmdi zmdi-view-dashboard">
+                    </i>
+                    权限管理
+                    <span class="zmdi arrow">
+                    </span>
+                </a>
+                <ul class="nav nav-inside collapse">
+                    <li class="inside-title">
+                        权限管理
+                    </li>
+                    <li>
+                        <a href="/admin/permission/create">
+                            添加权限
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/admin/permission">
+                            浏览权限
+                        </a>
+                    </li>
+                </ul>
+            </li>
         </ul>
       </li>
     </ul>

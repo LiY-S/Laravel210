@@ -1,19 +1,18 @@
 <?php
 
-namespace App\Model\Admin;
+namespace App\model\home;
 
 use Illuminate\Database\Eloquent\Model;
 
-class User extends Model
+class Cart extends Model
 {
-    //
     //
      /**
      * 与模型关联的数据表
      *
      * @var string
      */
-    protected $table = 'shop_user';
+    protected $table = 'shop_cart';
 
     protected $primaryKey = 'id';
 
@@ -30,4 +29,5 @@ class User extends Model
      * @var array
      */
     protected $guarded = [];
+
 }

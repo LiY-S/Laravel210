@@ -32,12 +32,15 @@ class LoginController extends Controller
 
             return back()->with('error','邮箱或者密码错误');
         }
+        // dd($data);
+        $uid = $data -> id;
+        // dd($uid);
+        // 存session user ia
+        session(['user'=>$uid]);
         // 根据id查出用户的购物车信息 订单信息 收藏信息 收货地址信息
 
-        // 存session
-        session(['user'=>'1']);
+
         return redirect('/');
-        dd($data);
     }
 
 
