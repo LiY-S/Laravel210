@@ -4,6 +4,7 @@
 <title>@yield('title')</title>
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Best Store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
@@ -42,10 +43,23 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <!-- 登录与注册 -->
             <div class="header-grid">
                 <div class="header-grid-left animated wow slideInLeft" data-wow-delay=".5s" style="float:right;">
+                    @php
+                    $res = DB::table('shop_user')->where('id',session('user')) ->first();
+                    @endphp
+                    @if(!session('user'))
                     <ul>
                         <li><i class="glyphicon glyphicon-log-in" aria-hidden="true"></i><a href="/home/login">登录</a></li>
                         <li><i class="glyphicon glyphicon-book" aria-hidden="true"></i><a href="/home/regist">注册</a></li>
                     </ul>
+                    @else
+                    <div>
+                        欢迎您 , {{$res->username}}
+                        <a href="/home/personal" style="color:#333">个人中心</a>
+                        <a href="#" style="color:#333">我的订单</a>
+                        <a href="#" style="color:#333">我的收藏</a>
+                        <a href="/home/dologout" style="color:#333">退出</a>
+                    </div>
+                    @endif
                 </div>
                 <div class="clearfix"> </div>
             </div>
@@ -89,15 +103,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </nav>
                 </div>
                 <div class="logo-nav-right">
-                    <div class="search-box">
-                        <div id="sb-search" class="sb-search">
-                            <form>
-                                <input class="sb-search-input" placeholder="Enter your search term..." type="search" id="search">
-                                <input class="sb-search-submit" type="submit" value="">
-                                <span class="sb-icon-search"> </span>
-                            </form>
-                        </div>
-                    </div>
                         <!-- search-scripts -->
                         <script src="/homes/js/classie.js"></script>
                         <script src="/homes/js/uisearch.js"></script>
@@ -108,10 +113,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </div>
                 <div class="header-right">
                     <div class="cart box_1">
-                        <a href="checkout.html">
+                        <a href="/home/cart">
                             <h3> <div class="total">
-                                (共有<span id="simpleCart_quantity" class="simpleCart_quantity"></span> 件)</div>
-                                <img src="/homes/images/bag.png" alt="" />
+                                <img src="/homes/images/bag.png" style="width:30px;" alt="" />
                             </h3>
                         </a>
                         <div class="clearfix"> </div>
@@ -127,6 +131,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 
     @show
+
 <!-- footer -->
     <div class="footer">
         <div class="container">
