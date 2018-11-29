@@ -5,7 +5,23 @@
 @section('content')
 
 <div class="col-md-6 col-md-offset-3" style="float: none">
-    <form action="" method="post" class="mws-form" enctype='multipart/form-data'>
+    @if (session('success'))
+        <div class="mws-form-message error">
+            <ul>
+                <center>
+                <li class="error"style="background-color: green;list-style:none;font-size: 20px; width: 1000px;text-align: center; ">{{session('success')}}</li>
+                </center>
+            </ul>
+        </div>
+        @endif
+    @if (session('error'))
+        <div class="mws-form-message error">
+            <ul>
+                <li class="error"style="background-color: #ef9a9a;list-style:none;font-size: 20px">{{session('error')}}</li>
+            </ul>
+        </div>
+        @endif
+    <form action="/admin/pass" method="post" class="mws-form" enctype='multipart/form-data'>
         <div class="content-box">
             <div class="head success-bg clearfix">
                 <h5 class="content-title pull-left">
@@ -31,7 +47,7 @@
                 </div>
                 {{csrf_field()}}
         </div>
-        <button type="button" class="btn btn-success">
+        <button type="submit" class="btn btn-success">
             提交
         </button>
         </form>

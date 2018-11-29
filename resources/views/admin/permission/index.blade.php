@@ -13,10 +13,10 @@
         </div>
         @endif
 <div class="col-md-8 col-md-offset-2" style="float: none;height: 740px">
-    <form action="/admin/role" method='get'>
+    <form action="/admin/permission" method='get'>
         <div class="data-info">
             <div id="table1_wrapper" class="dataTables_wrapper no-footer">
-                <form action="/admin/role" method='get'>
+                <form action="/admin/permission" method='get'>
                     <div class="toolbar tool1">
                         <h5 class="zero-m">
                             <div id="DataTables_Table_1_length" class="dataTables_length">
@@ -40,7 +40,7 @@
                     </div>
                     <div id="table2_filter" class="dataTables_filter">
                         <label>
-                            <input type="search" class="" placeholder="关键字" aria-controls="table2"name='role_name' value="{{$request->role_name}}">
+                            <input type="search" class="" placeholder="关键字" aria-controls="table2"name='url_name' value="{{$request->url_name}}">
                         </label>
                         <button class='btn btn-info' style="font-size: 20px;margin-down: 0px">
                             搜索
@@ -51,7 +51,8 @@
                     <thead>
                         <tr role="row">
                             <th class="sorting_asc" tabindex="0" aria-controls="table1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product: activate to sort column descending">ID</th>
-                            <th class="sorting_asc" tabindex="0" aria-controls="table1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product: activate to sort column descending"> 角色名</th>
+                            <th class="sorting_asc" tabindex="0" aria-controls="table1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product: activate to sort column descending">权限路径名</th>
+                            <th class="sorting_asc" tabindex="0" aria-controls="table1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product: activate to sort column descending"> 权限路径</th>
                             <th class="sorting" tabindex="0" aria-controls="table1" rowspan="1" colspan="1"aria-label="Number of Orders: activate to sort column ascending" style="width: 418px;">操作</th>
                         </tr>
                     </thead>
@@ -65,12 +66,15 @@
                                     {{$v->id}}
                                 </td>
                                 <td class="uname">
-                                    {{$v->role_name}}
+                                    {{$v->url_name}}
+                                </td>
+                                <td class="uname">
+                                    {{$v->url}}
                                 </td>
                                 <td>
-                                    <a href="/admin/role_per?id={{$v->id}}" class='btn btn-danger'style="background-color: #ef9a9a;color:#fff; width:100px">
+                                    <!-- <a href="/admin/role_per?id={{$v->id}}" class='btn btn-danger'style="background-color: #ef9a9a;color:#fff; width:100px">
                                         添加权限
-                                    </a>
+                                    </a> -->
                                     
                                     <!-- <form action="/admin/role_per?id={{$v->id}}" method='post' style='display:inline'>
                                         {{csrf_field()}} 
@@ -78,7 +82,7 @@
                                             添加权限
                                         </button>
                                     </form> -->
-                                    <a href="/admin/role/{{$v->id}}/edit" class='btn btn-danger'style="background-color: #ef9a9a;color:#fff; width:100px">
+                                    <a href="/admin/permission/{{$v->id}}/edit" class='btn btn-danger'style="background-color: #ef9a9a;color:#fff; width:100px">
                                         修改
                                     </a>
                                     <!-- <form action="/admin/role/{{$v->id}}/edit" method='post' style='display:inline'>
@@ -87,7 +91,7 @@
                                             修改
                                         </button>
                                     </form> -->
-                                    <form action="/admin/role/{{$v->id}}" method='post' style='display:inline'>
+                                    <form action="/admin/permission/{{$v->id}}" method='post' style='display:inline'>
                                         {{csrf_field()}} 
                                         {{method_field("DELETE")}}
                                         <button class='btn btn-danger'style="background-color: #e1bee7">

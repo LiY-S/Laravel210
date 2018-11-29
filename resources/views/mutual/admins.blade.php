@@ -84,11 +84,20 @@
                                     </span>
                                 </form>
                             </div>
+                             @php
+
+                                    $res = DB::table('shop_admin')->where('id',session('uid'))->first();
+                                    
+                                    
+                                    @endphp
                             <ul class="nav pull-right right-menu">
-                                <li class="more-options dropdown">
-                                    <a class="dropdown-toggle" data-toggle="dropdown">
-                                        <i class="zmdi zmdi-account-circle">
-                                        </i>
+                                <li class="">
+                                   
+
+                                    <a class="" data-toggle="dropdown" aria-expanded="true">
+                                        <!-- <i class="zmdi zmdi-account-circle"> -->
+                                            <img class="zmdi zmdi-account-circle" src="{{$res->profile}}"style="width: 50px;border-radius: 50%">
+                                        <!-- </i> -->
                                     </a>
                                     <div class="more-opt-container dropdown-menu">
                                         <a href="/admin/profile">
@@ -153,12 +162,12 @@
                                     权限管理
                                 </li>
                                 <li>
-                                    <a href="/admin/create">
+                                    <a href="/admin/permission/create">
                                         添加权限
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/admin/show">
+                                    <a href="/admin/permission">
                                         浏览权限
                                     </a>
                                 </li>
@@ -209,6 +218,8 @@
             </div>
             </div>
             <script src="/admins/admins/bower_components/jquery/dist/jquery.min.js">
+            </script>
+            <script src="/admins/admins/bower_components/jquery/dist/jquery-3.3.1.min.js">
             </script>
             <script src="/admins/admins/bower_components/bootstrap/dist/js/bootstrap.min.js">
             </script>

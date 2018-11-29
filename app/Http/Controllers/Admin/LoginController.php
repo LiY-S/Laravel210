@@ -17,6 +17,7 @@ class LoginController extends Controller
     {
     	return view('admin.login.login',['title'=>'后台的登录页面']);
     }
+
     public function dologin(Request $request)
     {
     	//表单验证
@@ -32,10 +33,10 @@ class LoginController extends Controller
     	//判断密码
     	//hash 
 
-      //   	if (!Hash::check($request->password, $rs->password)) {
+        	if (!Hash::check($request->password, $rs->password)) {
     		    
-    		//     return back()->with('error','用户名或者密码错误');
-    		// }
+    		    return back()->with('error','用户名或者密码错误');
+    		}
         
 		//加密解密
 		// if($request->password != decrypt($rs->password)){
@@ -86,7 +87,11 @@ class LoginController extends Controller
     }
      public function profile()
     {
-        return view('admin.login.profile',['title'=>'修改头像']);
+        $id=session('uid');
+        $res = DB::table('shop_admin')->where('id',$id)->first();
+        // dump($res);die;
+        return view('admin.login.profile',['title'=>'修改头像','res'=>$res]);
+
     }
     
      public function upload(Request $request)
@@ -105,15 +110,47 @@ class LoginController extends Controller
             $filepath = '/uploads/'.$newName;
 
             $res['profile'] = $filepath;
-            DB::table('user')->where('id',session('uid'))->update($res);
+            DB::table('shop_admin')->where('id',session('uid'))->update($res);
             //返回文件的路径
             return  $filepath;
         }
     }
     //修改密码
-    public function passchange()
+    public function passchange(Request $request)
     {
+
+        // $res = DB::table('shop_admin')->where('id',session('uid'))->first();
+        // dump($res);die;
+        // if(Hash::check($request->password, $res->password)){
+
+                
+        //     }
+        //     return back()->with('error','原密码错误');
+        // dump(!Hash::check($request->password, $res->password));
+            // DB::create($request->passwords)->where('password',$request->passwords);
+          // dump(Hash::check($request->password)); 
+          // dump($res->password); 
+            
         return view('admin.login.passchange',['title'=>'修改密码']);
+
+    }
+    public function pass(Request $request)
+    {
+        $res = DB::table('shop_admin')->where('id',session('uid'))->first();
+        if (!empty($request->password) && empty($res->password)) {
+                 
+            if(!Hash::check($request->password, $res->password)){
+
+                    return back()->with('error','原密码错误');
+                }
+
+                $a= [];
+                $a['password']=Hash::make($request->passwords);
+            DB::table('shop_admin')->where('password',$res->password)->update($a);
+
+                return back()->with('success','修改成功');
+        }
+           return back()->with('error','修改失败');     
     }
     //退出
     public function logout()
@@ -122,5 +159,9 @@ class LoginController extends Controller
         session(['uid'=>'']);
 
         return redirect('/admin/login');
+    }
+    public function index(Request $request){
+
+        
     }
 }

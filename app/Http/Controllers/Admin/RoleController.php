@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\Admin\Role;
+use App\Model\Admin\Permission;
+use DB;
 
 class RoleController extends Controller
 {
@@ -45,13 +47,12 @@ class RoleController extends Controller
     public function store(Request $request)
     {
         //表单验证
-       if (!empty($rs)) {
+       // if (!empty($rs)) {
 
             $rs = $request->only('role_name');
-
+            // dump($rs);die;
             // $data = Role::create($rs);
             // dump($data);die;
-
             try{
 
                 $data = Role::create($rs);
@@ -67,8 +68,8 @@ class RoleController extends Controller
                 return back()->with('error','添加失败');
             }
         }
-       return back()->with('error','添加失败');
-    }
+       // return back()->with('error','添加失败');
+    // }
 
     /**
      * Display the specified resource.
@@ -113,6 +114,9 @@ class RoleController extends Controller
             
             if($data){
                 return redirect('/admin/role')->with('success','修改成功');
+            }else{
+                return redirect('/admin/role')->with('success','修改成功');
+                
             }
 
         }catch(\Exception $e){
@@ -140,6 +144,56 @@ class RoleController extends Controller
         }catch(\Exception $e){
 
             return back()->with('error','删除失败');
+        }
+    }
+    public function role_per(Request $request)
+    {
+        //获取角色名
+        $id = $request->id;
+
+        $res = Role::find($id);
+
+        $info = [];
+        foreach($res->pers as $k => $v){
+            $info[] = $v->id;
+
+        }
+
+        //把所有的权限路径查询出来
+        $per = Permission::all();
+
+        return view('admin.role.role_per',[
+            'title'=>'角色添加权限的页面',
+            'res'=>$res,
+            'per'=>$per,
+            'info'=>$info
+
+        ]);
+    }
+    public function do_role_per(Request $request)
+    {
+        //角色的id
+        $id = $request->id;
+
+        DB::table('role_permission')->where('role_id',$id)->delete();
+
+        //权限路径id
+        $per_id = $request->per_id;
+
+        $pers = [];
+        foreach($per_id as $k => $v){
+            $rs = [];
+            $rs['role_id'] = $id;
+            $rs['per_id'] = $v;
+            $pers[] = $rs;
+        }
+
+        //插入数据
+        $data = DB::table('role_permission')->insert($pers);
+
+        if($data){
+
+            return redirect('admin/role')->with('success','添加成功');
         }
     }
 }

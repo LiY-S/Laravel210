@@ -5,17 +5,14 @@
 @section('content')
 
 
+
+
 <div class="col-md-6 col-md-offset-3" style="float: none;height: 740px">
     <div class="mws-panel-body no-padding">
-        @if (count($errors) > 0)
+        @if (session('error'))
         <div class="mws-form-message error">
-            显示错误信息
             <ul>
-                @foreach ($errors->all() as $error)
-                <li style='font-size:14px'>
-                    {{$error}}
-                </li>
-                @endforeach
+                <li class="error"style="background-color: #ef9a9a;list-style:none;font-size: 20px">{{session('error')}}</li>
             </ul>
         </div>
         @endif
@@ -23,7 +20,7 @@
             <div class="content-box">
                 <div class="head info-bg clearfix">
                     <h5 class="content-title pull-left">
-                        添加角色
+                        {{$title}}
                     </h5>
                     <div class="functions-btns pull-right">
                     </div>
@@ -45,4 +42,13 @@
     </div>
 </div>
 
+
+@stop
+
+@section('js')
+<script>
+
+        $('.error').delay(2000).slideUp(2000);
+
+</script>
 @stop

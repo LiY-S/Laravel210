@@ -14,22 +14,26 @@
             </ul>
         </div>
         @endif
-        <form action="/admin/role/{{$res->id}}" method="post" class="mws-form" enctype='multipart/form-data'>
+        <form action="/admin/permission/{{$res->id}}" method="post" class="mws-form" enctype='multipart/form-data'>
             <div class="content-box">
                 <div class="head info-bg clearfix">
                     <h5 class="content-title pull-left">
-                        {{$title}}
+                       {{$title}}
                     </h5>
                     <div class="functions-btns pull-right">
                     </div>
                 </div>
                 <div class="content">
                     <div class="form-group">
-                        角色名
+                        权限路径名
                         <hr>
-                        <input type="text" class="form-control" name='role_name'value="{{$res->role_name}}">
+                        <input type="text" class="form-control" name='url_name'value="{{$res->url_name}}">
                     </div>
-                   
+                   <div class="form-group">
+                        权限路径
+                        <hr>
+                        <input type="text" class="form-control" name='url'value="{{$res->url}}">
+                    </div>
                 </div>
             </div>
              {{csrf_field()}}
