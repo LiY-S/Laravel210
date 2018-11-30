@@ -19,10 +19,10 @@ class RegistController extends Controller
     }
     public function doregist(Request $request)
     {
-<<<<<<< HEAD
+
         // $data = $request ->all();
         // dd($data);
-=======
+
         $data = $request ->except('_token','checkbox','repass');
         // 生成随机字符串
         $username = 'xinyonghu'.mt_rand(11111,99999);
@@ -88,6 +88,5 @@ class RegistController extends Controller
 
 
 
->>>>>>> 0234b912bf7b1854263e81c8d6a830f0c824fadb
     }
 }

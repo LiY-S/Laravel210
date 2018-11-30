@@ -4,15 +4,14 @@ namespace App\Model\Admin;
 
 use Illuminate\Database\Eloquent\Model;
 
-class User extends Model
+class Collect extends Model
 {
-    //
      /**
      * 与模型关联的数据表
      *
      * @var string
      */
-    protected $table = 'shop_admin';
+    protected $table = 'shop_collect';
 
     protected $primaryKey = 'id';
 
@@ -30,11 +29,4 @@ class User extends Model
 	 */
 	protected $guarded = [];
 
-    /**
-     * 获取此用户角色
-     */
-    public function roles()
-    {
-        return $this-> belongsToMany('App\Model\Admin\Role','user_role');
-    }
 }

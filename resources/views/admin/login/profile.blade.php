@@ -3,19 +3,28 @@
 @section('title',$title)
 
 @section('content')
+<script src="/admins/admins/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="/admins/admins/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/admins/admins/bower_components/metisMenu/dist/metisMenu.min.js"></script>
+<script src="/admins/admins/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.js"></script>
+<script src="/admins/admins/bower_components/Waves/dist/waves.min.js"></script>
+<script src="/admins/admins/bower_components/toastr/toastr.js"></script>
+
+<script src="/admins/admins/js/dropify/js/dropify.min.js"></script>
+<script src="/admins/admins/js/common.js"></script>
+
 
 <div class="col-md-6 col-md-offset-3" style="float: none;height: 740px">
 	<form id='art_form' action="/admin/upload" method="post" class="mws-form" enctype='multipart/form-data'>
-		<center>
-<img src="{{$res->profile}}" id='imgs' alt="上传后显示图片" style="width:200px; ">
-</center><br><br><br> 
+	<center>
+		<img src="{{$res->profile}}" id='imgs' alt="上传后显示图片" style="width:200px; ">
+	</center>
+	<br><br><br> 
     <div class="content-box">
         <div class="head primary-bg clearfix">
             <h5 class="content-title pull-left">修改头像</h5>
-            <div class="functions-btns pull-right"></div>
         </div>
         <div class="content">
-
             <input id="file_upload" type="file" class="dropify" name='profile'>
         </div>
     </div>
@@ -71,15 +80,6 @@
         })
     })
 </script>
-<script src="/admins/admins/bower_components/jquery/dist/jquery.min.js"></script>
-<script src="/admins/admins/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="/admins/admins/bower_components/metisMenu/dist/metisMenu.min.js"></script>
-<script src="/admins/admins/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.js"></script>
-<script src="/admins/admins/bower_components/Waves/dist/waves.min.js"></script>
-<script src="/admins/admins/bower_components/toastr/toastr.js"></script>
-
-<script src="/admins/admins/js/dropify/js/dropify.min.js"></script>
-<script src="/admins/admins/js/common.js"></script>
 
 
 <script>

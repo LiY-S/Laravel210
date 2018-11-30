@@ -38,13 +38,6 @@ class LoginController extends Controller
     		    return back()->with('error','用户名或者密码错误');
     		}
         
-		//加密解密
-		// if($request->password != decrypt($rs->password)){
-
-		//     return back()->with('error','用户名或者密码错误');
-			
-		// }n /;n
-
 		//判断验证码
 		$code = session('code');
         // echo $code;die;
@@ -119,29 +112,26 @@ class LoginController extends Controller
     public function passchange(Request $request)
     {
 
-        // $res = DB::table('shop_admin')->where('id',session('uid'))->first();
-        // dump($res);die;
-        // if(Hash::check($request->password, $res->password)){
-
-                
-        //     }
-        //     return back()->with('error','原密码错误');
-        // dump(!Hash::check($request->password, $res->password));
-            // DB::create($request->passwords)->where('password',$request->passwords);
-          // dump(Hash::check($request->password)); 
-          // dump($res->password); 
-            
         return view('admin.login.passchange',['title'=>'修改密码']);
 
     }
     public function pass(Request $request)
     {
         $res = DB::table('shop_admin')->where('id',session('uid'))->first();
-        if (!empty($request->password) && empty($res->password)) {
+
+            // dump($request->passwords);
+            // dump($request->passwordss);die;
+
+
+        if (!empty($request->password) && !empty($request->passwords) && !empty($request->passwordss)) {
                  
             if(!Hash::check($request->password, $res->password)){
 
-                    return back()->with('error','原密码错误');
+                    return back()->with('error','修改失败,原密码错误');
+
+                }elseif($request->passwords !== $request->passwordss){
+
+                    return back()->with('error','修改失败,两次密码输入不一致');
                 }
 
                 $a= [];
@@ -150,7 +140,7 @@ class LoginController extends Controller
 
                 return back()->with('success','修改成功');
         }
-           return back()->with('error','修改失败');     
+           return back()->with('error','修改失败,密码不得为空');     
     }
     //退出
     public function logout()

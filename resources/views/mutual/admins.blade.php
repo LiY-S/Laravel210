@@ -7,11 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="msapplication-tap-highlight" content="no" />
-  <!-- Chrome, Firefox OS and Opera -->
   <meta name="theme-color" content="#49CEFF">
-  <!-- Windows Phone -->
   <meta name="msapplication-navbutton-color" content="#49CEFF" />
-  <!-- iOS Safari -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <title>@yield('title')</title>
@@ -24,14 +21,7 @@
   <link rel="stylesheet" href="/admins/admins/bower_components/toastr/toastr.css">
   <link rel="stylesheet" href="/admins/admins/bower_components/datatables/media/css/jquery.dataTables.min.css">
   <link rel="stylesheet" href="/admins/admins/css/style.css">
-<!--
-  <link rel="icon" href="img/favicon.ico" type="image/x-icon" />
-  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
--->
-    <!--[if lt IE 9]>
-      <script src="/admins/admins/bower_components/html5shiv/dist/html5shiv.min,js"></script>
-      <script src="/admins/admins/bower_components/respondJs/dest/respond.min.js"></script>
-    <![endif]-->
+
 </head>
 <body>
   <!--Preloader-->
@@ -55,41 +45,34 @@
       <div class="navbar-container clearfix">
           <!-- logo -->
           <div class="pull-left">
-              <a href="#" class="page-title text-uppercase">
-                  aaaa
+              <a href="/" class="page-title text-uppercase">
+                  前台首页
               </a>
           </div>
+           @php
+
+            $res = DB::table('shop_admin')->where('id',session('uid'))->first();
+
+            @endphp
           <div class="pull-right">
-              <div class="pull-left search-container">
-                  <form class="searchbox">
-                      <input type="search" placeholder="Search" name="search" class="searchbox-input"
-                      />
-                      <input type="submit" class="searchbox-submit" value="" />
-                      <span class="searchbox-icon">
-                          <span class="zmdi zmdi-search search-icon">
-                          </span>
-                      </span>
-                  </form>
+              <div class="pull-left search-container searchbox" style="width: 150px; margin-top: 35px;font-size: 22px;">
+                          嘿&nbsp;,&nbsp;&nbsp;&nbsp; {{$res->username}}
               </div>
-			@php
-
-			$res = DB::table('shop_admin')->where('id',session('uid'))->first();
-
-			@endphp
-			  <ul class="nav pull-right right-menu">
-				  <li class="">
-					  <a class="" data-toggle="dropdown" aria-expanded="true">
-						  <!-- <i class="zmdi zmdi-account-circle"> -->
-							  <img class="zmdi zmdi-account-circle" src="{{$res->profile}}"style="width: 50px;border-radius: 50%">
-						  <!-- </i> -->
-					  </a>
-					  <div class="more-opt-container dropdown-menu">
-						  <a href="/admin/profile"><i class="zmdi zmdi-account-o"></i>修改头像</a>
-						  <a href="/admin/passchange"><i class="zmdi zmdi-storage"></i>修改密码</a>
-						  <a href="/admin/logout"><i class="zmdi zmdi-run"></i>退出</a>
-					  </div>
-				  </li>
-			  </ul>
+           
+              <ul class="nav pull-right right-menu">
+                  <li class="">
+                      <a class="" data-toggle="dropdown" aria-expanded="true">
+                          <!-- <i class="zmdi zmdi-account-circle"> -->
+                              <img class="zmdi zmdi-account-circle" src="{{$res->profile}}"style="width: 45px;height:40px;border-radius: 50%">
+                          <!-- </i> -->
+                      </a>
+                      <div class="more-opt-container dropdown-menu">
+                          <a href="/admin/profile"><i class="zmdi zmdi-account-o"></i>修改头像</a>
+                          <a href="/admin/passchange"><i class="zmdi zmdi-storage"></i>修改密码</a>
+                          <a href="/admin/logout"><i class="zmdi zmdi-run"></i>退出</a>
+                      </div>
+                  </li>
+              </ul>
           </div>
       </div>
   </nav>
@@ -99,8 +82,11 @@
         <a href="#"><i class="zmdi zmdi-view-dashboard"></i>角色管理<span class="zmdi arrow"></span></a>
         <ul class="nav nav-inside collapse">
           <li class="inside-title">角色管理</li>
-          <li><a href="">添加角色</a></li>
-          <li><a href="">浏览角色</a></li>
+          <li><a href="/admin/role/create">添加角色</a></li>
+          <li><a href="/admin/role">浏览角色</a></li>
+        </ul>
+      </li>
+      <li>
         <a href="#"><i class="zmdi zmdi-view-dashboard"></i>商品管理<span class="zmdi arrow"></span></a>
         <ul class="nav nav-inside collapse">
           <li class="inside-title">商品管理</li>
@@ -118,14 +104,16 @@
       <li>
         <a href="#"><i class="zmdi zmdi-view-dashboard"></i>权限管理<span class="zmdi arrow"></span></a>
         <ul class="nav metismenu">
-            <li>
-                <a href="#"><i class="zmdi zmdi-view-dashboard"></i>权限管理<span class="zmdi arrow"></span></a>
-                <ul class="nav nav-inside collapse">
-                    <li class="inside-title">权限管理</li>
-                    <li><a href="/admin/permission/create">添加权限</a></li>
-                    <li><a href="/admin/permission">浏览权限</a></li>
-                </ul>
-            </li>
+          <li class="inside-title">权限管理</li>
+          <li><a href="/admin/permission/create">添加权限</a></li>
+          <li><a href="/admin/permission">浏览权限</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#"><i class="zmdi zmdi-view-dashboard"></i>收藏管理<span class="zmdi arrow"></span></a>
+        <ul class="nav metismenu">
+          <li class="inside-title">收藏管理</li>
+          <li><a href="/admin/collect/create">浏览收藏</a></li>
         </ul>
       </li>
     </ul>
@@ -165,7 +153,6 @@
     </div>
   </div>
 </div>
-    <!-- <footer class="page-footer">Copyright &copy; 2018.Company name All rights reserved.<a target="_blank" href="http://www.17sucai.com/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></footer> -->
   </div>
   <script src="/admins/admins/bower_components/jquery/dist/jquery.min.js"></script>
   <script src="/admins/admins/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>

@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="col-md-6 col-md-offset-3" style="float: none">
+<div class="col-md-6 col-md-offset-3" style="float: none;height: 740px">
     @if (session('success'))
         <div class="mws-form-message error">
             <ul>
@@ -44,6 +44,12 @@
                         </label>
                         <input type="password" class="form-control" name="passwords" placeholder="新密码">
                     </div>
+                    <div class="form-group">
+                        <label class="control-label">
+                            确认密码
+                        </label>
+                        <input type="password" class="form-control" name="passwordss" placeholder="新密码">
+                    </div>
                 </div>
                 {{csrf_field()}}
         </div>
@@ -56,3 +62,10 @@
 
 @stop
 
+@section('js')
+<script>
+
+        $('.error').delay(2000).slideUp(2000);
+
+</script>
+@stop
