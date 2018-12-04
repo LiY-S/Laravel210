@@ -29,4 +29,9 @@ class User extends Model
 	 * @var array
 	 */
 	protected $guarded = [];
+
+    public function roles()
+    {
+        return $this->belongsToMany('App\Model\Admin\Role','user_role');
+    }
 }

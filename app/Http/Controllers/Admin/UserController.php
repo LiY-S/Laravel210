@@ -7,10 +7,75 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRequest;
 use Hash;
 use App\Model\Admin\User;
+use App\Model\Admin\Role;
 use DB;
+use Session;
 
 class UserController extends Controller
 {
+    /**
+     * 给管理员添加角色
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function user_role(Request $request)
+    {
+       //根据id查询用户
+        $id = $request->id;
+
+        $res = User::find($id);
+
+        //dd($res->roles);
+
+        $info = [];
+        foreach ($res->roles as $k => $v) {
+
+           $info[] = $v->id;
+        }
+
+        //dd($info);
+
+        $roles = Role::all();
+
+        return view('admin.user.user_role',[
+            'title'=>'用户添加角色的页面',
+            'res'=>$res,
+            'roles'=>$roles,
+            'info'=>$info
+        ]);
+    }
+
+
+    public function do_user_role(Request $request)
+    {   //用户id
+        $id = $request->id;
+        //角色id
+        $res = $request->role_id;
+
+        //删除原来的角色
+        DB::table('user_role')->where('user_id',$id)->delete();
+
+        //遍历数组
+        $arrr = [];
+        foreach ($res as $k => $v) {
+            $rs = [];
+            $rs['user_id'] = $id;
+            $rs['role_id'] = $v;
+
+            $arr[] = $rs;
+        }
+        //往数据表里插入数据
+        $data = DB::table('user_role')->insert($arr);
+
+        if ($data) {
+
+           return redirect('/admin/user')->with('success','添加成功');
+
+        } else {
+
+        }
+
+    }
 
     /**
      * Display a listing of the resource.
@@ -27,8 +92,10 @@ class UserController extends Controller
                 if(!empty($username)) {
                     $query->where('username','like','%'.$username.'%');
                 }
+
             })
-            ->paginate($request->input());
+            // pageinate  分页  每页显示多少条数
+        ->paginate(10);
 
             //dd($request);
 
@@ -114,6 +181,7 @@ class UserController extends Controller
         //
     }
 
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -125,10 +193,15 @@ class UserController extends Controller
         //
         $res = User::find($id);
 
+        //dd($id);
+
+        $rs = session(['uid'=>$id]);
+
         return view('admin.user.edit',[
             'title'=>'用户的修改页面',
             'res'=>$res
         ]);
+
     }
 
     /**
@@ -221,5 +294,29 @@ class UserController extends Controller
         }
 
 
+    }
+
+    public function upload(Request $request)
+    {
+        //获取上传的文件对象
+        $file = $request->file('profile');
+        //判断文件是否有效
+        if($file->isValid()){
+            //上传文件的后缀名
+            $entension = $file->getClientOriginalExtension();
+            //修改名字
+            $newName = date('YmdHis').mt_rand(1000,9999).'.'.$entension;
+            //移动文件
+            $path = $file->move('./uploads',$newName);
+
+            $filepath = '/uploads/'.$newName;
+
+            $res['profile'] = $filepath;
+            DB::table('shop_admin')->where('id',session('uid'))->update($res);
+            //返回文件的路径
+            return  $filepath;
+
+
+        }
     }
 }
