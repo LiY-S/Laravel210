@@ -55,8 +55,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <div>
                         欢迎您 , {{$res->username}}
                         <a href="/home/personal" style="color:#333">个人中心</a>
-                        <a href="#" style="color:#333">我的订单</a>
                         <a href="#" style="color:#333">我的收藏</a>
+                        <a href="#" style="color:#333">我的订单</a>
                         <a href="/home/dologout" style="color:#333">退出</a>
                     </div>
                     @endif

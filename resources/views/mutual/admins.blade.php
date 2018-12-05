@@ -66,8 +66,7 @@
                       />
                       <input type="submit" class="searchbox-submit" value="" />
                       <span class="searchbox-icon">
-                          <span class="zmdi zmdi-search search-icon">
-                          </span>
+                          <span class="zmdi zmdi-search search-icon"></span>
                       </span>
                   </form>
               </div>
@@ -101,6 +100,9 @@
           <li class="inside-title">角色管理</li>
           <li><a href="">添加角色</a></li>
           <li><a href="">浏览角色</a></li>
+        </ul>
+      </li>
+      <li>
         <a href="#"><i class="zmdi zmdi-view-dashboard"></i>商品管理<span class="zmdi arrow"></span></a>
         <ul class="nav nav-inside collapse">
           <li class="inside-title">商品管理</li>

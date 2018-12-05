@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
 use DB;
+use Session;
 
 
 class LoginController extends Controller
@@ -52,7 +53,8 @@ class LoginController extends Controller
      */
     public function dologout(Request $request)
     {
-        $request->session()->flush();
+        // $request->session()->flush();
+        session::flush();
 
         return redirect('/home/login')->with('success','退出成功');
     }
