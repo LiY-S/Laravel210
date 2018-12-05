@@ -40,7 +40,7 @@
 			<div class="">
 				<span class="help-block u-errormessage" id="js-server-helpinfo">&nbsp;</span>
 			</div>
-			<div>
+			<div class="">
 				<input type="text" placeholder="验证码" id="yanzheng" name="code" style="width: 140px; margin-left:-200px;" />&nbsp;&nbsp;
 				<img src="/admin/captcha" alt="" onclick='this.src = this.src+="?1"'style="margin-right:-200px;margin-bottom: -20px">
 			</div>

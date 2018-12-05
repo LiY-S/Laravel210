@@ -14,7 +14,7 @@
         @endif
 <div class="col-md-8 col-md-offset-2" style="float: none;height: 740px">
     <form action="/admin/role" method='get'>
-        <div class="data-info">
+        <div class="data-info content-box">
             <div id="table1_wrapper" class="dataTables_wrapper no-footer">
                 <form action="/admin/role" method='get'>
                     <div class="toolbar tool1">
@@ -47,7 +47,7 @@
                         </button>
                     </div>
                 </form>
-                <table id="table1" class="display datatable no-stripes table dataTable no-footer dtr-inline">
+                <table id="table1" class="display datatable no-stripes table dataTable no-footer dtr-inline table-striped">
                     <thead>
                         <tr role="row">
                             <th class="sorting_asc" tabindex="0" aria-controls="table1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product: activate to sort column descending">ID</th>
