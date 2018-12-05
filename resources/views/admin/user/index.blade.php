@@ -101,20 +101,13 @@
                         </td>
 
                         <td>
-                            @if($v->status == 1)
 
-                                启用
-
-                            @else
-
-                                禁用
-
-                            @endif
+                            {{sta($v->status)}}
 
                         </td>
 
                         <td align="center" width="30%">
-                            <a href="{{url('/admin/user_role/'.$v->id)}}" class="btn btn-primary btn-sm shiny">
+                            <a href="/admin/user_role?id={{$v->id}}" class="btn btn-primary btn-sm shiny">
                                 <i class="fa fa-user-md"></i> 角色
                             </a>
                             <a href="/admin/user/{{$v->id}}/edit" class="btn btn-primary btn-sm shiny">
@@ -141,5 +134,49 @@
         </div>
     </div>
 </div>
+
+@stop
+
+@section('js')
+<script>
+    $('.mws-form-message').delay(1000).fadeOut(2000);
+
+    //双击用户名进行修改
+    $('.username').dblclick(function(){
+
+        //获取用户名
+        var um = $(this).text().trim();
+
+        //创建input
+        var ipu = $('<input type="text" />');
+        $(this).empty();
+        $(this).append(ipu);
+        ipu.val(um);
+        ipu.select();
+        var tds = $(this);
+
+        //失去焦点
+        ipu.blur(function(){
+            //获取input框里面的值
+            var uv = $(this).val();
+            //获取id
+            var ids = $(this).parents('tr').find('td').eq(0).text().trim();
+
+            // console.log(id);
+            $.get('/admin/usajax',{uv:uv,ids:ids},function(data){
+
+                // console.log(data);
+                if(data == 1){
+
+                    //让输入框消失  但是输入框里面的值留下
+                    tds.text(uv);
+                } else {
+
+                    tds.text(um);
+                }
+            })
+        })
+    })
+</script>
 
 @stop

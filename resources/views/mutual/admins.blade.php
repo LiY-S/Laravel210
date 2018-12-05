@@ -127,6 +127,20 @@
           <li><a href="/admin/collect/create">浏览收藏</a></li>
         </ul>
       </li>
+      <li>
+          <a href="#"> <i class="zmdi zmdi-view-dashboard"></i>友情链接<span class="zmdi arrow"></span></a>
+          <ul class="nav nav-inside collapse">
+            <li class="inside-title">友情链接</li>
+            <li><a href="/admin/links/create">添加链接</a></li>
+            <li><a href="/admin/links">浏览链接 </a></li>
+          </ul>
+      </li>
+      <li><a href="#"><i class="zmdi zmdi-view-dashboard"></i>订单管理<span class="zmdi arrow"></span></a>
+        <ul class="nav nav-inside collapse">
+          <li class="inside-title">订单管理</li>
+          <li><a href="/admin/order">浏览订单</a></li>
+        </ul>
+      </li>
     </ul>
   </aside>
   <div class="row">
@@ -212,7 +226,6 @@
                 data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
             }
         ]
-
     }
   </script>
   <script>
@@ -223,7 +236,6 @@
         for (var i = 0; i <= 10; i += 1) {
             d1.push([i, parseInt(Math.random() * 100)]);
         }
-
         var d2 = [];
         for (var i = 0; i <= 10; i += 1) {
             d2.push([i, parseInt(Math.random() * 100)]);

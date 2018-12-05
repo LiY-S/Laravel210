@@ -169,6 +169,7 @@ return [
          * 阿里云短信
          */
          Mrgoon\AliSms\ServiceProvider::class,
+        Barryvdh\Debugbar\ServiceProvider::class,
 
         /*
          * Package Service Providers...

@@ -4,7 +4,7 @@
 
 @section('content')
 
-<style>
+ <style>
 
 .col-center-block {
     float: none;
@@ -14,6 +14,7 @@
 }
 
 </style>
+
 
 <div class="mws-panel grid_8">
         <div class="mws-panel-header">
@@ -32,28 +33,15 @@
             </div>
             @endif
 
-
             <form action="/admin/user/{{$res->id}}" method="post" class="mws-form" enctype='multipart/form-data'>
-                <div class="col-md-6 col-center-block">
+
+            <div class="col-md-6 col-center-block">
                     <div class="content-box">
                         <div class="head info-bg clearfix">
                             <h5 class="content-title pull-left">
                                 {{$title}}
                             </h5>
-                            <div class="functions-btns pull-right">
-                                <a class="refresh-btn" href="#">
-                                    <i class="zmdi zmdi-refresh">
-                                    </i>
-                                </a>
-                                <a class="fullscreen-btn" href="#">
-                                    <i class="zmdi zmdi-fullscreen">
-                                    </i>
-                                </a>
-                                <a class="close-btn" href="#">
-                                    <i class="zmdi zmdi-close">
-                                    </i>
-                                </a>
-                            </div>
+
                         </div>
                         <div class="content">
                             <div class="form-group">
@@ -63,16 +51,21 @@
                                 <input type="text" class="form-control input-info" name="username" value="{{$res->username}}">
                             </div>
 
+                            <form id='art_form' action="/admin/user/upload" method="post" class="mws-form" enctype='multipart/form-data'>
+
                             <div class="head clearfix font-fa:12px  info-color" style="font-size:17px">
                                     请选择图像
                                 </div>
-                            <!-- <div class="content-box"> -->
+                            <div class="content-box">
 
+                                   @php
+                                       $user = DB::table('shop_admin')->where('id',session('uid'))->first();
+                                   @endphp
                                 <div class="content border:1px">
-                                    <img src="{{$res->profile}}" alt="">
-                                    <input type="file" class="dropify" data-default-file="{{$res->profile}}" name="profile" style="">
+                                    <img src="{{$user->profile}}" id='imgs' alt="上传后显示图片">
+                                    <input id='file_upload' type="file" name="profile" style="" value="">
                                 </div>
-                            <!-- </div> -->
+                            </div>
 
                             <div class="form-group">
                                 <label class="control-label info-color">
@@ -83,16 +76,6 @@
                                         <li><label><input type="radio" name='status' value="0" style='display:inline' @if($res->status== 0) checked @endif>禁用</label></li>
                                     </ul>
                             </div>
-
-                            <!-- <div class="form-group">
-                                <label class="control-label info-color">
-                                    状态
-                                </label>
-                                    <ul class="info-color inline" style="list-style:none;">
-                                        <li float:left;margin-right:20px"><label><input type="radio" name='status' value="1" @if($res->status== 1) checked @endif>开启</label></li>
-                                        <li><label><input type="radio" name='status' value="0" style='display:inline' @if($res->status== 0) checked @endif>禁用</label></li>
-                                    </ul>
-                            </div> -->
 
                             <div class="mws-button-row">
                                 {{csrf_field()}}
@@ -111,14 +94,52 @@
 @stop
 
 
+ @section('js')
+<script type="text/javascript">
 
-@section('js')
+    $(function(){
+        $("#file_upload").change(function(){
 
-<script>
+            var imgPath = $("#file_upload").val();
+
+            if (imgPath == "") {
+                alert("请选择上传图片！");
+                return;
+            }
+            //判断上传文件的后缀名
+            var strExtension = imgPath.substr(imgPath.lastIndexOf('.') + 1);
+            if (strExtension != 'jpg' && strExtension != 'gif'
+                && strExtension != 'png' && strExtension != 'bmp') {
+                alert("请选择图片文件");
+                return;
+            }
+
+            var formData = new FormData($('#art_form')[0]);
+             //console.log(formData);
+            $.ajax({
+                type: "POST",
+                url: "/admin/user/upload",
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function(data) {
+                    //alert(data);
+                    $('#imgs').attr('src',data);
+                     //$('#art_thumb').val(data);
+
+                    // setTimeout(function(){
+                    // location.href = '/admin/user';
+                    // },1000)
+
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown) {
+                    alert("上传失败，请检查网络后重试");
+                }
+            });
+        })
+    })
 
     $('.mws-form-message').delay(2000).fadeOut(2000);
-
 </script>
 
 @stop
-
