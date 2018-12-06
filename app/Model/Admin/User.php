@@ -30,6 +30,10 @@ class User extends Model
 	 */
 	protected $guarded = [];
 
+
+
+
+
     /**
      * 获取此用户角色
      */
