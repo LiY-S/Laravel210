@@ -38,23 +38,19 @@ class PersonalController extends Controller
             $entension = $file->getClientOriginalExtension();
             //修改名字
             $newName = date('YmdHis').mt_rand(1000,9999).'.'.$entension;
-
             //移动文件
             // $path = $file->move('./uploads/',$newName);
-
             $filepath = public_path('/uploads/').$newName;;
             $image = Image::make($file)->resize(150,150, function ($constraint) {$constraint->aspectRatio();})->save($filepath);
             // 定义相对路径
             $path = '/uploads/'.$newName;
             $res  = [];
             $res['profile'] = $path;
-
             DB::table('shop_user')->where('id',session('user'))->update($res);
             //返回文件的路径
             return  $path;
         }
     }
-
     /**
      * Display a listing of the resource
      *
@@ -99,10 +95,8 @@ class PersonalController extends Controller
         // 通过用户id查询出电话
         $uid = session('user');
         $res = DB::table('shop_user') -> where('id',$uid) -> first();
-
         $number = $res->phone;
         // $number = 17713148904;
-
         //验证码
         $code = rand(111111,999999);
        //初始化必填
@@ -113,14 +107,11 @@ class PersonalController extends Controller
 
         //初始化 $options必填
         $ucpass = new Ucpaas($options);
-
         $appid = "4b5152dedc5b427f85194997773c09b4";    //应用的ID，可在开发者控制台内的短信产品下查看
         $templateid = "405579";    //可在后台短信产品→选择接入的应用→短信模板-模板ID，查看该模板ID
-
         $uid = "";
         // 将验证码的值存到session
         session::put('code',$code);
-
         //70字内（含70字）计一条，超过70字，按67字/条计费，超过长度短信平台将会自动分割为多条发送。分割后的多条短信将按照具体占用条数计费。
 
         echo $ucpass->SendSms($appid,$templateid,$code,$number,$uid);
@@ -164,6 +155,22 @@ class PersonalController extends Controller
             'uid' => $uid,
             'data' => $data
         ]);
+    }
+    public function shglxz(Request $request)
+    {
+        $uid = session('user');
+        // 通过用户id查询数据库中的信息
+        $res = DB::table('shop_address')->where('user_id',$uid)->get();
+        $data = count($res);
+        // dd($data);
+        if ($data <= 5) {
+            echo 1;
+        } else {
+            echo 0;
+        }
+
+
+        // dd($res);
     }
     public function add()
     {

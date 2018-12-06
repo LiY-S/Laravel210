@@ -31,7 +31,7 @@
                 @endif
 
             <div class="col-md-8 mail-grid-left animated wow slideInLeft" data-wow-delay=".5s">
-                <div style="height: 50px;"><a href="/home/tianshgl" class="btn btn-default">添加收货地址</a> &nbsp; <span style="color: #ccc; font-size: 12px;">最多添加5个收货地址</span></div>
+                <div style="height: 50px;"><a href="javascript:void(0)" id="tianjiash"  aaa="1" class="btn btn-default">添加收货地址</a> &nbsp; <span style="color: #ccc; font-size: 12px;">最多添加5个收货地址</span></div>
 
                 @foreach($data as $key => $value)
 
@@ -95,7 +95,7 @@
 <script>
     $('.alert').delay(2000).fadeOut(2000);
 </script>
-
+<!-- 删除收货地址 -->
 <script>
     $.ajaxSetup({
         headers: {
@@ -117,5 +117,27 @@
 
     });
 </script>
-
+<!-- 设置添加收货地址的限制 -->
+<script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $('#tianjiash').click(function(){
+        var tain = $(this);
+        // var tian = return true;
+        // 发送ajax
+        $.post('/home/shglxz',function(data){
+            // console.log(data);
+            if (data == 1) {
+                location.href="/home/tianshgl";
+                // tian;
+            } else {
+                alert('收货地址最多五个，请酌情删除，再进行添加！！！');
+            }
+        });
+        return false;
+    });
+</script>
 @stop
