@@ -10,7 +10,6 @@ use Session;
 use Hash;
 use DB;
 
-
 class LoginController extends Controller
 {
     public function login(Request $request)
@@ -25,19 +24,19 @@ class LoginController extends Controller
         // dd($rs);
     	//判断用户名
     	$rs = DB::table('shop_admin')->where('username',$request->username)->first();
-            
-        	if(!$rs){
 
-        		return back()->with('error','用户名或者密码错误');
-        	}
+    	if(!$rs){
+
+    		return back()->with('error','用户名或者密码错误');
+    	}
     	//判断密码
-    	//hash 
+    	//hash
 
-        	if (!Hash::check($request->password, $rs->password)) {
-    		    
-    		    return back()->with('error','用户名或者密码错误');
-    		}
-        
+    	if (!Hash::check($request->password, $rs->password)) {
+
+		    return back()->with('error','用户名或者密码错误');
+		}
+
 		//判断验证码
 		$code = session('code');
         // echo $code;die;
@@ -52,7 +51,7 @@ class LoginController extends Controller
 		session(['uname'=>$rs->username]);
 
 		return redirect('/admin');
-    	
+
     }
     public function captcha()
     {
@@ -76,7 +75,7 @@ class LoginController extends Controller
         header("Cache-Control: no-cache, must-revalidate");
         header("Content-Type:image/jpeg");
         $builder->output();
-        
+
     }
      public function profile()
     {
@@ -86,7 +85,7 @@ class LoginController extends Controller
         return view('admin.login.profile',['title'=>'修改头像','res'=>$res]);
 
     }
-    
+
      public function upload(Request $request)
     {
         //获取上传的文件对象
@@ -124,7 +123,8 @@ class LoginController extends Controller
 
 
         if (!empty($request->password) && !empty($request->passwords) && !empty($request->passwordss)) {
-                 
+
+
             if(!Hash::check($request->password, $res->password)){
 
                     return back()->with('error','修改失败,原密码错误');
@@ -140,7 +140,9 @@ class LoginController extends Controller
 
                 return back()->with('success','修改成功');
         }
-           return back()->with('error','修改失败,密码不得为空');     
+
+           return back()->with('error','修改失败,密码不得为空');
+
     }
     //退出
     public function logout()
@@ -152,6 +154,6 @@ class LoginController extends Controller
     }
     public function index(Request $request){
 
-        
+
     }
 }
