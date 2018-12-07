@@ -97,9 +97,9 @@ class LoginController extends Controller
             //修改名字
             $newName = date('YmdHis').mt_rand(1000,9999).'.'.$entension;
             //移动文件
-            $path = $file->move('./uploads',$newName);
+            $path = $file->move('./uploads/login/',$newName);
 
-            $filepath = '/uploads/'.$newName;
+            $filepath = '/uploads/login/'.$newName;
 
             $res['profile'] = $filepath;
             DB::table('shop_admin')->where('id',session('uid'))->update($res);
@@ -127,19 +127,25 @@ class LoginController extends Controller
 
             if(!Hash::check($request->password, $res->password)){
 
-                    return back()->with('error','修改失败,原密码错误');
+                return back()->with('error','修改失败,原密码错误');
 
-                }elseif($request->passwords !== $request->passwordss){
+            }elseif($request->passwords !== $request->passwordss){
 
-                    return back()->with('error','修改失败,两次密码输入不一致');
-                }
+                return back()->with('error','修改失败,两次密码输入不一致');
+            }
 
                 $a= [];
                 $a['password']=Hash::make($request->passwords);
+                // dump($a);die;
             DB::table('shop_admin')->where('password',$res->password)->update($a);
 
-                return back()->with('success','修改成功');
+               //return back()->with('success','修改成功');
+            // if(Hash::check($request->passwords, $res->password)){
+
+                return redirect('/admin/login')->with('success','修改成功请重新登陆');
+            // }
         }
+
 
            return back()->with('error','修改失败,密码不得为空');
 

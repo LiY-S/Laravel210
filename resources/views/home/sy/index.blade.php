@@ -6,44 +6,122 @@
 @section('content')
 
 <!-- banner -->
-    <div class="banner">
-        <div class="container">
-            <div class="banner-info animated wow zoomIn" data-wow-delay=".5s">
-                <h3>Free Online Shopping</h3>
-                <h4>Up to <span>50% <i>Off/-</i></span></h4>
-                <div class="wmuSlider example1">
-                    <div class="wmuSliderWrapper">
-                        <article style="position: absolute; width: 100%; opacity: 0;">
-                            <div class="banner-wrap">
-                                <div class="banner-info1">
-                                    <p>T-Shirts + Formal Pants + Jewellery + Cosmetics</p>
-                                </div>
-                            </div>
-                        </article>
-                        <article style="position: absolute; width: 100%; opacity: 0;">
-                            <div class="banner-wrap">
-                                <div class="banner-info1">
-                                    <p>Toys + Furniture + Lighting + Watches</p>
-                                </div>
-                            </div>
-                        </article>
-                        <article style="position: absolute; width: 100%; opacity: 0;">
-                            <div class="banner-wrap">
-                                <div class="banner-info1">
-                                    <p>Tops + Books & Media + Sports</p>
-                                </div>
-                            </div>
-                        </article>
-                    </div>
-                </div>
-                    <script src="js/jquery.wmuSlider.js"></script>
-                    <script>
-                        $('.example1').wmuSlider();
-                    </script>
-            </div>
-        </div>
-    </div>
-<!-- //banner -->
+
+<style>
+.flexslider {
+    margin: 0px auto 20px;
+    position: relative;
+    width: 100%;
+    height: 482px;
+    overflow: hidden;
+    zoom: 1;
+}
+
+.flexslider .slides li {
+    width: 100%;
+    height: 100%;
+}
+
+.flex-direction-nav a {
+    width: 70px;
+    height: 70px;
+    line-height: 99em;
+    overflow: hidden;
+    margin: -35px 0 0;
+    display: block;
+    background: url(/homes/lbt/images/ad_ctr.png) no-repeat;
+    position: absolute;
+    top: 50%;
+    z-index: 10;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    -webkit-transition: all .3s ease;
+    border-radius: 35px;
+}
+
+.flex-direction-nav .flex-next {
+    background-position: 0 -70px;
+    right: 0;
+}
+
+.flex-direction-nav .flex-prev {
+    left: 0;
+}
+
+.flexslider:hover .flex-next {
+    opacity: 0.8;
+    filter: alpha(opacity=25);
+}
+
+.flexslider:hover .flex-prev {
+    opacity: 0.8;
+    filter: alpha(opacity=25);
+}
+
+.flexslider:hover .flex-next:hover,
+.flexslider:hover .flex-prev:hover {
+    opacity: 1;
+    filter: alpha(opacity=50);
+}
+
+.flex-control-nav {
+    width: 100%;
+    position: absolute;
+    bottom: 10px;
+    text-align: center;
+}
+
+.flex-control-nav li {
+    margin: 0 2px;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+
+.flex-control-paging li a {
+    background: url(/homes/lbt/images/dot.png) no-repeat 0 -16px;
+    display: block;
+    height: 16px;
+    overflow: hidden;
+    text-indent: -99em;
+    width: 16px;
+    cursor: pointer;
+}
+
+.flex-control-paging li a.flex-active,
+.flex-control-paging li.active a {
+    background-position: 0 0;
+}
+
+.flexslider .slides a img {
+    width: 100%;
+    height: 482px;
+    display: block;
+}
+</style>
+<div id="banner_tabs" class="flexslider">
+    <ul class="slides">
+         @foreach($res as $k=>$v)
+        <li>
+            <a title="" target="_blank" href="{!!$v->ad_a!!}">
+                <img width="1920" height="482" alt="" style="background: url({!!$v->ad_src!!}) no-repeat center;" src="/homes/lbt/images/alpha.png">
+            </a>
+        </li>
+       @endforeach
+    </ul>
+    <ul class="flex-direction-nav">
+        <li><a class="flex-prev" href="javascript:;">Previous</a></li>
+        <li><a class="flex-next" href="javascript:;">Next</a></li>
+    </ul>
+    <ol id="bannerCtrl" class="flex-control-nav flex-control-paging">
+        @for($i=1;$i<=$zs;$i++)
+            <li><a>{{$i}}</a></li>
+        @endfor   
+   </ol>
+</div>
+
+
 <!-- banner-bottom -->
     <div class="banner-bottom">
         <div class="container">
@@ -98,6 +176,9 @@
         </div>
     </div>
 <!-- //banner-bottom -->
+
+
+
 <!-- collections -->
     <div class="new-collections">
         <div class="container">
@@ -357,6 +438,9 @@
         </div>
     </div>
 <!-- //collections -->
+
+
+
 <!-- new-timer -->
     <div class="timer">
         <div class="container">
@@ -406,6 +490,9 @@
         </div>
     </div>
 <!-- //new-timer -->
+
+
+
 <!-- collections-bottom -->
     <div class="collections-bottom">
         <div class="container">
@@ -431,6 +518,28 @@
 @stop
 
 @section('js')
+
+<script src="/homes/lbt/js/jquery-1.10.2.min.js"></script>
+<script src="/homes/lbt/js/slider.js"></script>
+<script type="text/javascript">
+$(function() {
+    var bannerSlider = new Slider($('#banner_tabs'), {
+        time: 5000,
+        delay: 400,
+        event: 'hover',
+        auto: true,
+        mode: 'fade',
+        controller: $('#bannerCtrl'),
+        activeControllerCls: 'active'
+    });
+    $('#banner_tabs .flex-prev').click(function() {
+        bannerSlider.prev()
+    });
+    $('#banner_tabs .flex-next').click(function() {
+        bannerSlider.next()
+    });
+})
+</script>
 
 
 @stop

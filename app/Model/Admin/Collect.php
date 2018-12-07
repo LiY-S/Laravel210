@@ -29,4 +29,11 @@ class Collect extends Model
 	 */
 	protected $guarded = [];
 
+    /**
+    *
+    */
+    public function Goods()
+    {
+        return $this->hasOne('App\Model\Admin\Goods');
+    }
 }

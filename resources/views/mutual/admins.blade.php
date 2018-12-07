@@ -5,6 +5,7 @@
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="msapplication-tap-highlight" content="no" />
   <meta name="theme-color" content="#49CEFF">
@@ -102,6 +103,14 @@
         <ul class="nav nav-inside collapse">
           <li class="inside-title">用户管理</li>
           <li><a href="/admin/users">浏览用户</a></li>
+        </ul>
+      </li>
+       <li>
+        <a href="#"><i class="zmdi zmdi-view-dashboard"></i>轮播图管理<span class="zmdi arrow"></span></a>
+        <ul class="nav nav-inside collapse">
+          <li class="inside-title">轮播图管理</li>
+          <li><a href="/admin/rotation/create">添加轮播图</a></li>
+          <li><a href="/admin/rotation">浏览轮播图</a></li>
         </ul>
       </li>
       <li>

@@ -5,7 +5,7 @@
 @section('content')
 
 
-<div class="col-md-6 col-md-offset-3" style="float: none;height: 740px">
+<div class="col-md-6 col-md-offset-3" style="float: none;height: 100%">
     <div class="mws-panel-body no-padding">
          @if (session('error'))
         <div class="mws-form-message error">
