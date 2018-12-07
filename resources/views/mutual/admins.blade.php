@@ -90,11 +90,18 @@
   <aside class="sidebar">
     <ul class="nav metismenu">
       <li>
-        <a href="#"><i class="zmdi zmdi-view-dashboard"></i>角色管理<span class="zmdi arrow"></span></a>
+        <a href="#"><i class="zmdi zmdi-view-dashboard"></i>管理员管理<span class="zmdi arrow"></span></a>
         <ul class="nav nav-inside collapse">
-          <li class="inside-title">角色管理</li>
-          <li><a href="/admin/role/create">添加角色</a></li>
-          <li><a href="/admin/role">浏览角色</a></li>
+          <li class="inside-title">管理员管理</li>
+          <li><a href="/admin/user/create">添加用户</a></li>
+          <li><a href="/admin/user">浏览用户</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#"><i class="zmdi zmdi-view-dashboard"></i>用户管理<span class="zmdi arrow"></span></a>
+        <ul class="nav nav-inside collapse">
+          <li class="inside-title">用户管理</li>
+          <li><a href="/admin/users">浏览用户</a></li>
         </ul>
       </li>
       <li>
@@ -105,19 +112,24 @@
         </ul>
       </li>
       <li>
-        <a href="#"><i class="zmdi zmdi-view-dashboard"></i>管理员管理<span class="zmdi arrow"></span></a>
+        <a href="#"><i class="zmdi zmdi-view-dashboard"></i>收藏管理<span class="zmdi arrow"></span></a>
+        <ul class="nav metismenu">
+          <li class="inside-title">收藏管理</li>
+          <li><a href="/admin/collect/create">浏览收藏</a></li>
+        </ul>
+      </li>
+      <li><a href="#"><i class="zmdi zmdi-view-dashboard"></i>订单管理<span class="zmdi arrow"></span></a>
         <ul class="nav nav-inside collapse">
-          <li class="inside-title">管理员管理</li>
-          <li><a href="/admin/user/create">添加用户</a></li>
-          <li><a href="/admin/user">浏览用户</a></li>
+          <li class="inside-title">订单管理</li>
+          <li><a href="/admin/order">浏览订单</a></li>
         </ul>
       </li>
       <li>
-        <a href="#"><i class="zmdi zmdi-view-dashboard"></i>公告管理<span class="zmdi arrow"></span></a>
+        <a href="#"><i class="zmdi zmdi-view-dashboard"></i>角色管理<span class="zmdi arrow"></span></a>
         <ul class="nav nav-inside collapse">
-          <li class="inside-title">公告管理</li>
-          <li><a href="/admin/notice/create">添加公告</a></li>
-          <li><a href="/admin/user">浏览公告</a></li>
+          <li class="inside-title">角色管理</li>
+          <li><a href="/admin/role/create">添加角色</a></li>
+          <li><a href="/admin/role">浏览角色</a></li>
         </ul>
       </li>
       <li>
@@ -129,10 +141,11 @@
         </ul>
       </li>
       <li>
-        <a href="#"><i class="zmdi zmdi-view-dashboard"></i>收藏管理<span class="zmdi arrow"></span></a>
-        <ul class="nav metismenu">
-          <li class="inside-title">收藏管理</li>
-          <li><a href="/admin/collect/create">浏览收藏</a></li>
+        <a href="#"><i class="zmdi zmdi-view-dashboard"></i>公告管理<span class="zmdi arrow"></span></a>
+        <ul class="nav nav-inside collapse">
+          <li class="inside-title">公告管理</li>
+          <li><a href="/admin/notice/create">添加公告</a></li>
+          <li><a href="/admin/user">浏览公告</a></li>
         </ul>
       </li>
       <li>
@@ -143,38 +156,46 @@
             <li><a href="/admin/links">浏览链接 </a></li>
           </ul>
       </li>
-      <li><a href="#"><i class="zmdi zmdi-view-dashboard"></i>订单管理<span class="zmdi arrow"></span></a>
-        <ul class="nav nav-inside collapse">
-          <li class="inside-title">订单管理</li>
-          <li><a href="/admin/order">浏览订单</a></li>
-        </ul>
-      </li>
     </ul>
   </aside>
-  <div class="row">
-    <div class="col-md-12">
-      <ol class="breadcrumb breadcrumb-arrow">
-        <li><a href="#">Dashboards</a></li>
-        <li class="active">Dashboard v1</li>
-      </ol>
-    </div>
-  </div>
   <div class="row">
     <div class="col-lg-12">
       <div class="content-box">
         <div class="head head-with-btns clearfix">
-          <div class="functions-btns pull-right">
-            <button type="button" class="btn btn-info">
-             Week
+          <div class="functions-btns pull-right" id="shijian">
+
+            <button id="y_ear" type="button" class="btn btn-warning">
             </button>
-            <button type="button" class="btn btn-warning">
-             Month
-            </button>
-            <button type="button" class="btn btn-warning">
-             Year
+            <button id="t_ime"  type="button" class="btn btn-info">
             </button>
           </div>
         </div>
+        <script>
+
+            setInterval(function(){
+                      var date=new Date();
+                      var year=date.getFullYear(); //年
+                      var mon=date.getMonth()+1;  //月
+                      var day=date.getDate();   //日
+                      var hh=date.getHours();   //时
+                      var mm=date.getMinutes(); //分
+                      var ss=date.getSeconds(); //秒
+                      var today=new Array("星期日","星期一","星期二","星期三","星期四","星期五","星期六");
+                      var xq=today[date.getDay()];
+                      var daytime;
+                      daytime=year +"/"+mon+"/"+day+" "+xq;
+                      var time;
+                      if(mm<10 ){
+                          mm="0"+mm;
+                      }
+                      if(ss<10){
+                          ss="0"+ss;
+                        }
+                      time="当前时间" + hh+":"+ mm + ":" +ss;
+                      $("#y_ear").text(daytime);
+                      $("#t_ime").text(time);
+                      },1000);
+        </script>
          <div class="content">
             @section('content')
 

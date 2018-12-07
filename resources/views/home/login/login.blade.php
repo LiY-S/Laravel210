@@ -23,7 +23,7 @@
                 <input type="email" name="email" placeholder="请输入邮箱地址" required=" ">
                 <input type="password" name="password" placeholder="请输入密码" required=" ">
                 <div class="forgot">
-                    <a href="#">忘记密码?</a>
+                    <a href="/home/forget">忘记密码?</a>
                 </div>
                 {{csrf_field()}}
                 <input type="submit" value="登录">

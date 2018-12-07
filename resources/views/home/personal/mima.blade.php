@@ -43,7 +43,7 @@
                     @endif
 
                     <form id='art_form' action="/home/personal/update?id={{$uid}}" method="post" class="mws-form">
-                        新 &nbsp;密&nbsp; 码:<input id="passw" type="password" name="password" style="width:350px;" required=""><img id="imgs" src="/homes/images/close.png" style="height:30px;width: 50px;" alt="">
+                        新 &nbsp;密&nbsp; 码:<input id="passw" type="password" name="password" style="width:360px;" required=""><img id="imgs" src="/homes/images/close.png" style="height:20px;width: 40px;" alt="">
                         <span class="spa"></span><br><br>
                         确认密码:<input type="password" id="repa" name="repass" style="width:400px;" required="">
                         <span class="sp"></span><br><br>
@@ -136,7 +136,7 @@
             });
             //发送ajax
             $.post('/home/checkphone',function(data){
-                console.log(data);
+                // console.log(data);
             })
         });
         //获取验证码

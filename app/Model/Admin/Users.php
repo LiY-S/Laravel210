@@ -14,7 +14,7 @@ class Users extends Model
      */
     protected $table = 'shop_user';
 
-    protected $primaryKey = 'uid';
+    protected $primaryKey = 'id';
 
     function index()
     {

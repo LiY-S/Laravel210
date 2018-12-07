@@ -103,7 +103,7 @@ class NoticeController extends Controller
         $data = $request -> except('_token','_method');
         // dd($data);
 
-         try{
+        try{
 
              $res = Notice::where('id',$id) -> update($data);
 

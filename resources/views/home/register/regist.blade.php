@@ -75,7 +75,17 @@
                 EMA = false;
                 return;
             }
+            var em = $(this);
+            $.get('/home/ajax',{email:ema},function(data){
+                if (data == '0') {
+                    em.css('border','solid 1px red');
+                    em.next().text('邮箱已经被注册').css('color','red');
+                    EMA = false;
+                    return;
+                }
+            })
             $(this).css('border','');
+            $(this).next().text('');
 
         });
         //密码
@@ -153,6 +163,7 @@
                 PH = false;
                 return;
             }
+            var phone = $(this);
 
             var reg = /^1[3456789]\d{9}$/;
             if(!reg.test(phv)){
@@ -160,8 +171,19 @@
                 $(this).css('border','solid 1px red');
                 PH = false;
             } else {
-
+                // 发送ajax验证手机号是否已经被注册
+                $.get('/home/ajaxphone',{phone:phv},function(data){
+                    // console.log(data);
+                    if (data == '0') {
+                        phone.css('border','solid 1px red');
+                        phone.next().text('手机号已经被注册').css('color','red');
+                        PH = false;
+                        return;
+                    }
+                });
                 $(this).css('border','');
+                $(this).next().text('');
+
                 PH = true;
             }
         })

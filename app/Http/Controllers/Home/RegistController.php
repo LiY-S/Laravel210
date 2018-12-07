@@ -10,13 +10,14 @@ use Config;
 
 class RegistController extends Controller
 {
-    //
+    //注册页面
     public function index()
     {
         return view('home.register.regist', [
             'title' => '淘鞋吧注册'
         ]);
     }
+    // 处理注册
     public function doregist(Request $request)
     {
         $data = $request ->except('_token','checkbox','repass');
@@ -58,6 +59,7 @@ class RegistController extends Controller
             return view('home.register.tixing',['title'=>'新注册用户提醒邮件']);
         }
     }
+    // 邮箱点击后调用此方法
     public function tixing(Request $request)
     {
         //获取信息
@@ -79,6 +81,33 @@ class RegistController extends Controller
 
                 return view('home.register.regist',['title'=>'用户注册']);
             }
+        }
+    }
+    // 发送ajax 对邮箱进行判断
+    public function ajax(Request $request)
+    {
+        $data = $request -> email;
+        // 查询数据库
+        $res = DB::table('shop_user')->where('email',$data)->first();
+        // 判断  如果数据库中有值 输出 0 没有值输出1
+        if (!$res) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+    // 发送ajax 对手机号进行判断
+    public function ajaxphone(Request $request)
+    {
+        $data = $request ->phone;
+        // echo $data;
+        // 查询数据库
+        $res = DB::table('shop_user')->where('phone',$data)->first();
+        // 判断  如果数据库中有值 输出 0 没有值输出1
+        if (!$res) {
+            return 1;
+        } else {
+            return 0;
         }
     }
 }

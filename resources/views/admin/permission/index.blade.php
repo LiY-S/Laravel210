@@ -76,7 +76,7 @@
                                         修改
                                     </a>
                                     <form action="/admin/permission/{{$v->id}}" method='post' style='display:inline'>
-                                        {{csrf_field()}} 
+                                        {{csrf_field()}}
                                         {{method_field("DELETE")}}
                                         <button class='btn btn-danger'style="background-color: #e1bee7">
                                             删除
@@ -88,13 +88,13 @@
                     </tbody>
                 </table>
                  <div class="dataTables_info" id="DataTables_Table_1_info">
-                当前页码是&nbsp&nbsp{{$res->currentPage()}}&nbsp&nbsp  
-                    
+                当前页码是&nbsp&nbsp{{$res->currentPage()}}&nbsp&nbsp
+
                 一共{{$res->total()}}条数据
-            
+
             </div>
             <div class="dataTables_paginate paging_full_numbers" id="DataTables_Table_1_paginate"style="margin-right: 100px;margin-top: -20px">
-                
+
                 {{$res->appends($request->all())->links()}}
 
             </div>
@@ -102,7 +102,7 @@
     </form>
     </div>
 
-     
+
  @stop
 
  @section('js')

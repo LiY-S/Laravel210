@@ -30,7 +30,7 @@ class UsersController extends Controller
 
             })
             // pageinate  分页  每页显示多少条数
-        ->paginate();
+        ->paginate($request->input('num',10));
 
         return view('admin.users.index',[
             'title'=>'用户列表',
@@ -38,64 +38,6 @@ class UsersController extends Controller
             'request'=>$request
         ]);
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -105,6 +47,18 @@ class UsersController extends Controller
     public function destroy($id)
     {
         //
+        try{
+
+            $res = Users::destroy($id);
+
+            if($res){
+                return redirect('/admin/users')->with('success','删除成功');
+            }
+
+        }catch(\Exception $e){
+
+            return back()->with('error','删除失败');
+        }
     }
 
 

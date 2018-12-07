@@ -16,6 +16,18 @@
 <div class="col-md-10 col-center-block">
     <div class="data-info">
         <div id="table_wrapper" class="dataTables_wrapper no-footer">
+
+                @if(session('error'))
+                    <div class="alert alert-info error">
+                        <li style='list-style:none;font-size:14px'>{{session('error')}}</li>
+                    </div>
+                @endif
+                @if(session('success'))
+                    <div class="alert alert-warning success">
+                        <li style='list-style:none;font-size:14px'>{{session('success')}}</li>
+                    </div>
+                @endif
+
             <div class="toolbar tool" style="padding: 7px 20px;">
                 <h5 class="content-title">
                     <font style="vertical-align: inherit;">
@@ -36,8 +48,22 @@
                 </label>
                 <button class='btn btn-info'>搜索</button>
             </div>
+            <div id="DataTables_Table_1_length" class="dataTables_length" style="margin-top: 20px; color: #666;">
+                    显示
+                    <select name="num" size="1" aria-controls="DataTables_Table_1">
+                         <option value="10" @if($request->num == 10)  selected="selected" @endif>
+                            10
+                        </option>
+                        <option value="25"  @if($request->num == 15)  selected="selected" @endif>
+                            15
+                        </option>
+                        <option value="30"  @if($request->num == 20)  selected="selected" @endif>
+                            20
+                        </option>
+                    </select>
+                    条数据
+            </div>
             </form>
-
             <table id="table" class="display datatable dataTable no-footer dtr-inline"
             role="grid">
                 <thead>
@@ -164,11 +190,11 @@
                         <td width="7%">
                             @if($v->status == 1)
 
-                                开启
+                                启用
 
                             @else
 
-                                禁用
+                                未启用
 
                             @endif
                         </td>
@@ -182,21 +208,35 @@
                         </td>
 
                         <td>
-                            <button>
-                                @if($v->status==2)
-                                    <i class="fa  fa-ban"></i>禁用
-                                @else
-                                    <i class="fa fa-check-circle-o"></i>启用
-                                @endif
-                            </button>
+                            <form action="/admin/users/{{$v->id}}" method="post">
+                                {{csrf_field()}}
+                                {{method_field("DELETE")}}
+                                <button class='btn btn-danger btn-sm shiny'>
+                                    <i class="fa fa-trash-o"></i>删除
+                                </button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach
                 </tbody>
             </table>
+             <div class="dataTables_info" id="DataTables_Table_1_info">
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;当前在&nbsp&nbsp第{{$res->currentPage()}}页&nbsp&nbsp
+                共{{$res->total()}}条数据
+            </div>
+            <div class="dataTables_paginate paging_full_numbers" id="DataTables_Table_1_paginate"style="margin-right: 100px;margin-top: -20px">
+                {{$res->appends($request->all())->links()}}
+            </div>
         </div>
     </div>
 </div>
+
+@stop
+
+@section('js')
+<script>
+    $('.alert').delay(2000).fadeOut(1000);
+</script>
 
 @stop
 
