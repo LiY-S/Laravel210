@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="col-md-8 col-md-offset-2" style="float: none;height: 740px">
+<div class="col-md-8 col-md-offset-2" style="float: none;height: 100%">
     <form action="/admin/collect" method='get'>
         <div class="data-info">
             <div id="table1_wrapper" class="dataTables_wrapper no-footer">
@@ -26,7 +26,7 @@
                     </div>
                     <div id="table2_filter" class="dataTables_filter">
                         <label>
-                            <input type="search" class="" placeholder="关键字" aria-controls="table2"name='collect_id' value="">
+                            <input type="search" class="" placeholder="关键字" aria-controls="table2"name='user_id' value="{{$request->user_id}}">
                         </label>
                         <button class='btn btn-info' style="font-size: 20px;margin-down: 0px">
                             搜索
@@ -55,12 +55,17 @@
                              </form>
                     </tbody>
                 </table>
-                 <div class="dataTables_info" id="DataTables_Table_1_info">
+                <div class="dataTables_info" id="DataTables_Table_1_info">
+                当前页码是&nbsp&nbsp{{$res->currentPage()}}&nbsp&nbsp  
+                    
+                一共{{$res->total()}}条数据
+            
             </div>
             <div class="dataTables_paginate paging_full_numbers" id="DataTables_Table_1_paginate"style="margin-right: 100px;margin-top: -20px">
                 
+                {{$res->appends($request->all())->links()}}
+
             </div>
-        </div>
     </form>
     </div>
 

@@ -54,4 +54,11 @@ class Goods extends Model
     {
         return $this->hasMany('App\Model\Admin\Repertory','goods_id');
     }
+     /**
+     * 收藏
+     */
+     public function Collect()
+    {
+        return $this->belongsTo('App\Model\Admin\Collect');
+    }
 }

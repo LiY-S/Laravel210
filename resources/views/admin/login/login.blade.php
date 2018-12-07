@@ -27,6 +27,11 @@
 	            	<font style="vertical-align: inherit;">{{session('error')}}</font>
 	            </div>
             @endif
+            @if(session('success'))     
+				<div class="alert alert-danger" role="alert">
+	            	<font style="vertical-align: inherit;">{{session('success')}}</font>
+	            </div>
+            @endif
 			<h1>后台登录</h1>
 			<div>
 				<input type="text" placeholder="用户名" id="username" name="username" />

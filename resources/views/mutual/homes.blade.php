@@ -56,7 +56,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         欢迎您 , {{$res->username}}
                         <a href="/home/personal" style="color:#333">个人中心</a>
                         <a href="#" style="color:#333">我的订单</a>
-                        <a href="#" style="color:#333">我的收藏</a>
+                        <a href="/home/favorites" style="color:#333">我的收藏</a>
                         <a href="/home/dologout" style="color:#333">退出</a>
                     </div>
                     @endif
@@ -72,7 +72,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <!-- Brand and toggle get grouped for better mobile display -->
                     <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
                         <ul class="nav navbar-nav">
-                            <li class="active"><a href="index.html" class="act">Home</a></li>
+                            <li class="active"><a href="" class="act">Home</a></li>
                             <!-- Mega Menu -->
                             @php
                                 $res = DB::table('shop_category')->get();

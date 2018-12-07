@@ -14,8 +14,8 @@
 <script src="/admins/admins/js/common.js"></script>
 
 
-<div class="col-md-6 col-md-offset-3" style="float: none;height: 740px">
-	<form id='art_form' action="/admin/upload" method="post" class="mws-form" enctype='multipart/form-data'>
+<div class="col-md-6 col-md-offset-3" style="float: none;height: 100%">
+	<form id='art_form' action="" method="post" class="mws-form" enctype='multipart/form-data'>
 	<center>
 		<img src="{{$res->profile}}" id='imgs' alt="上传后显示图片" style="width:200px; ">
 	</center>
@@ -68,9 +68,9 @@
 	                $('#imgs').attr('src',data);
 	                // $('#art_thumb').val(data);
 
-	                setTimeout(function(){
-	                location.href = '/admin';
-	                },1000)
+	                // setTimeout(function(){
+	                // location.href = '/admin';
+	                // },1000)
 
 	            },
 	            error: function(XMLHttpRequest, textStatus, errorThrown) {

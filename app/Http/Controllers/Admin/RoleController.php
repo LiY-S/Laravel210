@@ -19,7 +19,7 @@ class RoleController extends Controller
     {
           $res =  Role::where('role_name','like','%'.$request->role_name.'%')->paginate($request->input('num',10));
 
-
+          // dd($res);
         return view('admin.role.index',[
             'title'=>'角色的列表页面',
             'res'=>$res,
@@ -68,8 +68,6 @@ class RoleController extends Controller
                 return back()->with('error','添加失败');
             }
         }
-       // return back()->with('error','添加失败');
-    // }
 
     /**
      * Display the specified resource.
