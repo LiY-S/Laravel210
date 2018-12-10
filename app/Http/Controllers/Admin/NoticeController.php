@@ -51,6 +51,9 @@ class NoticeController extends Controller
         //
         $data = $request -> except('_token');
         // dd($data);
+        $data['tiantime'] = time();
+
+        // dd($data);
         // 将传过来的值存入到数据库中
         $res = DB::table('shop_notice')->insert($data);
         if ($res) {

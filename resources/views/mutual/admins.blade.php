@@ -154,7 +154,7 @@
         <ul class="nav nav-inside collapse">
           <li class="inside-title">公告管理</li>
           <li><a href="/admin/notice/create">添加公告</a></li>
-          <li><a href="/admin/user">浏览公告</a></li>
+          <li><a href="/admin/notice">浏览公告</a></li>
         </ul>
       </li>
       <li>

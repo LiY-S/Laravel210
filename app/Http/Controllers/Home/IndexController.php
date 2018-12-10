@@ -17,11 +17,21 @@ class IndexController extends Controller
     	// dd($res);
     	$zs=count($res);
     	// dd($zs);
-    	
+    	$gonggao = DB::table('shop_notice') -> get();
+        // dd($gonggao);
         return view('home.sy.index',[
             'title' => '淘鞋吧',
             'res'=>$res,
-            'zs'=>$zs
+            'zs'=>$zs,
+            'gonggao' => $gonggao
+        ]);
+    }
+    public function notice($id)
+    {
+        $gong = DB::table('shop_notice') -> where('id',$id) -> first();
+        return view('home.sy.notice',[
+            'title' => '淘鞋吧公告',
+            'gong' => $gong
         ]);
     }
 

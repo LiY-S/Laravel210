@@ -117,7 +117,7 @@
     <ol id="bannerCtrl" class="flex-control-nav flex-control-paging">
         @for($i=1;$i<=$zs;$i++)
             <li><a>{{$i}}</a></li>
-        @endfor   
+        @endfor
    </ol>
 </div>
 
@@ -151,14 +151,13 @@
                         </div>
                     </div>
                     <div class="banner-bottom-grid-left-grid left1-grid grid-left-grid1">
-                        <div class="banner-bottom-grid-left-grid1">
-                            <img src="/homes/images/2.jpg" alt=" " class="img-responsive" />
-                        </div>
-                        <div class="banner-bottom-grid-left1-position">
-                            <div class="banner-bottom-grid-left1-pos1">
-                                <p>Latest New Collections</p>
-                            </div>
-                        </div>
+                    <ul id="gonggao">
+                        @foreach($gonggao as $va)
+                        <li><a href="/home/notice/{{$va->id}}">{{$va->title}}
+                            <span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span>
+                            <span>{{date('Y-m-d H:i',$va->tiantime)}}</span></a></li>
+                        @endforeach
+                    </ul>
                     </div>
                 </div>
                 <div class="banner-bottom-grid-right animated wow slideInRight" data-wow-delay=".5s">
@@ -541,5 +540,13 @@ $(function() {
 })
 </script>
 
+<!-- 公告管理 -->
 
+<script>
+    setInterval(function(){
+            $('#gonggao li').first().slideUp('slow',function(){
+                $('#gonggao').last().append($(this).show())
+            });
+        },3000);
+</script>
 @stop
