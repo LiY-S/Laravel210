@@ -66,7 +66,7 @@
                         选择分类
                     </label>
                     <div class="col-sm-10">
-                        <select class="form-control selectpicker" name="cate">
+                        <select class="form-control selectpicker" name="cate_id">
                             <option value="0">---请选择---</option>
                         @foreach ($cate as $v)
                             <option value="{{$v->id}}">
@@ -152,12 +152,8 @@
                         商品展示
                     </label>
                     <div class="col-sm-10">
-<<<<<<< Updated upstream
-                        <input type="file" name="photo[]" multiple>
-=======
                         <meta name="csrf-token" content="{{ csrf_token() }}">
                         <input type="file" name="photo[]" multiple style="margin-top: 10px" id="file_upload">
->>>>>>> Stashed changes
                     </div>
                 </div>
                 <div class="form-group">

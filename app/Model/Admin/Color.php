@@ -12,7 +12,7 @@ class Color extends Model
      *
      * @var string
      */
-    protected $table = 'shop_goods';
+    protected $table = 'shop_goods_color';
 
     protected $primaryKey = 'id';
 
@@ -30,11 +30,4 @@ class Color extends Model
 	 */
 	protected $guarded = [];
 
-	/**
-     * 获得此颜色对应的展示图片。
-     */
-    public function color()
-    {
-        return $this->hasMany('App\Model\Admin\Photo','color_id');
-    }
 }
