@@ -159,7 +159,13 @@ class RoleController extends Controller
 
         //把所有的权限路径查询出来
         $per = Permission::all();
+        // dd($per);
+        // foreach($per as $k=>$v){
+            // dump($v);
+            // dump(in_array($v->id,$info));
 
+        // }
+        
         return view('admin.role.role_per',[
             'title'=>'角色添加权限的页面',
             'res'=>$res,

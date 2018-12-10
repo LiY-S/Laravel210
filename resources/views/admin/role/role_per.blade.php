@@ -33,18 +33,21 @@
                             <!-- <ul class="checkbox-inline" > -->
                                 @foreach($per as $k=>$v)
                                     @if(in_array($v->id,$info))
-                                    <!-- <li> -->
+                                        
                                         <label  class="inline">
-                                            <input type="checkbox" name='per_id[]' value='{{$v->id}}' checked>{{$v->url_name}}
-                                        </label>&nbsp;&nbsp;&nbsp;
-                                    <!-- </li> -->
+                                            <input type="checkbox" name='per_id[]' value='{{$v->id}}' checked>
+                                                {{$v->url_name}}
+                                        </label>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        
+                                        
                                     @else
-                                    <!-- <li> -->
-                                        <label class="inline">
-                                            <input type="checkbox" name='per_id[]' value='{{$v->id}}'>{{$v->url_name}}
-                                        </label>&nbsp;&nbsp;&nbsp;
-                                    <!-- </li> -->
-                                    @endif
+                                        <label  class="inline">
+                                            <input type="checkbox" name='per_id[]' value='{{$v->id}}'>
+                                                {{$v->url_name}}
+                                        </label>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                @endif
                                 @endforeach
                                </div>
                             <!-- </ul> -->
