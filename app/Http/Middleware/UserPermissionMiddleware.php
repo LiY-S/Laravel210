@@ -20,9 +20,9 @@ class UserPermissionMiddleware
     public function handle($request, Closure $next)
     {
 
-        $active = \Route::current()->getActionName();
+        // $active = \Route::current()->getActionName();
 
-        dump($active); 
+        // dump($active); 
 
         // dump($active);
         //获取用户的信息
