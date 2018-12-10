@@ -20,9 +20,9 @@ class UserPermissionMiddleware
     public function handle($request, Closure $next)
     {
 
-        // $active = \Route::current()->getActionName();
+        $active = \Route::current()->getActionName();
 
-        // dump($active); 
+        dump($active); 
 
         // dump($active);
         //获取用户的信息
@@ -36,6 +36,7 @@ class UserPermissionMiddleware
         foreach($roles as $k => $role_id){
              //通过角色查找权限
             $rles = $role_id->pers;
+            // dd($rles);
 
             foreach($rles as $k => $v){
 

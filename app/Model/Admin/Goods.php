@@ -38,27 +38,5 @@ class Goods extends Model
     {
         return $this->hasMany('App\Model\Admin\Color','goods_id');
     }
-
-    /**
-     * 获得此商品的展示图片。
-     */
-    public function photo()
-    {
-        return $this->hasMany('App\Model\Admin\Photo','goods_id');
-    }
-
-    /**
-     * 获得此商品的详情图片。
-     */
-    public function repertory()
-    {
-        return $this->hasMany('App\Model\Admin\Repertory','goods_id');
-    }
-     /**
-     * 收藏
-     */
-     public function Collect()
-    {
-        return $this->belongsTo('App\Model\Admin\Collect');
-    }
+	
 }
