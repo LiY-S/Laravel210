@@ -45,8 +45,41 @@ class GoodsController extends Controller
      */
     public function store(Request $request)
     {
+<<<<<<< Updated upstream
         $res = $request -> all();
         dump($res);
+=======
+        $res = $request -> except('_token','photo','color','photos');
+        $res['size'] = implode(',', $res['size']);
+        // dump($res);
+        $data = Goods::create($res);
+        $file = $request->file('photo');
+        if (count($file) > 3 || count($file) < 3) {
+            return back()->with('error','请上传三张展示图');
+        }
+        $color = $request->input('color');
+        /*dump($res);
+        dump($data);
+        dump($file);
+        dump($color);*/
+        $photo = $request->input('photos');
+        // dump($photo);
+        $arr = [];
+        $arr['goods_id'] = $data->id;
+        $arr['color'] = $color;
+        $arr['photo'] = implode(',',$photo);
+        try{
+
+            $data = Color::create($arr);
+            if($data){
+                return redirect('/admins/goods')->with('success','添加成功');
+            }
+
+        }catch(\Exception $e){
+
+            return back()->with('error','添加失败');
+        }
+>>>>>>> Stashed changes
     }
 
     /**
@@ -91,6 +124,57 @@ class GoodsController extends Controller
      */
     public function destroy($id)
     {
+<<<<<<< Updated upstream
         //
+=======
+        DB::table('shop_goods_color')->where('goods_id',$id)->delete();
+        try{
+
+            $data = DB::table('shop_goods')->delete($id);
+            if($data){
+                return redirect('/admins/goods')->with('success','删除成功');
+            }
+
+        }catch(\Exception $e){
+
+            return back()->with('error','删除失败');
+        }
+    }
+
+
+    /**
+     *  修改头像方法
+     *
+     *  @return \Illuminate\Http\Response
+     */
+    public function upload(Request $request)
+    {
+        // echo 1;
+        //获取上传的文件对象
+        $file = $request->file();
+        /*if (count($file) != 3) {
+            return undefined;
+        }*/
+        // dd($file);
+        $arr = [];
+        foreach ($file['fileupload'] as $v) {
+            //判断文件是否有效
+                //上传文件的后缀名
+                $entension = $v->getClientOriginalExtension();
+                //修改名字
+                $newName = date('YmdHis').mt_rand(1000,9999).'.'.$entension;
+                //移动文件
+                $path = $v->move('./uploads/photo/'.date('Y-m-d'),$newName);
+
+                $filepath = '/uploads/photo/'.date('Y-m-d').'/'.$newName;
+                $arr[] = $filepath;
+                // $res['profile'] = $filepath;
+                // DB::table('user')->where('id',$id)->update($res);
+                //返回文件的路径
+                // return $filepath;
+                // echo 1;
+        }
+        return $arr;
+>>>>>>> Stashed changes
     }
 }

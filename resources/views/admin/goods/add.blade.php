@@ -3,7 +3,12 @@
 @section('title',$title)
 
 @section('content')
-
+@if (session('error'))
+            <div class="alert alert-danger alert-dismissible fade in" role="alert" id="divs">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <strong>{{session('error')}}</strong>
+            </div>
+        @endif
     <style type="text/css">
 /*a  upload */
         .a-upload {
@@ -43,6 +48,7 @@
         	margin-left: 400px;
         }
     </style>
+  <script src="/admins/admins/bower_components/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="/admins/admins/ueditor/ueditor.config.js"></script>
     <script type="text/javascript" charset="utf-8" src="/admins/admins/ueditor/ueditor.all.min.js"> </script>
     <script type="text/javascript" charset="utf-8" src="/admins/admins/ueditor/lang/zh-cn/zh-cn.js"></script>
@@ -54,7 +60,7 @@
             </h5>
         </div>
         <div class="content">
-            <form class="form-horizontal" action="/admins/goods" method="post"  enctype='multipart/form-data' name="upfile">
+            <form class="form-horizontal" action="/admins/goods" method="post"  enctype='multipart/form-data' name="upfile"  id="art_form">
                 <div class="form-group">
                     <label class="col-sm-2 control-label">
                         选择分类
@@ -146,7 +152,12 @@
                         商品展示
                     </label>
                     <div class="col-sm-10">
+<<<<<<< Updated upstream
                         <input type="file" name="photo[]" multiple>
+=======
+                        <meta name="csrf-token" content="{{ csrf_token() }}">
+                        <input type="file" name="photo[]" multiple style="margin-top: 10px" id="file_upload">
+>>>>>>> Stashed changes
                     </div>
                 </div>
                 <div class="form-group">
@@ -294,5 +305,62 @@
         UE.getEditor('editor').execCommand( "clearlocaldata" );
         alert("已清空草稿箱")
     }
+    $('#divs').delay(1000).slideUp(2000);
+</script>
+<script>
+
+    // alert($);
+    $(function () {
+        $("#file_upload").change(function () {
+            var files = this.files;
+            if (files && files.length != 3) {
+                alert("请上传三张展示图");
+                // console.log(files.length);
+                this.value = "" //删除选择
+                return;
+            }
+            var imgPath = $("#file_upload").val();
+            if (imgPath == "") {
+                alert("请选择上传图片！");
+                return;
+            }
+            //判断上传文件的后缀名
+            var strExtension = imgPath.substr(imgPath.lastIndexOf('.') + 1);
+            if (strExtension != 'jpg' && strExtension != 'gif'
+                && strExtension != 'png' && strExtension != 'bmp') {
+                alert("请选择图片文件");
+                return;
+            }
+            var formData = new FormData();
+            var files = $("#file_upload")[0].files;//等价于document.getElementById("file1").files;
+            for(var i = 0; i < files.length; i++){
+                formData.append("fileupload[]",files[i]);   // 文件对象 ,fileupload必须加中括号
+            }
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                type: "POST",
+                url: "/admins/goods/upload",
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function(data) {
+                    for (var i = 0; i < data.length; i++) {
+                        var imgs = $('<img src="'+data[i]+'" alt="" id="imgs'+[i]+'" width="80">');
+                        $('#file_upload').after(imgs);
+                        var photo = $('<input type="hidden" name="photos[]" value='+data[i]+'>');
+                        $('#file_upload').after(photo);
+                    }
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown) {
+                    alert("上传失败，请检查网络后重试");
+                }
+            });
+        })
+    })
 </script>
 @endsection
