@@ -51,23 +51,14 @@
               </a>
           </div>
           <div class="pull-right">
-              <div class="pull-left search-container">
-                  <form class="searchbox">
-                      <input type="search" placeholder="Search" name="search" class="searchbox-input"
-                      />
-                      <input type="submit" class="searchbox-submit" value="" />
-                      <span class="searchbox-icon">
-                          <span class="zmdi zmdi-search search-icon"></span>
-                      </span>
-                  </form>
-              </div>
+
 			      @php
 
             $res = DB::table('shop_admin')-> where('id',session('uid'))-> first();
 
             @endphp
           <div class="pull-right">
-              <div class="pull-left search-container searchbox" style="width: 150px; margin-top: 35px;font-size: 22px;">
+              <div class="pull-left search-container searchbox" style="width: 150px; margin-top: 18px;font-size: 22px;">
                           嘿&nbsp;,&nbsp;&nbsp;&nbsp; {{$res->username}}
               </div>
 
