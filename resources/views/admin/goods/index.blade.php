@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-=======
 @extends('mutual.admins')
 
 @section('title',$title)
@@ -113,4 +111,3 @@
     $('#divs').delay(1000).slideUp(2000);
 </script>
 @stop
->>>>>>> Stashed changes

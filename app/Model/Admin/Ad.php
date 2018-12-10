@@ -4,16 +4,14 @@ namespace App\Model\Admin;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Goods extends Model
+class Ad extends Model
 {
-    //
-     //
-     /**
+    /**
      * 与模型关联的数据表
      *
      * @var string
      */
-    protected $table = 'shop_goods';
+    protected $table = 'shop_ad';
 
     protected $primaryKey = 'id';
 
@@ -30,13 +28,4 @@ class Goods extends Model
 	 * @var array
 	 */
 	protected $guarded = [];
-
-	/**
-     * 获得此商品的颜色。
-     */
-    public function color()
-    {
-        return $this->hasMany('App\Model\Admin\Color','goods_id');
-    }
-	
 }

@@ -31,13 +31,13 @@ class Confcontroller extends Controller
      */
     public function update(Request $request)
     {
-        echo 1;
+        // echo 1;
         $res = $request->except('_token','_method','values');
         // if ($res) {
         //     return redirect('/admins/conf');
         // }
         try{
-            echo 1;
+            // echo 1;
             $data = DB::table('shop_conf')->where('id',1)->update($res);
             // dump($data);
             if($data == 0){
