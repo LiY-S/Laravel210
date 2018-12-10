@@ -45,10 +45,7 @@ class GoodsController extends Controller
      */
     public function store(Request $request)
     {
-<<<<<<< Updated upstream
-        $res = $request -> all();
-        dump($res);
-=======
+
         $res = $request -> except('_token','photo','color','photos');
         $res['size'] = implode(',', $res['size']);
         // dump($res);
@@ -79,7 +76,6 @@ class GoodsController extends Controller
 
             return back()->with('error','添加失败');
         }
->>>>>>> Stashed changes
     }
 
     /**
@@ -124,9 +120,7 @@ class GoodsController extends Controller
      */
     public function destroy($id)
     {
-<<<<<<< Updated upstream
-        //
-=======
+
         DB::table('shop_goods_color')->where('goods_id',$id)->delete();
         try{
 
@@ -175,6 +169,5 @@ class GoodsController extends Controller
                 // echo 1;
         }
         return $arr;
->>>>>>> Stashed changes
     }
 }

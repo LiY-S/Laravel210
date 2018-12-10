@@ -102,7 +102,7 @@
 
                         <td>
 
-                            {{sta($v->status)}}
+                            {{$v->status}}
 
                         </td>
 
