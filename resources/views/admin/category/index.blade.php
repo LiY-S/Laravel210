@@ -3,7 +3,12 @@
 @section('title',$title)
 
 @section('content')
-
+@if (session('success'))
+            <div class="alert alert-info alert-dismissible fade in" role="alert" id="divs">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <strong>{{session('success')}}</strong>
+            </div>
+        @endif
 <form action="/admins/cate" method='get'>
             <div class="dataTables_filter" id="DataTables_Table_1_filter" style="float: right;">
                     <input type="text" name='catname' value="{{$request->catname}}" aria-controls="DataTables_Table_1">
@@ -88,4 +93,8 @@
                         @endforeach
                     </tbody>
                 </table>
+                <div style="margin-left: 555px;">{{$res->links()}}</div>
+                <script>
+                    $('#divs').delay(1000).slideUp(2000);
+                </script>
 @stop

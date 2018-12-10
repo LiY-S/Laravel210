@@ -7,15 +7,12 @@
 
 
 
-@if (count($errors) > 0)
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
+@if (session('error'))
+            <div class="alert alert-danger alert-dismissible fade in" role="alert" id="divs">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <strong>{{session('error')}}</strong>
+            </div>
+        @endif
 
 
 
@@ -116,4 +113,7 @@
         </div>
     </div>
 </div>
+<script>
+    $('#divs').delay(1000).slideUp(2000);
+</script>
 @endsection
