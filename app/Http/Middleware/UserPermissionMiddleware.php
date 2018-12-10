@@ -24,6 +24,7 @@ class UserPermissionMiddleware
 
         // dump($active);
 
+
         // dump($active);
         //获取用户的信息
         $uid = session('uid');

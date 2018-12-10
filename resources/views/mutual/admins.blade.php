@@ -51,14 +51,15 @@
               </a>
           </div>
           <div class="pull-right">
-
 			      @php
 
             $res = DB::table('shop_admin')-> where('id',session('uid'))-> first();
 
             @endphp
           <div class="pull-right">
+
               <div class="pull-left search-container searchbox" style="width: 150px; margin-top: 18px;font-size: 22px;">
+
                           嘿&nbsp;,&nbsp;&nbsp;&nbsp; {{$res->username}}
               </div>
 
