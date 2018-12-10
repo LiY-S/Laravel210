@@ -142,5 +142,17 @@ class PermissionController extends Controller
             return back()->with('error','删除失败');
         }
     }
+
+
+    /**
+     * 用户没有权限访问页面
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function remind()
+    {
+        return view('errors.remind',['title'=>'用户没有权限访问页面']);
+    }
 }
 
