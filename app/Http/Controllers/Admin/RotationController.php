@@ -190,7 +190,7 @@ class RotationController extends Controller
     public function ajax(Request $request,$id)
     {
 
-    
+        // echo 1;die;
        
         $res = $request->all();
         

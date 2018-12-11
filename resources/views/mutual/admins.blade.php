@@ -115,7 +115,7 @@
         <a href="#"><i class="zmdi zmdi-view-dashboard"></i>收藏管理<span class="zmdi arrow"></span></a>
         <ul class="nav metismenu">
           <li class="inside-title">收藏管理</li>
-          <li><a href="/admin/collect/create">浏览收藏</a></li>
+          <li><a href="/admin/collect/index">浏览收藏</a></li>
         </ul>
       </li>
       <li><a href="#"><i class="zmdi zmdi-view-dashboard"></i>订单管理<span class="zmdi arrow"></span></a>
@@ -198,6 +198,24 @@
         </script>
          <div class="content">
             @section('content')
+
+            
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

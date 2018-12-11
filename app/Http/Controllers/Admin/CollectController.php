@@ -16,7 +16,7 @@ class CollectController extends Controller
      */
     public function index(Request $request)
     {
-        $res =  Collect::where('user_id','like','%'.$request ->user_id.'%')->paginate($request->input('num',1));
+        $res =  Collect::where('user_id','like','%'.$request ->user_id.'%')->paginate($request->input('num',10));
 
         return view('admin.collect.index',['title'=>'收藏的列表页面','res'=>$res,'request'=>$request]);
     }
@@ -28,9 +28,9 @@ class CollectController extends Controller
      */
     public function create(Request $request)
     {
-        $res =  Collect::where('user_id','like','%'.$request ->user_id.'%')->paginate($request->input('num',1));
+    //     $res =  Collect::where('user_id','like','%'.$request ->user_id.'%')->paginate($request->input('num',1));
 
-        return view('admin.collect.index',['title'=>'收藏的列表页面','res'=>$res,'request'=>$request]);
+    //     return view('admin.collect.index',['title'=>'收藏的列表页面','res'=>$res,'request'=>$request]);
     }
 
     /**

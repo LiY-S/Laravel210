@@ -43,22 +43,8 @@
                         <input type="text" class="form-control" name='ad_a' value="{{$res->ad_a}}">
                     </div>
                     <center>
-                        <img src="{{$res->ad_src}}" id='imgs' alt="上传后显示图片" style="width:300px;height: 300px ">
+                        <img src="{{$res->ad_src}}" id='imgs' alt="上传后显示图片" style="width:600px;height: 300px ">
                     </center>
-                   <!--  <div class="mws-form-row">
-                        轮播图图片
-                        <hr>
-                        <label class="mws-form-label">头像</label>
-                        
-                        <div class="mws-form-item">
-
-                            <img src="{{$res->ad_src}}" id='imgs' alt="上传后显示图片" >
-
-                            <div style="position: relative;" class="fileinput-holder">
-                                <input id="file_updata" type="file" name='ad_src' style="position: absolute; top: 0px; right: 0px; margin: 0px; cursor: pointer; font-size: 99px; opacity: 0; z-index: 999;margin-top: -100;">
-                            </div>
-                        </div>
-                    </div> -->
                     <div class="content">
                         轮播图图片
                         <hr>
@@ -107,7 +93,7 @@
             for (var i = 0; i < files.length; i++) {
                 formData.append('fileupload[]',files[0]);
             }
-            console.log(formData);
+            // console.log(formData);
             $.ajaxSetup({headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}});
              $.ajax({
                 type: "POST",
