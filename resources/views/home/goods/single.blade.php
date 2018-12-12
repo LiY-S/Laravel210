@@ -18,10 +18,10 @@
 </script>
 <div class="breadcrumbs">
 		<div class="container">
-			<ol class="breadcrumb breadcrumb1 animated wow slideInLeft animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: slideInLeft;">
+			<!-- <ol class="breadcrumb breadcrumb1 animated wow slideInLeft animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: slideInLeft;">
 				<li><a href="index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>主页</a></li>
 				<li class="active">Single Page</li>
-			</ol>
+			</ol> -->
 		</div>
 	</div>
 <div class="single">
@@ -58,7 +58,7 @@
 							</li>
 							<li data-thumb="{{$v->photo[1]}}">
 							   <div class="thumb-image"> <img src="{{$v->photo[1]}}" data-imagezoom="true" class="img-responsive"> </div>
-							</li> 
+							</li>
 						</ul>
 					</div>
 			   		<!-- flixslider -->
@@ -136,139 +136,33 @@
 			<div class="clearfix"> </div>
 		</div>
 	</div>
-<!-- <div class="single-related-products">
-		<div class="container">
-			<h3 class="animated wow slideInUp animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: slideInUp;">Related Products</h3>
-			<p class="est animated wow slideInUp animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: slideInUp;">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia 
-				deserunt mollit anim id est laborum.</p>
-			<div class="new-collections-grids">
-				<div class="col-md-3 new-collections-grid">
-					<div class="new-collections-grid1 animated wow slideInLeft animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: slideInLeft;">
-						<div class="new-collections-grid1-image">
-							<a href="single.html" class="product-image"><img src="images/8.jpg" alt=" " class="img-responsive"></a>
-							<div class="new-collections-grid1-image-pos">
-								<a href="single.html">Quick View</a>
-							</div>
-							<div class="new-collections-grid1-right">
-								<div class="rating">
-									<div class="rating-left">
-										<img src="images/2.png" alt=" " class="img-responsive">
-									</div>
-									<div class="rating-left">
-										<img src="images/2.png" alt=" " class="img-responsive">
-									</div>
-									<div class="rating-left">
-										<img src="images/1.png" alt=" " class="img-responsive">
-									</div>
-									<div class="rating-left">
-										<img src="images/1.png" alt=" " class="img-responsive">
-									</div>
-									<div class="rating-left">
-										<img src="images/1.png" alt=" " class="img-responsive">
-									</div>
-									<div class="clearfix"> </div>
-								</div>
-							</div>
-						</div>
-						<h4><a href="single.html">Running Shoes</a></h4>
-						<p>Vel illum qui dolorem eum fugiat.</p>
-						<div class="new-collections-grid1-left simpleCart_shelfItem">
-							<p><i>$280</i> <span class="item_price">$150</span><a class="item_add" href="#">add to cart </a></p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-6 new-collections-grid">
-					<div class="new-collections-grid1-sub">
-						<div class="new-collections-grid1 animated wow slideInLeft animated" data-wow-delay=".6s" style="visibility: visible; animation-delay: 0.6s; animation-name: slideInLeft;">
-							<div class="new-collections-grid1-image">
-								<a href="single.html" class="product-image"><img src="images/6.jpg" alt=" " class="img-responsive"></a>
-								<div class="new-collections-grid1-image-pos">
-									<a href="single.html">Quick View</a>
-								</div>
-								<div class="new-collections-grid1-right">
-									<div class="rating">
-										<div class="rating-left">
-											<img src="images/2.png" alt=" " class="img-responsive">
-										</div>
-										<div class="rating-left">
-											<img src="images/2.png" alt=" " class="img-responsive">
-										</div>
-										<div class="rating-left">
-											<img src="images/2.png" alt=" " class="img-responsive">
-										</div>
-										<div class="rating-left">
-											<img src="images/2.png" alt=" " class="img-responsive">
-										</div>
-										<div class="rating-left">
-											<img src="images/2.png" alt=" " class="img-responsive">
-										</div>
-										<div class="clearfix"> </div>
-									</div>
-								</div>
-							</div>
-							<h4><a href="single.html">Wall Lamp</a></h4>
-							<p>Vel illum qui dolorem eum fugiat.</p>
-							<div class="new-collections-grid1-left simpleCart_shelfItem">
-								<p><i>$480</i> <span class="item_price">$400</span><a class="item_add" href="#">add to cart </a></p>
-							</div>
-						</div>
-					</div>
-					<div class="new-collections-grid1-sub">
-						<div class="new-collections-grid1 animated wow slideInLeft animated" data-wow-delay=".7s" style="visibility: visible; animation-delay: 0.7s; animation-name: slideInLeft;">
-							<div class="new-collections-grid1-image">
-								<a href="single.html" class="product-image"><img src="images/9.jpg" alt=" " class="img-responsive"></a>
-								<div class="new-collections-grid1-image-pos">
-									<a href="single.html">Quick View</a>
-								</div>
-								<div class="new-collections-grid1-right">
-									<div class="rating">
-										<div class="rating-left">
-											<img src="images/2.png" alt=" " class="img-responsive">
-										</div>
-										<div class="rating-left">
-											<img src="images/1.png" alt=" " class="img-responsive">
-										</div>
-										<div class="rating-left">
-											<img src="images/1.png" alt=" " class="img-responsive">
-										</div>
-										<div class="rating-left">
-											<img src="images/1.png" alt=" " class="img-responsive">
-										</div>
-										<div class="rating-left">
-											<img src="images/1.png" alt=" " class="img-responsive">
-										</div>
-										<div class="clearfix"> </div>
-									</div>
-								</div>
-							</div>
-							<h4><a href="single.html">Wall Lamp</a></h4>
-							<p>Vel illum qui dolorem eum fugiat.</p>
-							<div class="new-collections-grid1-left simpleCart_shelfItem">
-								<p><i>$280</i> <span class="item_price">$150</span><a class="item_add" href="#">add to cart </a></p>
-							</div>
-						</div>
-					</div>
-					<div class="clearfix"> </div>
-				</div>
-				<div class="col-md-3 new-collections-grid">
-					<div class="new-collections-grid1 animated wow slideInLeft animated" data-wow-delay=".8s" style="visibility: visible; animation-delay: 0.8s; animation-name: slideInLeft;">
-						<div class="new-collections-grid1-image">
-							<a href="single.html" class="product-image"><img src="images/11.jpg" alt=" " class="img-responsive"></a>
-							<div class="new-collections-grid1-image-pos">
-								<a href="single.html">Quick View</a>
-							</div>
-						</div>
-						<h4><a href="single.html">Stones Bangles</a></h4>
-						<p>Vel illum qui dolorem eum fugiat.</p>
-						<div class="new-collections-grid1-left simpleCart_shelfItem">
-							<p><i>$340</i> <span class="item_price">$257</span><a class="item_add" href="#">add to cart </a></p>
-						</div>
-					</div>
-				</div>
-				<div class="clearfix"> </div>
-			</div>
-		</div>
-	</div> -->
+<!-- collections -->
+    <div class="new-collections">
+        <div class="container">
+            <h3 class="animated wow zoomIn" data-wow-delay=".5s">猜你喜欢</h3>
+            <p class="est animated wow zoomIn" data-wow-delay=".5s">生命在于矛盾，在于运动，一旦矛盾消除，运动停止，生命也就结束了。<br>德国著名思想家&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;歌德</p>
+            <div class="new-collections-grids">
+                @foreach ($goods as $v)
+                <div class="col-md-3 new-collections-grid">
+                    <div class="new-collections-grid1 animated wow slideInUp" data-wow-delay=".5s">
+                        <div class="new-collections-grid1-image">
+                            <a href="/home/single/{{$v->id}}" class="product-image"  target="view_window"><img src="{{$v->photo[0]}}" alt=" " class="img-responsive" /></a>
+                            <div class="new-collections-grid1-image-pos">
+                                <a href="/home/single/{{$v->id}}"  target="view_window">查看详情</a>
+                            </div>
+                        </div>
+                        <h4><a href="/home/single/{{$v->id}}"  target="view_window">{{$v->goods_name}}</a></h4>
+                        <div class="new-collections-grid1-left simpleCart_shelfItem">
+                            <p><span class="item_price" style="color:#ff5000">￥{{$v->goods_price}}</span><a class="item_add" href="#">加入购物车</a></p>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+    </div>
+<!-- //collections -->
 
 	<script src="/homes/js/imagezoom.js"></script>
 

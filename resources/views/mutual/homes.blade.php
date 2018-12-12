@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
+@php
+$conf = DB::table('shop_conf')->first();
+
+@endphp
 <title>@yield('title')</title>
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Best Store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<meta name="keywords" content="{{$conf->keyword}}" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
         function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- //for-mobile-apps -->
@@ -65,14 +68,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </div>
             <div class="logo-nav">
                 <div class="logo-nav-left animated wow zoomIn" data-wow-delay=".5s">
-                    <h1><a href="/">淘 鞋 吧<span></span></a></h1>
+                    <h1><a href="/"><img src="{{$conf->values}}" alt="" width=""><span></span></a></h1>
                 </div>
                 <div class="logo-nav-left1">
                     <nav class="navbar navbar-default">
                     <!-- Brand and toggle get grouped for better mobile display -->
                     <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
                         <ul class="nav navbar-nav">
-                            <li class="active"><a href="" class="act">Home</a></li>
+                            <li class="active"><a href="/" class="act">Home</a></li>
                             <!-- Mega Menu -->
                             @php
                                 $res = DB::table('shop_category')->get();
@@ -88,7 +91,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                             <ul class="multi-column-dropdown">
                                                 @foreach ($res as $val)
                                                     @if ($val->pid == $v->id)
-                                                        <li><a href="products.html"> &nbsp; &nbsp; &nbsp;{{$val->cate_name}}</a></li>
+                                                        <li><a href="/home/cate/{{$val->id}}"> &nbsp; &nbsp; &nbsp;{{$val->cate_name}}</a></li>
                                                     @endif
                                                 @endforeach
                                             </ul>
