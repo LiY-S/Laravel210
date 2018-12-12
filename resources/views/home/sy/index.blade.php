@@ -129,7 +129,7 @@
                 <div class="banner-bottom-grid-left animated wow slideInLeft" data-wow-delay=".5s">
                     <div class="grid">
                         <figure class="effect-julia">
-                            <img src="/homes/images/4.jpg" alt=" " class="img-responsive" />
+                            <img src="/homes/images/1.jpg" alt=" " class="img-responsive" />
                             <figcaption>
                                 <h3>Best <span>Store</span><i> in online shopping</i></h3>
                                 <div>
@@ -144,29 +144,26 @@
                 <div class="banner-bottom-grid-left1 animated wow slideInUp" data-wow-delay=".5s">
                     <div class="banner-bottom-grid-left-grid left1-grid grid-left-grid1">
                         <div class="banner-bottom-grid-left-grid1">
-                            <img src="/homes/images/1.jpg" alt=" " class="img-responsive" />
+                            <img src="/homes/images/2.jpg" alt=" " class="img-responsive" />
                         </div>
                         <div class="banner-bottom-grid-left1-pos">
                             <p>Discount 45%</p>
                         </div>
                     </div>
                     <div class="banner-bottom-grid-left-grid left1-grid grid-left-grid1">
-                    <ul id="gonggao">
-                        @foreach($gonggao as $va)
-                        <li><a href="/home/notice/{{$va->id}}">{{$va->title}}
-                            <span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span>
-                            <span>{{date('Y-m-d H:i',$va->tiantime)}}</span></a></li>
-                        @endforeach
-                    </ul>
+
                     </div>
                 </div>
                 <div class="banner-bottom-grid-right animated wow slideInRight" data-wow-delay=".5s">
                     <div class="banner-bottom-grid-left-grid grid-left-grid1">
                         <div class="banner-bottom-grid-left-grid1">
-                            <img src="/homes/images/3.jpg" alt=" " class="img-responsive" />
-                        </div>
-                        <div class="grid-left-grid1-pos">
-                            <p>top and classic designs <span>2016 Collection</span></p>
+                            <ul id="gonggao" style="list-style: none;">
+                                @foreach($gonggao as $va)
+                                <li><a style="color: #000" href="/home/notice/{{$va->id}}">{{$va->title}}
+                                    <span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span>
+                                    <span style="float: right;">{{date('Y-m-d H:i',$va->tiantime)}}</span></a></li>
+                                @endforeach
+                            </ul>
                         </div>
                     </div>
                 </div>

@@ -3,6 +3,21 @@
 @section('title',$title)
 
 @section('content')
+<style>
+	.tijiao{
+	border-style:solid;
+	border-width:1px;
+	border-color:#FFF;
+	background: #fff;
+	width: 115px;
+	height: 35px;
+	outline: none;
+	/*border:1px;*//*不要设置border*/
+	}
+
+
+
+</style>
 <link href="/homes/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <link href="/homes/css/style.css" rel="stylesheet" type="text/css" media="all" />
 <!-- js -->
@@ -46,78 +61,81 @@
 				</div>
 			</div>
 			@foreach ($res as $v)
-			<div class="col-md-8 single-right">
-				<div class="col-md-5 single-right-left animated wow slideInUp" data-wow-delay=".5s">
-			    	<div class="flexslider">
-						<ul class="slides">
-							<li data-thumb="{{$v->photo[2]}}">
-								<div class="thumb-image"> <img src="{{$v->photo[2]}}" data-imagezoom="true" class="img-responsive"> </div>
-							</li>
-							<li data-thumb="{{$v->photo[0]}}">
-								 <div class="thumb-image"> <img src="{{$v->photo[0]}}" data-imagezoom="true" class="img-responsive"> </div>
-							</li>
-							<li data-thumb="{{$v->photo[1]}}">
-							   <div class="thumb-image"> <img src="{{$v->photo[1]}}" data-imagezoom="true" class="img-responsive"> </div>
-							</li> 
-						</ul>
-					</div>
-			   		<!-- flixslider -->
-						<script defer src="/homes/js/jquery.flexslider.js"></script>
-						<link rel="stylesheet" href="/homes/css/flexslider.css" type="text/css" media="screen" />
-						<script>
-						// Can also be used with $(document).ready()
-						$(window).load(function() {
-						  $('.flexslider').flexslider({
-							animation: "slide",
-							controlNav: "thumbnails"
-						  });
-						});
-						</script>
-					<!-- flixslider -->
-				</div>
-				<div class="col-md-7 single-right-left simpleCart_shelfItem animated wow slideInRight animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: slideInRight;">
-					<h3>{{$v->goods_name}}</h3>
-					<h4><span class="item_price">${{$v->goods_price}}</span></h4>
-					<div class="occasional">
-						<h5>鞋码 :</h5>
-						@foreach ($v->size as $val)
-						<div class="colr ert">
-							<label class="radio"><input type="radio" name="radio"><i></i>{{$val}}</label>
-						</div>
-						@endforeach
-						<div class="clearfix"> </div>
-					</div>
-					<div class="color-quality">
-						<!-- <div class="color-quality-left">
-							<h5>颜色 : </h5>
-							<ul>
-								<li><button class="label label-default">{{$v->color}}</button></li>
+			<form action="/home/cart/tian/{{$v->id}}" method="post">
+				<div class="col-md-8 single-right">
+					<div class="col-md-5 single-right-left animated wow slideInUp" data-wow-delay=".5s">
+				    	<div class="flexslider">
+							<ul class="slides">
+								<li data-thumb="{{$v->photo[2]}}">
+									<div class="thumb-image"> <img src="{{$v->photo[2]}}" data-imagezoom="true" class="img-responsive"> </div>
+								</li>
+								<li data-thumb="{{$v->photo[0]}}">
+									 <div class="thumb-image"> <input type="hidden" name="goods_pic" value="{{$v->photo[0]}}"><img src="{{$v->photo[0]}}" data-imagezoom="true" class="img-responsive"> </div>
+								</li>
+								<li data-thumb="{{$v->photo[1]}}">
+								   <div class="thumb-image"> <img src="{{$v->photo[1]}}" data-imagezoom="true" class="img-responsive"> </div>
+								</li>
 							</ul>
-						</div> -->
-						<div class="color-quality-left" style="margin-top: -20px;">
-							<h5>数量 :</h5>
-							<input class="shuliang" type="number" style="width: 100px;" value="1">
 						</div>
-						<div class="clearfix"> </div>
+				   		<!-- flixslider -->
+							<script defer src="/homes/js/jquery.flexslider.js"></script>
+							<link rel="stylesheet" href="/homes/css/flexslider.css" type="text/css" media="screen" />
+							<script>
+							// Can also be used with $(document).ready()
+							$(window).load(function() {
+							  $('.flexslider').flexslider({
+								animation: "slide",
+								controlNav: "thumbnails"
+							  });
+							});
+							</script>
+						<!-- flixslider -->
 					</div>
-					<div class="occasion-cart" style="margin-top: 50px;">
-						<a class="item_add" href="#">加入购物车</a>
+					<div class="col-md-7 single-right-left simpleCart_shelfItem animated wow slideInRight animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: slideInRight;">
+						<h3>{{$v->goods_name}}</h3>
+						<h4><span class="item_price">${{$v->goods_price}}</span></h4>
+						<div class="occasional">
+							<h5>鞋码 :</h5>
+							@foreach ($v->size as $val)
+							<div class="colr ert">
+								<label class="radio"><input type="radio" name="goods_size" value="{{$val}}"><i></i>{{$val}}</label>
+							</div>
+							@endforeach
+							<div class="clearfix"> </div>
+						</div>
+						<div class="color-quality">
+							<!-- <div class="color-quality-left">
+								<h5>颜色 : </h5>
+								<ul>
+									<li><button class="label label-default">{{$v->color}}</button></li>
+								</ul>
+							</div> -->
+							<div class="color-quality-left" style="margin-top: -20px;">
+								<h5>数量 :</h5>
+								<input class="shuliang" name="goods_count" type="number" style="width: 100px;" value="1">
+							</div>
+							<div class="clearfix"> </div>
+						</div>
+						{{csrf_field()}}
+						<div class="occasion-cart" style="margin-top: 50px;">
+							<button class="tijiao"><a class="item_add">加入购物车</a></button>
+						</div>
 					</div>
-				</div>
-				<div class="clearfix"> </div>
-				<div class="bootstrap-tab animated wow slideInUp animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: slideInUp;">
-					<div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs" style="margin-left: -250px;width: 100%;">
-						<ul id="myTab" class="nav nav-tabs" role="tablist">
-							<li role="presentation" class="active" style="float: right;"><a href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">商品详情</a></li>
-						</ul>
-						<div id="myTabContent" class="tab-content">
-							<div role="tabpanel" class="tab-pane fade in active bootstrap-tab-text" id="home" aria-labelledby="home-tab">
-								{!!$v->repertory!!}
+					<div class="clearfix"> </div>
+					<div class="bootstrap-tab animated wow slideInUp animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: slideInUp;">
+						<div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs" style="margin-left: -250px;width: 100%;">
+							<ul id="myTab" class="nav nav-tabs" role="tablist">
+								<li role="presentation" class="active" style="float: right;"><a href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">商品详情</a></li>
+							</ul>
+							<div id="myTabContent" class="tab-content">
+								<div role="tabpanel" class="tab-pane fade in active bootstrap-tab-text" id="home" aria-labelledby="home-tab">
+									{!!$v->repertory!!}
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
+			</form>
 			<script>
 				$('.shuliang').focus(function(){
 					// console.log($(this).val());
@@ -139,7 +157,7 @@
 <!-- <div class="single-related-products">
 		<div class="container">
 			<h3 class="animated wow slideInUp animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: slideInUp;">Related Products</h3>
-			<p class="est animated wow slideInUp animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: slideInUp;">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia 
+			<p class="est animated wow slideInUp animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: slideInUp;">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
 				deserunt mollit anim id est laborum.</p>
 			<div class="new-collections-grids">
 				<div class="col-md-3 new-collections-grid">

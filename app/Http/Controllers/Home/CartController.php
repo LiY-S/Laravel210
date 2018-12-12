@@ -16,18 +16,11 @@ class CartController extends Controller
         if(!session('user')){
             return redirect('/home/login');
         }
-        // 查询数据库 通过session查询数据库
-        $user_id = session('user');
-        // dd($user_id);
-        $data = Cart::where('user_id',$user_id) -> get();
-        // 获取商品的id
-        // $goodid = $data['goods_id'];
-        // 通过商品的id查出商品名称 商品图片 商品属性  商品价格
+
 
         // dump($data);
         return view('home.cart.index',[
-            'title'=>'购物车',
-            'data'=> $data
+            'title'=>'购物车'
         ]);
     }
 
@@ -44,5 +37,29 @@ class CartController extends Controller
 
             echo 0;
         }
+    }
+    public function tian(Request $request, $id)
+    {
+        // dd($request->all());
+        $data = $request ->except('_token');
+        $good = DB::table('shop_goods') ->where('id',$id)->first();
+        // dd($good);
+        $data['goods_name'] = $good->goods_name;
+        // $data['goods_size'] = $good->goods_size;
+        $data['goods_prices'] = $good->goods_price * $data['goods_count'];
+        $data['goods_id'] = $id;
+        $data['user_id'] = session('user');
+        $res = DB::table('shop_cart') ->insert($data);
+        if ($res) {
+            return view('home.cart.index',[
+                'title'=>'购物车'
+            ]);
+        } else {
+            return back();
+        }
+    }
+    public function nullcart()
+    {
+        return view('home.cart.nullcart',['title'=>'购物车']);
     }
 }
