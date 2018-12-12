@@ -109,7 +109,8 @@
         <a href="#"><i class="zmdi zmdi-view-dashboard"></i>商品管理<span class="zmdi arrow"></span></a>
         <ul class="nav nav-inside collapse">
           <li class="inside-title">商品管理</li>
-          <li><a href="/admins/goods">商品添加</a></li>
+          <li><a href="/admins/goods/create">商品添加</a></li>
+          <li><a href="/admins/goods">浏览商品</a></li>
         </ul>
       </li>
       <li>
@@ -117,6 +118,7 @@
         <ul class="nav metismenu">
           <li class="inside-title">收藏管理</li>
           <li><a href="/admin/collect/create">浏览收藏</a></li>
+          <li><a href="/admin/collect">浏览收藏</a></li>
         </ul>
       </li>
       <li><a href="#"><i class="zmdi zmdi-view-dashboard"></i>订单管理<span class="zmdi arrow"></span></a>
