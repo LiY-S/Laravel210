@@ -1,6 +1,5 @@
 @extends('mutual.homes')
 
-
 @section('title',$title)
 
 @section('content')
@@ -101,11 +100,15 @@
 }
 </style>
 <div id="banner_tabs" class="flexslider">
+        @php
+            $px = DB::table('shop_ad')->orderBy('ad_sort','asc')->get();
+        @endphp
     <ul class="slides">
-         @foreach($res as $k=>$v)
+         @foreach($px as $k=>$v)
+         
         <li>
             <a title="" target="_blank" href="{!!$v->ad_a!!}">
-                <img width="1920" height="482" alt="" style="background: url({!!$v->ad_src!!}) no-repeat center;" src="/homes/lbt/images/alpha.png">
+                <img style="background: url({!!$v->ad_src!!})no-repeat center;" src="/homes/lbt/images/alpha.png">
             </a>
         </li>
        @endforeach
@@ -239,6 +242,9 @@
 
 
 @stop
+
+
+
 
 @section('js')
 

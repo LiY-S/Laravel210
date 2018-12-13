@@ -71,7 +71,7 @@
                                     {{$v->ad_name}}
                                 </td>
                                 <td class="uname">
-                                    <img src="{!!$v->ad_src!!}" width="200px" height="160px">
+                                    <img src="{!!$v->ad_src!!}" width="380px" height="160px">
                                 </td>
                                 <td class="uname">
                                     {{$v->ad_sort}}
@@ -80,7 +80,7 @@
                                     {{$v->ad_a}}
                                 </td>
                                 <td>
-                                    <a href="/admin/rotation/{{$v->id}}/edit" class='btn btn-danger'style="background-color: #ef9a9a;color:#fff; width:100px">
+                                    <a href="/admin/rotation/{{$v->id}}/edit" class='btn btn-danger'style="background-color: #ef9a9a;color:#fff; width:80px">
                                         修改
                                     </a>
                                     <form action="/admin/rotation/{{$v->id}}" method='post' style='display:inline'>

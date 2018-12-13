@@ -1,0 +1,28 @@
+
+    .i {
+      display: inline-block;
+      vertical-align: middle;
+      width: 30px;
+      height: 30px;
+      margin: 5px 20px;
+     }
+    b {
+      color: #007ac3;
+      padding-right: 10px;
+    }
+    i {
+      color: green;
+      font-weight: bold;
+    }
+    .boxs {
+      width: 860px;
+      height: 860px;
+      margin: auto;
+      padding: 20px;
+      border: 2px solid darkgray;
+      font-size: 18px;
+      border-radius: 10px;
+      border-left-width: 10px;
+      border-right-width: 10px;
+    }
+     

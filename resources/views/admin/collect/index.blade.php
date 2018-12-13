@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="col-md-8 col-md-offset-2" style="float: none;height: 100%">
+<div class="col-md-8 col-md-offset-2" style="float: none;height: 780px">
     <form action="/admin/collect" method='get'>
         <div class="data-info">
             <div id="table1_wrapper" class="dataTables_wrapper no-footer">
