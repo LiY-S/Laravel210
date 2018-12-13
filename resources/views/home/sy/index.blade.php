@@ -195,7 +195,7 @@
                         </div>
                         <h4><a href="/home/single/{{$v->id}}"  target="view_window">{{$v->goods_name}}</a></h4>
                         <div class="new-collections-grid1-left simpleCart_shelfItem">
-                            <p><span class="item_price" style="color:#ff5000">￥{{$v->goods_price}}</span><a class="item_add" href="#">加入购物车</a></p>
+                            <p><span class="item_price" style="color:#ff5000">￥{{$v->goods_price}}</span><a class="item_add" href="/home/single/{{$v->id}}">去购买</a></p>
                         </div>
                     </div>
                 </div>
@@ -217,7 +217,7 @@
                     <div class="new-collections-grid1-left simpleCart_shelfItem timer-grid-left-price">
                         <p><span class="item_price" style="color:#ff5000">￥{{$newGoods->goods_price}}</span></p>
                         <h4>{{$newGoods->goods_name}}</h4>
-                        <p><a class="item_add timer_add" href="#">加入购物车</a></p>
+                        <p><a class="item_add timer_add" href="/home/single/{{$newGoods->id}}">去购买</a></p>
                     </div>
                     <div id="counter"> </div>
                     <script src="/homes/js/jquery.countdown.js"></script>

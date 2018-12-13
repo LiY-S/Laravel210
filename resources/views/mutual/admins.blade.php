@@ -113,11 +113,20 @@
           <li><a href="/admin/rotation">浏览轮播图</a></li>
         </ul>
       </li>
+       <li>
+        <a href="#"><i class="zmdi zmdi-view-dashboard"></i>分类管理<span class="zmdi arrow"></span></a>
+        <ul class="nav nav-inside collapse">
+          <li class="inside-title">分类管理</li>
+          <li><a href="/admins/cate/create">添加分类</a></li>
+          <li><a href="/admins/cate">浏览分类</a></li>
+        </ul>
+      </li>
       <li>
         <a href="#"><i class="zmdi zmdi-view-dashboard"></i>商品管理<span class="zmdi arrow"></span></a>
         <ul class="nav nav-inside collapse">
           <li class="inside-title">商品管理</li>
-          <li><a href="/admins/goods">商品添加</a></li>
+          <li><a href="/admins/goods/create">添加商品</a></li>
+          <li><a href="/admins/goods">浏览商品</a></li>
         </ul>
       </li>
       <li>
@@ -165,6 +174,7 @@
             <li><a href="/admin/links">浏览链接 </a></li>
           </ul>
       </li>
+      <li><a href="/admins/conf">网站配置</a></li>
     </ul>
   </aside>
   <div class="row">

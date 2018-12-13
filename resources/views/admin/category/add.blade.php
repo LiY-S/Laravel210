@@ -4,18 +4,6 @@
 
 @section('content')
 
-
-
-
-@if (session('error'))
-            <div class="alert alert-danger alert-dismissible fade in" role="alert" id="divs">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
-                    <strong>{{session('error')}}</strong>
-            </div>
-        @endif
-
-
-
 <div class="col-lg-12" style="float: none">
     <div class="content-box">
         <div class="head success-bg clearfix">
@@ -38,6 +26,12 @@
             </div>
         </div>
         <div class="content">
+            @if (session('error'))
+            <div class="alert alert-danger alert-dismissible fade in" role="alert" id="divs">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <strong>{{session('error')}}</strong>
+            </div>
+        @endif
             <div class="row">
                 <div class="col-md-10">
                     <form class="form-horizontal" action="/admins/cate" method="post">
@@ -55,7 +49,7 @@
                                 顶级分类
                             </label>
                             <div class="col-sm-10">
-                                <select class="form-control selectpicker" name="pid">
+                                <select class="form-control selectpickers" name="pid">
                                     <option value="0">
                                         ---请选择---
                                     </option>
@@ -113,7 +107,12 @@
         </div>
     </div>
 </div>
+
+@stop
+
+@section('js')
 <script>
     $('#divs').delay(1000).slideUp(2000);
 </script>
-@endsection
+
+@stop

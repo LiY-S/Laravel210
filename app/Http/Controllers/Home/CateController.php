@@ -19,6 +19,7 @@ class CateController extends Controller
     	$cate = Cate::select()->get();
     	$goods = DB::table('shop_goods')
     	->where('cate_id',$id)
+        ->where('status','1')
     	->paginate(9);
         foreach ($goods as $v) {
             $color = Color::where('goods_id',$v->id)->get();
@@ -30,6 +31,7 @@ class CateController extends Controller
             $v->photo = explode(',',$v->photo);
         }
     	$newGoods = DB::table('shop_goods')
+                    ->where('status','1')
                   	->orderBy('id', 'desc')
                		->take(3)
                 	->get();

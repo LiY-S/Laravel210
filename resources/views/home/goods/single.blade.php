@@ -82,7 +82,7 @@
 						<h5>鞋码 :</h5>
 						@foreach ($v->size as $val)
 						<div class="colr ert">
-							<label class="radio"><input type="radio" name="radio"><i></i>{{$val}}</label>
+							<label class="radio"><input type="radio" name="radio" id="size"><i></i>{{$val}}</label>
 						</div>
 						@endforeach
 						<div class="clearfix"> </div>
@@ -153,7 +153,7 @@
                         </div>
                         <h4><a href="/home/single/{{$v->id}}"  target="view_window">{{$v->goods_name}}</a></h4>
                         <div class="new-collections-grid1-left simpleCart_shelfItem">
-                            <p><span class="item_price" style="color:#ff5000">￥{{$v->goods_price}}</span><a class="item_add" href="#">加入购物车</a></p>
+                            <p><span class="item_price" style="color:#ff5000">￥{{$v->goods_price}}</span><a class="item_add" href="/home/single/{{$v->id}}">去购买</a></p>
                         </div>
                     </div>
                 </div>
@@ -165,5 +165,17 @@
 <!-- //collections -->
 
 	<script src="/homes/js/imagezoom.js"></script>
+	<script>
+		// alert($);
+		$('.item_add').click(function() {
+			// if ($) {}
+			var val=$('input:radio[name="radio"]:checked').val();
+			// console.log(val);
+			if (val == null) {
+				alert('请选择鞋码!');
+				return false;
+			}
+		});
+	</script>
 
 @endsection
