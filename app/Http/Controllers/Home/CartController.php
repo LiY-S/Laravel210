@@ -62,4 +62,21 @@ class CartController extends Controller
     {
         return view('home.cart.nullcart',['title'=>'购物车']);
     }
+
+
+    public function ajaxjiesuan(Request $request)
+    {
+        $data = $request->data;
+        // dd($data);
+        $res = [];
+        foreach ($data as $key => $value) {
+            $chafen = explode('.', $value);
+            $ke = $chafen[0];
+            $zhi = $chafen[1];
+            $res[$ke] = $zhi;
+        }
+        // dd($res);
+        session(['gouwuche'=>$res]);
+        return '1';
+    }
 }

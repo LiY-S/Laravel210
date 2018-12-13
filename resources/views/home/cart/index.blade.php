@@ -41,7 +41,7 @@
                     @foreach( $data as $k => $v)
                     <tr class="rem1">
                         <td class="cart-product-thumbnail">
-                            <input type="checkbox" class='che' gid='{{$v->id}}'>
+                            <input type="checkbox" class='che' name="gid[]" value='{{$v->id}}'>
                         </td>
                         <td class="invert" style="text-align: left;">
                             商品：{{$v->goods_name}}
@@ -129,13 +129,11 @@
         // console.log(zongjia);
         totals();
     });
-
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
-
     //删除数据
     $('.rem').click(function(){
         //提示信息
@@ -155,7 +153,6 @@
                 nums()
             }
         });
-
     });
     function nums()
     {
@@ -165,17 +162,13 @@
             // location.reload();
             location.href='/home/nullcart';
         }
-
     }
     nums()
-
     //选择
     $('.che').click(function(){
 
-        totals()
+        totals();
     })
-
-
     function totals()
     {
         function accAdd(arg1,arg2){
@@ -202,6 +195,32 @@
         //让总计发生改变
         $('#total').text(sum);
     }
+    var GWC = false;
+    $('.qujiesuan').click(function(){
+        var chea = new Array();
+        $(':checkbox:checked').each(function(){
+            var cheaa = $(this).val();
+            var shu = $(this).parents('tr').find('.value').text();
+            chea.push(cheaa+'.'+shu);
+        });
+        console.log(chea);
+        $.ajaxSetup({
+            async : false
+        });
+        // 发送ajax
+        $.post('/home/cart/ajaxjiesuan',{data:chea},function(data){
+            GWC = true;
+
+        });
+        console.log(GWC);
+
+        if (!GWC) {
+            return false;
+        } else {
+            return true;
+        }
+
+    })
 </script>
 <!--quantity-->
 
