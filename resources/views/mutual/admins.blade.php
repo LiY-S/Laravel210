@@ -29,387 +29,289 @@
 	<div id="preloader">
         <div class="refresh-preloader"><div class="preloader"><i>.</i><i>.</i><i>.</i></div></div>
 	</div>
-<div class="wrapper">
+	<div class="wrapper">
 	<nav class="navbar">
-		<div class="navbar-header container">
-			<a href="#" class="menu-toggle">
-				<i class="zmdi zmdi-menu">
-				</i>
-			</a>
-			<!-- logo图片 -->
-			<a href="/admin" class="logo">
-				<img src="/admins/admins/img/logo.png" alt="Logo Pacificonis" />
-			</a>
-			<a href="/admin" class="icon-logo">
-			</a>
-		</div>
-		<div class="navbar-container clearfix">
-			<!-- logo -->
-			<div class="pull-left">
-				<a href="/" class="page-title text-uppercase">
-					前台首页
-				</a>
-			</div>
-			<div class="pull-right">
-				@php $res = DB::table('shop_admin')-> where('id',session('uid'))-> first();
-				@endphp
-				<div class="pull-right">
-					<div class="pull-left search-container searchbox" style="width: 150px; margin-top: 30px;font-size: 22px;">
-						嘿&nbsp;,&nbsp;&nbsp;&nbsp; {{$res->username}}
+      <div class="navbar-header container">
+          <a href="#" class="menu-toggle">
+              <i class="zmdi zmdi-menu">
+              </i>
+          </a>
+          <!-- logo图片 -->
+          <a href="/admin" class="logo">
+              <img src="/admins/admins/img/logo.png" alt="Logo Pacificonis" />
+          </a>
+          <a href="/admin" class="icon-logo">
+          </a>
+      </div>
+      <div class="navbar-container clearfix">
+          <!-- logo -->
+          <div class="pull-left">
+              <a href="/" class="page-title text-uppercase">
+                  前台首页
+              </a>
+          </div>
+          <div class="pull-right">
+              <div class="pull-left search-container">
+                  <form class="searchbox">
+                      <input type="search" placeholder="Search" name="search" class="searchbox-input"
+                      />
+                      <input type="submit" class="searchbox-submit" value="" />
+                      <span class="searchbox-icon">
+                          <span class="zmdi zmdi-search search-icon"></span>
+                      </span>
+                  </form>
+              </div>
+			      @php
+
+            $res = DB::table('shop_admin')-> where('id',session('uid'))-> first();
+
+            @endphp
+          <div class="pull-right">
+              <div class="pull-left search-container searchbox" style="width: 150px; margin-top: 35px;font-size: 22px;">
+                          嘿&nbsp;,&nbsp;&nbsp;&nbsp; {{$res->username}}
+              </div>
+
+              <ul class="nav pull-right right-menu">
+                  <li class="">
+                      <a class="" data-toggle="dropdown" aria-expanded="true">
+                          <!-- <i class="zmdi zmdi-account-circle"> -->
+                              <img class="zmdi zmdi-account-circle" src="{{$res->profile}}"style="width: 45px;height:40px;border-radius: 50%">
+                          <!-- </i> -->
+                      </a>
+                      <div class="more-opt-container dropdown-menu">
+                          <a href="/admin/profile"><i class="zmdi zmdi-account-o"></i>修改头像</a>
+                          <a href="/admin/passchange"><i class="zmdi zmdi-storage"></i>修改密码</a>
+                          <a href="/admin/logout"><i class="zmdi zmdi-run"></i>退出</a>
+                      </div>
+                  </li>
+              </ul>
+          </div>
+      </div>
+  </nav>
+  <aside class="sidebar">
+    <ul class="nav metismenu">
+      <li>
+        <a href="#"><i class="zmdi zmdi-view-dashboard"></i>管理员管理<span class="zmdi arrow"></span></a>
+        <ul class="nav nav-inside collapse">
+          <li class="inside-title">管理员管理</li>
+          <li><a href="/admin/user/create">添加用户</a></li>
+          <li><a href="/admin/user">浏览用户</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#"><i class="zmdi zmdi-view-dashboard"></i>用户管理<span class="zmdi arrow"></span></a>
+        <ul class="nav nav-inside collapse">
+          <li class="inside-title">用户管理</li>
+          <li><a href="/admin/users">浏览用户</a></li>
+        </ul>
+      </li>
+       <li>
+        <a href="#"><i class="zmdi zmdi-view-dashboard"></i>轮播图管理<span class="zmdi arrow"></span></a>
+        <ul class="nav nav-inside collapse">
+          <li class="inside-title">轮播图管理</li>
+          <li><a href="/admin/rotation/create">添加轮播图</a></li>
+          <li><a href="/admin/rotation">浏览轮播图</a></li>
+        </ul>
+      </li>
+       <li>
+        <a href="#"><i class="zmdi zmdi-view-dashboard"></i>分类管理<span class="zmdi arrow"></span></a>
+        <ul class="nav nav-inside collapse">
+          <li class="inside-title">分类管理</li>
+          <li><a href="/admins/cate/create">添加分类</a></li>
+          <li><a href="/admins/cate">浏览分类</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#"><i class="zmdi zmdi-view-dashboard"></i>商品管理<span class="zmdi arrow"></span></a>
+        <ul class="nav nav-inside collapse">
+          <li class="inside-title">商品管理</li>
+          <li><a href="/admins/goods/create">添加商品</a></li>
+          <li><a href="/admins/goods">浏览商品</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#"><i class="zmdi zmdi-view-dashboard"></i>收藏管理<span class="zmdi arrow"></span></a>
+        <ul class="nav metismenu">
+          <li class="inside-title">收藏管理</li>
+          <li><a href="/admin/collect/create">浏览收藏</a></li>
+        </ul>
+      </li>
+      <li><a href="#"><i class="zmdi zmdi-view-dashboard"></i>订单管理<span class="zmdi arrow"></span></a>
+        <ul class="nav nav-inside collapse">
+          <li class="inside-title">订单管理</li>
+          <li><a href="/admin/order">浏览订单</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#"><i class="zmdi zmdi-view-dashboard"></i>角色管理<span class="zmdi arrow"></span></a>
+        <ul class="nav nav-inside collapse">
+          <li class="inside-title">角色管理</li>
+          <li><a href="/admin/role/create">添加角色</a></li>
+          <li><a href="/admin/role">浏览角色</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#"><i class="zmdi zmdi-view-dashboard"></i>权限管理<span class="zmdi arrow"></span></a>
+        <ul class="nav metismenu">
+          <li class="inside-title">权限管理</li>
+          <li><a href="/admin/permission/create">添加权限</a></li>
+          <li><a href="/admin/permission">浏览权限</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#"><i class="zmdi zmdi-view-dashboard"></i>公告管理<span class="zmdi arrow"></span></a>
+        <ul class="nav nav-inside collapse">
+          <li class="inside-title">公告管理</li>
+          <li><a href="/admin/notice/create">添加公告</a></li>
+          <li><a href="/admin/notice">浏览公告</a></li>
+        </ul>
+      </li>
+      <li>
+          <a href="#"> <i class="zmdi zmdi-view-dashboard"></i>友情链接<span class="zmdi arrow"></span></a>
+          <ul class="nav nav-inside collapse">
+            <li class="inside-title">友情链接</li>
+            <li><a href="/admin/links/create">添加链接</a></li>
+            <li><a href="/admin/links">浏览链接 </a></li>
+          </ul>
+      </li>
+      <li><a href="/admins/conf">网站配置</a></li>
+    </ul>
+  </aside>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="content-box">
+        <div class="head head-with-btns clearfix">
+          <div class="functions-btns pull-right" id="shijian">
+
+            <button id="y_ear" type="button" class="btn btn-warning">
+            </button>
+            <button id="t_ime"  type="button" class="btn btn-info">
+            </button>
+          </div>
+        </div>
+        <script>
+
+            setInterval(function(){
+                      var date=new Date();
+                      var year=date.getFullYear(); //年
+                      var mon=date.getMonth()+1;  //月
+                      var day=date.getDate();   //日
+                      var hh=date.getHours();   //时
+                      var mm=date.getMinutes(); //分
+                      var ss=date.getSeconds(); //秒
+                      var today=new Array("星期日","星期一","星期二","星期三","星期四","星期五","星期六");
+                      var xq=today[date.getDay()];
+                      var daytime;
+                      daytime=year +"/"+mon+"/"+day+" "+xq;
+                      var time;
+                      if(mm<10 ){
+                          mm="0"+mm;
+                      }
+                      if(ss<10){
+                          ss="0"+ss;
+                        }
+                      time="当前时间" + hh+":"+ mm + ":" +ss;
+                      $("#y_ear").text(daytime);
+                      $("#t_ime").text(time);
+                      },1000);
+        </script>
+         <div class="content">
+			@section('content')
+			<div class="boxs">
+				<!-- 时钟开始 -->
+				<div class="main_banner">
+					<div class="main_banner_wrap">
+						<canvas id="myCanvas" width="150" height="150">
+						</canvas>
 					</div>
-					<ul class="nav pull-right right-menu">
-						<li class="">
-							<a class="" data-toggle="dropdown" aria-expanded="true">
-								<!-- <i class="zmdi zmdi-account-circle"> -->
-								<img class="zmdi zmdi-account-circle" src="{{$res->profile}}" style="width: 45px;height:40px;border-radius: 50%">
-								<!-- </i> -->
-							</a>
-							<div class="more-opt-container dropdown-menu">
-								<a href="/admin/profile">
-									<i class="zmdi zmdi-account-o">
-									</i>
-									修改头像
-								</a>
-								<a href="/admin/passchange">
-									<i class="zmdi zmdi-storage">
-									</i>
-									修改密码
-								</a>
-								<a href="/admin/logout">
-									<i class="zmdi zmdi-run">
-									</i>
-									退出
-								</a>
-							</div>
-						</li>
-					</ul>
 				</div>
-			</div>
-	</nav>
-	<aside class="sidebar">
-		<ul class="nav metismenu">
-			<li>
-				<a href="#">
-					<i class="zmdi zmdi-view-dashboard">
-					</i>
-					管理员管理
-					<span class="zmdi arrow">
-					</span>
-				</a>
-				<ul class="nav nav-inside collapse">
-					<li class="inside-title">
-						管理员管理
-					</li>
-					<li>
-						<a href="/admin/user/create">
-							添加用户
-						</a>
-					</li>
-					<li>
-						<a href="/admin/user">
-							浏览用户
-						</a>
-					</li>
-				</ul>
-			</li>
-			<li>
-				<a href="#">
-					 <i class="zmdi zmdi-view-dashboard">
-					</i>
-				   用户管理
-					<span class="zmdi arrow">
-					</span>
-				</a>
-				<ul class="nav nav-inside collapse">
-					<li class="inside-title ">
-						用户管理
-					</li>
-					<li>
-						<a href="/admin/users">
-							浏览用户
-						</a>
-					</li>
-				</ul>
-			</li>
-			<li>
-				<a href="#">
-					<i class="zmdi zmdi-view-dashboard">
-					</i>
-					轮播图管理
-					<span class="zmdi arrow">
-					</span>
-				</a>
-				<ul class="nav nav-inside collapse">
-					<li class="inside-title">
-						轮播图管理
-					</li>
-					<li>
-						<a href="/admin/rotation/create">
-							添加轮播图
-						</a>
-					</li>
-					<li>
-						<a href="/admin/rotation">
-							浏览轮播图
-						</a>
-					</li>
-				</ul>
-			</li>
-			<li>
-				<a href="#">
-					<i class="zmdi zmdi-view-dashboard">
-					</i>
-					商品管理
-					<span class="zmdi arrow">
-					</span>
-				</a>
-				<ul class="nav nav-inside collapse">
-					<li class="inside-title">
-						商品管理
-					</li>
-					<li>
-						<a href="/admins/goods">
-							商品添加
-						</a>
-					</li>
-				</ul>
-			</li>
-			<li>
-				<a href="#">
-					<i class="zmdi zmdi-view-dashboard">
-					</i>
-					收藏管理
-					<span class="zmdi arrow">
-					</span>
-				</a>
-				<ul class="nav metismenu">
-					<li class="inside-title">
-						收藏管理
-					</li>
-					<li>
-						<a href="/admin/collect/index">
-							浏览收藏
-						</a>
-					</li>
-				</ul>
-			</li>
-			<li>
-				<a href="#">
-					<i class="zmdi zmdi-view-dashboard">
-					</i>
-					订单管理
-					<span class="zmdi arrow">
-					</span>
-				</a>
-				<ul class="nav nav-inside collapse">
-					<li class="inside-title">
-						订单管理
-					</li>
-					<li>
-						<a href="/admin/order">
-							浏览订单
-						</a>
-					</li>
-				</ul>
-			</li>
-			<li>
-				<a href="#">
-					<i class="zmdi zmdi-view-dashboard">
-					</i>
-					角色管理
-					<span class="zmdi arrow">
-					</span>
-				</a>
-				<ul class="nav nav-inside collapse">
-					<li class="inside-title">
-						角色管理
-					</li>
-					<li>
-						<a href="/admin/role/create">
-							添加角色
-						</a>
-					</li>
-					<li>
-						<a href="/admin/role">
-							浏览角色
-						</a>
-					</li>
-				</ul>
-			</li>
-			<li>
-				<a href="#">
-					<i class="zmdi zmdi-view-dashboard">
-					</i>
-					权限管理
-					<span class="zmdi arrow">
-					</span>
-				</a>
-				<ul class="nav metismenu">
-					<li class="inside-title">
-						权限管理
-					</li>
-					<li>
-						<a href="/admin/permission/create">
-							添加权限
-						</a>
-					</li>
-					<li>
-						<a href="/admin/permission">
-							浏览权限
-						</a>
-					</li>
-				</ul>
-			</li>
-			<li>
-				<a href="#">
-					<i class="zmdi zmdi-view-dashboard">
-					</i>
-					公告管理
-					<span class="zmdi arrow">
-					</span>
-				</a>
-				<ul class="nav nav-inside collapse">
-					<li class="inside-title">
-						公告管理
-					</li>
-					<li>
-						<a href="/admin/notice/create">
-							添加公告
-						</a>
-					</li>
-					<li>
-						<a href="/admin/notice">
-							浏览公告
-						</a>
-					</li>
-				</ul>
-			</li>
-			<li>
-				<a href="#">
-					<i class="zmdi zmdi-view-dashboard">
-					</i>
-					友情链接
-					<span class="zmdi arrow">
-					</span>
-				</a>
-				<ul class="nav nav-inside collapse">
-					<li class="inside-title">
-						友情链接
-					</li>
-					<li>
-						<a href="/admin/links/create">
-							添加链接
-						</a>
-					</li>
-					<li>
-						<a href="/admin/links">
-							浏览链接
-						</a>
-					</li>
-				</ul>
-			</li>
-		</ul>
-	</aside>
-	<div class="row">
-		<div class="col-lg-12">
-			<div class="content-box">
-				<div class="content">
-					@section('content')
-					<div class="boxs">
-						<!-- 时钟开始 -->
-						<div class="main_banner">
-							<div class="main_banner_wrap">
-								<canvas id="myCanvas" width="150" height="150">
-								</canvas>
-							</div>
-						</div>
-						<!-- 时钟结束 -->
-						<!-- 配置开始 -->
-						<div>
-							<p>
-								<i class="i a">
-								</i>
-								<b>
-									当前域名:
-								</b>
-								<i id="xitong">
-									<?php echo $_SERVER[ 'HTTP_HOST'] ;?>
-								</i>
-							</p>
-							<br>
-							<p>
-								<i class="i b">
-								</i>
-								<b>
-									当前服务器的操作系统：
-								</b>
-								<i id="netline">
-									<?php echo $_SERVER[ "SystemRoot"]; ?>
-								</i>
-							</p>
-							<br>
-							<p>
-								<i class="i b">
-								</i>
-								<b>
-									服务器软件配置信息:
-								</b>
-								<i id="wangsu">
-									<?php echo $_SERVER[ "SERVER_SOFTWARE"]; ?>
-								</i>
-							</p>
-							<br>
-							<p>
-								<i class="i c">
-								</i>
-								<b>
-									当前脚本所在的文档根目录:
-								</b>
-								<i id="fenbianlv">
-									<?php echo $_SERVER[ "CONTEXT_DOCUMENT_ROOT"]; ?>
-								</i>
-							</p>
-							<br>
-							<p>
-								<i class="i d">
-								</i>
-								<b>
-									服务器使用的CGI规范的版本:
-								</b>
-								<i id="liulanqi">
-									<?php echo $_SERVER[ "GATEWAY_INTERFACE"];?>
-								</i>
-							</p>
-							<br>
-							<p>
-								<i class="i d">
-								</i>
-								<b>
-									请求页面时通信协议的名称和版本:
-								</b>
-								<i id="liulanqi">
-									<?php echo $_SERVER[ "SERVER_PROTOCOL"];?>
-								</i>
-							</p>
-							<br>
-							<p>
-								<i class="i e">
-								</i>
-								<b>
-								</b>
-								<i id="flash_banben">
-								</i>
-							</p>
-							<br>
-						</div>
-						<!-- 配置结束 -->
-					</div>
-					@show
+				<!-- 时钟结束 -->
+				<!-- 配置开始 -->
+				<div>
+					<p>
+						<i class="i a">
+						</i>
+						<b>
+							当前域名:
+						</b>
+						<i id="xitong">
+							<?php echo $_SERVER[ 'HTTP_HOST'] ;?>
+						</i>
+					</p>
+					<br>
+					<p>
+						<i class="i b">
+						</i>
+						<b>
+							当前服务器的操作系统：
+						</b>
+						<i id="netline">
+							<?php echo $_SERVER[ "SystemRoot"]; ?>
+						</i>
+					</p>
+					<br>
+					<p>
+						<i class="i b">
+						</i>
+						<b>
+							服务器软件配置信息:
+						</b>
+						<i id="wangsu">
+							<?php echo $_SERVER[ "SERVER_SOFTWARE"]; ?>
+						</i>
+					</p>
+					<br>
+					<p>
+						<i class="i c">
+						</i>
+						<b>
+							当前脚本所在的文档根目录:
+						</b>
+						<i id="fenbianlv">
+							<?php echo $_SERVER[ "CONTEXT_DOCUMENT_ROOT"]; ?>
+						</i>
+					</p>
+					<br>
+					<p>
+						<i class="i d">
+						</i>
+						<b>
+							服务器使用的CGI规范的版本:
+						</b>
+						<i id="liulanqi">
+							<?php echo $_SERVER[ "GATEWAY_INTERFACE"];?>
+						</i>
+					</p>
+					<br>
+					<p>
+						<i class="i d">
+						</i>
+						<b>
+							请求页面时通信协议的名称和版本:
+						</b>
+						<i id="liulanqi">
+							<?php echo $_SERVER[ "SERVER_PROTOCOL"];?>
+						</i>
+					</p>
+					<br>
+					<p>
+						<i class="i e">
+						</i>
+						<b>
+						</b>
+						<i id="flash_banben">
+						</i>
+					</p>
+					<br>
 				</div>
+				<!-- 配置结束 -->
 			</div>
+			@show
 		</div>
-	</div>
-	</div>
+      </div>
+    </div>
+  </div>
+
 </div>
         <script type="text/javascript" src=" /admins/zhuye/js/jquery.js">
         </script>

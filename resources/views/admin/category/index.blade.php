@@ -3,6 +3,8 @@
 @section('title',$title)
 
 @section('content')
+  <script src="/admins/admins/bower_components/jquery/dist/jquery.min.js"></script>
+
 @if (session('success'))
             <div class="alert alert-info alert-dismissible fade in" role="alert" id="divs">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
@@ -95,6 +97,7 @@
                 </table>
                 <div style="margin-left: 555px;">{{$res->links()}}</div>
                 <script>
+                    // alert($);
                     $('#divs').delay(1000).slideUp(2000);
                 </script>
 @stop

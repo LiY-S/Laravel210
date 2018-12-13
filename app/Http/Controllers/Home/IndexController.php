@@ -15,6 +15,7 @@ class IndexController extends Controller
     public function index()
     {
         $goods = Goods::orderBy(\DB::raw('RAND()'))
+                ->where('status','1')
                 ->take(4)
                 ->get();
         foreach ($goods as $v) {
@@ -27,8 +28,10 @@ class IndexController extends Controller
             $v->photo = explode(',',$v->photo);
         }
         $newGoods = DB::table('shop_goods')
-                  ->orderBy('id', 'desc')
-                  ->first();
+                    ->where('status','1')
+                    ->orderBy('id', 'desc')
+                    ->first();
+                    // dump($newGoods);
         $color = Color::where('goods_id',$newGoods->id)->get();
         foreach ($color as $key => $value) {
             $newGoods->color = $value->color;

@@ -166,7 +166,8 @@ class CateController extends Controller
     {
         try{
 
-            $data = DB::table('shop_category')->delete($id);;
+            $data = DB::table('shop_category')->delete($id);
+            DB::table('shop_goods')->where('cate_id',$id)->delete();
             if($data){
                 return redirect('/admins/cate')->with('success','删除成功');
             }
