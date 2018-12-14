@@ -7,10 +7,10 @@
 
 <div class="breadcrumbs">
 		<div class="container">
-			<!-- <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
-				<li><a href="index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
-				<li class="active">Furniture</li>
-			</ol> -->
+			<ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
+				<li><a href="/"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>首页</a></li>
+				<li class="active">分类</li>
+			</ol>
 		</div>
 	</div>
 	<div class="products">

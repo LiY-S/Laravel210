@@ -41,12 +41,6 @@
 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th class="table-check">
-                                <div class="checkbox checkbox-primary">
-                                  <label><input type="checkbox">
-                                    <i></i></label>
-                                </div>
-                            </th>
                             <th>ID</th>
                             <th>所属分类</th>
                             <th>商品封面</th>
@@ -62,12 +56,6 @@
                     <tbody>
                     	@foreach ($res as $v)
                         <tr>
-                            <td class="table-check">
-                                <div class="checkbox checkbox-primary">
-                                  <label><input type="checkbox">
-                                    <i></i></label>
-                                </div>
-                            </td>
                             <td>
                                 {{$v->id}}
                             </td>
