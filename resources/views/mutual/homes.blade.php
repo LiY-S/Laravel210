@@ -114,6 +114,9 @@ $conf = DB::table('shop_conf')->first();
                             </script>
                         <!-- //search-scripts -->
                 </div>
+                            @php
+                                $cart = DB::table('shop_cart')->where('user_id',session('user'))->get();
+                            @endphp
                 <div class="header-right">
                     <div class="cart box_1">
                         <a href="/home/cart">

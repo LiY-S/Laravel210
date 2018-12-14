@@ -163,7 +163,7 @@ class PersonalController extends Controller
         $res = DB::table('shop_address')->where('user_id',$uid)->get();
         $data = count($res);
         // dd($data);
-        if ($data <= 5) {
+        if ($data < 5) {
             echo 1;
         } else {
             echo 0;

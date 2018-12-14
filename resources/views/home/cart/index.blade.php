@@ -142,8 +142,8 @@
         if(!res) return;
          //参数发送到控制器中
          //获取id
-        var gid = $(this).parents('tr').find('.che').attr('gid');
-
+        var gid = $(this).parents('tr').find('.che').attr('value');
+        // console.log(gid);
         var rem = $(this);
 
         $.post('/home/shopcart',{gid:gid},function(data){

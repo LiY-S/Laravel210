@@ -27,6 +27,7 @@ class CartController extends Controller
     public function shopcart(Request $request)
     {
         $id = $request->gid;
+        // dd($id);
 
         $res = DB::table('shop_cart')->where('id',$id)->delete();
 

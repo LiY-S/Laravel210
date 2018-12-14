@@ -98,8 +98,24 @@
             });
             var phv = $('input[name=phone]').val().trim();
             //发送ajax
-            if (phv == '') {
+            if (phv == '' || PH == false) {
                 return;
+            } else {
+                var i = 60;
+                var but = $(this);
+
+                var info = setInterval(function(){
+                    but.text('');
+                    i--;
+                    if (i > 0) {
+                        but.text(i+'秒');
+                        but.attr('disabled','disabled');
+                    } else {
+                        clearInterval(info);
+                        but.text('点击重新获取验证码');
+                        but.removeAttr('disabled');
+                    }
+                },1000);
             }
             // console.log(phv);
             $.post('/home/wjmmajax',{phone:phv},function(data){
@@ -167,28 +183,6 @@
         });
 </script>
 <script>
-    $('#but').click(function(){
-        var phv = $('input[name=phone]').val().trim();
-        if (phv == '') {
-            return;
-        } else {
-            var i = 60;
-            var but = $(this);
-
-            var info = setInterval(function(){
-                but.text('');
-                i--;
-                if (i > 0) {
-                    but.text(i+'秒');
-                    but.attr('disabled','disabled');
-                } else {
-                    clearInterval(info);
-                    but.text('点击重新获取验证码');
-                    but.removeAttr('disabled');
-                }
-            },1000);
-        }
-    });
 
 
 </script>

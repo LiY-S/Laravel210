@@ -131,10 +131,10 @@
                 USE = false;
                 return;
             }
-            var reg = /^\w{6,12}$/;
+            var reg = /^[\u4e00-\u9fa5_a-zA-Z0-9]{2,8}$/;
             if(!reg.test(user)){
                 $(this).css('border','solid 1px red');
-                $('.spa').text('请输入6-12位 数字 字母 下划线');
+                $('.spa').text('请输入2-8位 中文 数字 字母 下划线');
                 $('.spa').css('color','red');
                 USE = false;
             } else {
