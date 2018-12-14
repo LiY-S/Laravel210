@@ -180,7 +180,7 @@
                 <div class="form-group" style="margin-top:30px">
                     <div class="">
                 		{{csrf_field()}}
-                        <input type="submit" class="btn-info col-sm-3 col-sm-offset-5" style="border: 0px;border-radius:5px;height: 50px" value="添加">
+                        <input id="sub" type="submit" class="btn-info col-sm-3 col-sm-offset-5" style="border: 0px;border-radius:5px;height: 50px" value="添加">
                     </div>
                 </div>
             </form>
@@ -191,7 +191,6 @@
 
 
 <script type="text/javascript">
-
     //实例化编辑器
     //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
     var ue = UE.getEditor('editor');
