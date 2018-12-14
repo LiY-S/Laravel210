@@ -1,16 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-@php
-$conf = DB::table('shop_conf')->first();
-
-@endphp
 <title>@yield('title')</title>
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="{{$conf->keyword}}" />
+<meta name="keywords" content="Best Store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
         function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- //for-mobile-apps -->
@@ -42,6 +39,25 @@ $conf = DB::table('shop_conf')->first();
 <body>
 <!-- header -->
     <div class="header">
+
+        @php
+            $poster = DB::table('poster')->get();
+        @endphp
+        @foreach($poster as $v)
+        <div class="banner-pic" align="center" id="my_img">
+            <ul>
+              <li style="background-color:{{$v->bgcolor}}; overflow:hidden;">
+                <button style="float: right;" onclick="document.getElementById('my_img').style.display='none';">X</button>
+                  <a href="{{$v->url}}" target="_blank" name="">
+                    <img src="{{$v->pics}}" alt="365天放心购" class="ad" title="{{$v->title}}"/>
+                  </a>
+
+              </li>
+             </ul>
+        </div>
+        @endforeach
+
+
         <div class="container">
             <!-- 登录与注册 -->
             <div class="header-grid">
@@ -58,7 +74,7 @@ $conf = DB::table('shop_conf')->first();
                     <div>
                         欢迎您 , {{$res->username}}
                         <a href="/home/personal" style="color:#333">个人中心</a>
-                        <a href="#" style="color:#333">我的订单</a>
+                        <a href="/home/mylist" style="color:#333">我的订单</a>
                         <a href="/home/favorites" style="color:#333">我的收藏</a>
                         <a href="/home/dologout" style="color:#333">退出</a>
                     </div>
@@ -68,14 +84,14 @@ $conf = DB::table('shop_conf')->first();
             </div>
             <div class="logo-nav">
                 <div class="logo-nav-left animated wow zoomIn" data-wow-delay=".5s">
-                    <h1><a href="/"><img src="{{$conf->values}}" alt="" width=""><span></span></a></h1>
+                    <h1><a href="/">淘 鞋 吧<span></span></a></h1>
                 </div>
                 <div class="logo-nav-left1">
                     <nav class="navbar navbar-default">
                     <!-- Brand and toggle get grouped for better mobile display -->
                     <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
                         <ul class="nav navbar-nav">
-                            <li class="active"><a href="/" class="act">Home</a></li>
+                            <li class="active"><a href="" class="act">Home</a></li>
                             <!-- Mega Menu -->
                             @php
                                 $res = DB::table('shop_category')->get();
@@ -91,7 +107,7 @@ $conf = DB::table('shop_conf')->first();
                                             <ul class="multi-column-dropdown">
                                                 @foreach ($res as $val)
                                                     @if ($val->pid == $v->id)
-                                                        <li><a href="/home/cate/{{$val->id}}"> &nbsp; &nbsp; &nbsp;{{$val->cate_name}}</a></li>
+                                                        <li><a href="products.html"> &nbsp; &nbsp; &nbsp;{{$val->cate_name}}</a></li>
                                                     @endif
                                                 @endforeach
                                             </ul>
@@ -155,51 +171,25 @@ $conf = DB::table('shop_conf')->first();
                         <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>+177 1314 8904</li>
                     </ul>
                 </div>
+                @php
 
+                    $links = DB::table('shop_links')->get();
+                @endphp
                 <!-- 十二个小图组合成一张大图的logo -->
                 <div class="col-md-3 footer-grid animated wow slideInLeft" data-wow-delay=".7s">
-                    <h3>Flickr Posts</h3>
+                    <h3>友情链接</h3>
+                    @foreach($links as $kl => $vl)
                     <div class="footer-grid-left">
-                        <a href="single.html"><img src="/homes/images/13.jpg" alt=" " class="img-responsive" /></a>
+                        <a href="{{$vl->url}}"><img src="{{$vl->logo}}" alt=" " title="{{$vl->title}}" class="img-responsive"  width="40px" height="40px" /></a>
                     </div>
-                    <div class="footer-grid-left">
-                        <a href="single.html"><img src="/homes/images/14.jpg" alt=" " class="img-responsive" /></a>
-                    </div>
-                    <div class="footer-grid-left">
-                        <a href="single.html"><img src="/homes/images/15.jpg" alt=" " class="img-responsive" /></a>
-                    </div>
-                    <div class="footer-grid-left">
-                        <a href="single.html"><img src="/homes/images/16.jpg" alt=" " class="img-responsive" /></a>
-                    </div>
-                    <div class="footer-grid-left">
-                        <a href="single.html"><img src="/homes/images/13.jpg" alt=" " class="img-responsive" /></a>
-                    </div>
-                    <div class="footer-grid-left">
-                        <a href="single.html"><img src="/homes/images/14.jpg" alt=" " class="img-responsive" /></a>
-                    </div>
-                    <div class="footer-grid-left">
-                        <a href="single.html"><img src="/homes/images/15.jpg" alt=" " class="img-responsive" /></a>
-                    </div>
-                    <div class="footer-grid-left">
-                        <a href="single.html"><img src="/homes/images/16.jpg" alt=" " class="img-responsive" /></a>
-                    </div>
-                    <div class="footer-grid-left">
-                        <a href="single.html"><img src="/homes/images/13.jpg" alt=" " class="img-responsive" /></a>
-                    </div>
-                    <div class="footer-grid-left">
-                        <a href="single.html"><img src="/homes/images/14.jpg" alt=" " class="img-responsive" /></a>
-                    </div>
-                    <div class="footer-grid-left">
-                        <a href="single.html"><img src="/homes/images/15.jpg" alt=" " class="img-responsive" /></a>
-                    </div>
-                    <div class="footer-grid-left">
-                        <a href="single.html"><img src="/homes/images/16.jpg" alt=" " class="img-responsive" /></a>
-                    </div>
+                    @endforeach
+
                     <div class="clearfix"> </div>
                 </div>
 
                 <div class="clearfix"> </div>
             </div>
+
             <div class="footer-logo animated wow slideInUp" data-wow-delay=".5s">
                 <h2><a href="/">淘 鞋 吧</a></h2>
             </div>
