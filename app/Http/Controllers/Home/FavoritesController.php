@@ -49,43 +49,6 @@ class FavoritesController extends Controller
 
         }
        
-        
-        
-
-    //     $id = session('user');
-    //     $res = Collect::where('user_id',$id) -> get();
-    //     // dd($res);die;
-    //     $data = [];
-    //     foreach ($res as $k => $v) {
-    //         $goodid = $v->goods_id;
-    //         // dd($goodid);
-    //         $data[] = DB::table('shop_goods') -> where('id',$goodid) -> get();
-    //     }
-    //     // dd($data);
-
-    //     $datas=[];
-    //     foreach ($data as $ks => $vs) {
-    //         foreach ($vs as $kss => $vss) {
-    //             $goodids = $vss->id;
-    //             $datas[] = DB::table("shop_goods_color")->where('goods_id',$goodids)->first();
-    //         }   
-    //     }
-    //     foreach ($datas as $key => $value) {
-    //         $img = $value->photo;
-    //     }
-    //     $frist = substr( $img, 0, 36 );
-    //     // dd($data);
-        
-                                // $ph = explode(',',$a);
-
-
-    //     return view('home.favorites.favorites',[
-    //         'title'=>'收藏夹',
-    //         'data'=>$data,
-    //         'frist'=>$frist,
-    //         'request'=>$request
-    //         // 're'=>$re
-    //     ]);
     }
 
     /**
@@ -159,6 +122,34 @@ class FavoritesController extends Controller
             echo 1;
         }else{
             echo 0;
+        }
+    }
+     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function asdfasdf(Request $request)
+    {
+        $data = [];
+        // 商品id
+        $data['goods_id'] = $request -> gp;
+        // 用户id
+        $data['user_id'] = session('user');
+        // 时间
+        $data['collect_time'] = time();
+        $re = DB::table('shop_collect') ->where('goods_id',$data['goods_id']) -> where('user_id',$data['user_id']) ->count();
+        // return $re;
+        if (!$re) {
+            $res = DB::table('shop_collect') -> insert($data);
+            if ($res) {
+                return 1;
+            }
+        } else {
+            $shan = DB::table('shop_collect') ->where('goods_id',$data['goods_id']) -> where('user_id',$data['user_id'])->delete();
+            if ($shan) {
+                return 2;
+            }
         }
     }
 }

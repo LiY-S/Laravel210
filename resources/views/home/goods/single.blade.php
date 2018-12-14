@@ -14,7 +14,16 @@
 	outline: none;
 	/*border:1px;*//*不要设置border*/
 	}
-
+	.sc{
+	border-style:solid;
+	border-width:1px;
+	border-color:#FFF;
+	background: #fff;
+	width: 115px;
+	height: 35px;
+	outline: none;
+	/*border:1px;*//*不要设置border*/
+	}
 
 
 </style>
@@ -131,12 +140,47 @@
 					</div>
 					<div class="col-md-7 single-right-left simpleCart_shelfItem animated wow slideInRight animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: slideInRight;">
 						{{csrf_field()}}
-						<div class="occasion-cart" style="margin-top: 50px;">
-							<button class="tijiao"><a class="item_add">加入购物车</a></button>
+						<div class="occasion-cart" style="margin-top: 50px;width: 350px">
+							<button class="tijiao"><a class="item_add">加入购物车</a></button>&nbsp;&nbsp;&nbsp;
+							<input type="hidden" name="shoucang" value="{{$v->id}}">
+							
+							<?php
+
+								$sql = DB::table('shop_collect')->where('goods_id',$v->id)->get();
+								// dump($sql);
+								if (count($sql) >0 ){
+								 	echo '<a class="sc" href="javascript:void(0)">取消收藏</a>';
+								 }else{
+								 	// echo '<a>收藏</a>';
+								 	echo '<a class="sc"  href="javascript:void(0)">收藏</a>';
+								 }
+							?>
+							<script>
+							    $.ajaxSetup({
+							        headers: {
+							            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+							        }
+							    });
+								$('.sc').click(function(){
+									var gp = $(this).prev().val();
+									var sc = $(this);
+									// console.log(gp);
+									$.post('/home/asdfasdf',{gp:gp},function(data){
+										// console.log(data);
+										if (data == '1') {
+											sc.text('取消收藏');
+										} else {
+											sc.text('收藏');
+										}
+									})
+								});
+							</script>
+								
 						</div>
 					</div>
 				</div>
 			</form>
+
 			<div class="clearfix"> </div>
 			<div class="bootstrap-tab animated wow slideInUp animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: slideInUp;">
 				<div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs" style="margin-left: -250px;width: 100%;">
@@ -208,5 +252,4 @@
 			}
 		});
 	</script>
-
 @endsection
