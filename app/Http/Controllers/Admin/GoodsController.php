@@ -156,17 +156,20 @@ class GoodsController extends Controller
     {
         $res = $request->except('photo','_token','_method','color','photos');
         $color = $request->only('color','photos');
-        $res['size'] = implode(',',$res['size']);
+        $goods = $res['size'] = implode(',',$res['size']);
         Goods::where('id',$id)->update($res);
-        $color['photo'] = implode(',',$color['photos']);
-        unset($color['photos']);
+        if (array_key_exists('photo',$color)) {
+            $color['photo'] = implode(',',$color['photos']);
+            unset($color['photos']);
+        }
         // dump($res);
         // dump($color);
         // dump($id);
         try{
 
             $data = Color::where('goods_id',$id)->update($color);
-            if($data){
+            // dump($data);
+            if($data || $goods){
                 return redirect('/admins/goods')->with('success','修改成功');
             }
 
