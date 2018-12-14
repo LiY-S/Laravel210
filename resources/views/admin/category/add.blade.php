@@ -31,7 +31,7 @@
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
                     <strong>{{session('error')}}</strong>
             </div>
-        @endif
+			@endif
             <div class="row">
                 <div class="col-md-10">
                     <form class="form-horizontal" action="/admins/cate" method="post">
