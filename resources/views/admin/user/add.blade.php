@@ -22,15 +22,13 @@
         <div class="mws-panel-body no-padding">
 
             @if (count($errors) > 0)
-            <div class="mws-form-message error">
-                显示错误信息
-                <ul>
+            <div class="alert alert-info error" style="margin:auto;width: 920px;background: #ef9a9a;">
                     @foreach ($errors->all() as $error)
-                    <li style='font-size:14px'>{{$error}}</li>
+                    <li style='list-style:none;font-size:14px'>{{$error}}</li>
                     @endforeach
-                </ul>
             </div>
             @endif
+
 
 
             <form action="/admin/user" method="post" class="mws-form" enctype='multipart/form-data'>
@@ -121,7 +119,7 @@
 
 <script>
 
-    $('.mws-form-message').delay(2000).fadeOut(2000);
+    $('.error').delay(2000).slideUp(2000);
 
 </script>
 

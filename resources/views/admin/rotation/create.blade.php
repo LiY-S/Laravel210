@@ -10,11 +10,10 @@
 <div class="col-md-6 col-md-offset-3" style="float: none;height: 100%">
     <div class="mws-panel-body no-padding">
         @if (session('error'))
-        <div class="mws-form-message error">
-            <ul>
-                <li class="error"style="background-color: #ef9a9a;list-style:none;font-size: 20px">{{session('error')}}</li>
-            </ul>
-        </div>
+            <div class="alert alert-danger alert-dismissible fade in" role="alert" id="divs">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <strong>{{session('error')}}</strong>
+            </div>
         @endif
         <form action="/admin/rotation" method="post" class="mws-form" enctype='multipart/form-data'>
             <div class="content-box">
@@ -46,7 +45,7 @@
                         <hr>
                         <input id="file_upload" type="file" class="dropify" name='ad_src'>
                     </div>
-                   
+
                 </div>
             </div>
              {{csrf_field()}}
@@ -63,7 +62,7 @@
 @section('js')
 <script>
 
-        $('.error').delay(2000).slideUp(2000);
+        $('.alert-dismissible').delay(2000).slideUp(2000);
 
 
 

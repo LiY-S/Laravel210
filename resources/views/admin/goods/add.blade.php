@@ -66,7 +66,7 @@
                         选择分类
                     </label>
                     <div class="col-sm-10">
-                        <select class="form-control selectpicker" name="cate_id">
+                        <select class="form-control selectpickers" name="cate_id">
                             <option value="0">---请选择---</option>
                         @foreach ($cate as $v)
                             <option value="{{$v->id}}">
@@ -97,7 +97,7 @@
                         商品尺码
                     </label>
                     <div class="col-sm-10">
-                        <select id="usertype" name="size[]" class="form-control selectpicker" multiple>
+                        <select id="usertype" name="size[]" class="form-control selectpickers" multiple>
                             <option value="36">
                                 36
                             </option>

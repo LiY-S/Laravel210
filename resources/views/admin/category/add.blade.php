@@ -7,7 +7,7 @@
 
 
 
-@if (session('error'))
+        @if (session('error'))
             <div class="alert alert-danger alert-dismissible fade in" role="alert" id="divs">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
                     <strong>{{session('error')}}</strong>
@@ -55,7 +55,7 @@
                                 顶级分类
                             </label>
                             <div class="col-sm-10">
-                                <select class="form-control selectpicker" name="pid">
+                                <select class="form-control selectpickers" name="pid">
                                     <option value="0">
                                         ---请选择---
                                     </option>
