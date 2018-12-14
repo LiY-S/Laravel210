@@ -10,6 +10,6 @@ class IndexController extends Controller
     //
     public function index()
     {
-        return view('mutual.admins',['title'=>'淘鞋吧后台主页']);
+        return view('admin.admins',['title'=>'淘鞋吧后台主页']);
     }
 }
