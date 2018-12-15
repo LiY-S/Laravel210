@@ -26,19 +26,20 @@
         <div class="new-collections-grids">
 
              @foreach($data as $k => $v)
+            
            <ul class="col-md-3 new-collections-grid">
                 <div class="new-collections-grid1 animated wow slideInUp" data-wow-delay=".5s">
                     <div class="new-collections-grid1-image">
                         <a href="single.html" class="product-image">
                             @php
                                 $a = $v->photo;
-                                $frist = substr($a, 0, 36 );
+                                $frist = substr($a, 0, 48 );
                             @endphp
                             <img src="{!!$frist!!}" alt=" " class="img-responsive"style="width:200px;height: 150px">
                                 
                         </a>
                         <div class="new-collections-grid1-image-pos">
-                            <a href="single.html">快速浏览</a>
+                            <a href="/home/single/{{$v->goods_id}}">快速浏览</a>
                         </div> 
                     </div>
                     <h4><a href="single.html"> {{$v->goods_name}}</a></h4>
