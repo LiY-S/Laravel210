@@ -1,6 +1,6 @@
 @extends('mutual.admins')
 
-@section('title',$title)
+@section('title','订单管理')
 
 @section('content')
 
@@ -13,7 +13,7 @@
 }
 </style>
 
-<div class="col-md-8 col-center-block">
+<div class="col-md-7 col-center-block">
     <div class="data-info">
         <div id="table_wrapper" class="dataTables_wrapper no-footer">
             <div class="toolbar tool" style="padding: 7px 20px;">
@@ -25,18 +25,16 @@
                     </font>
                 </h5>
             </div>
-            <form action="" method="get">
             <div class="clear-filter">
             </div>
             <div id="table_filter" class="dataTables_filter">
                 <label>
                     订单号
-                    <input type="text" name="goods_id" value="{{$request->goods_id}}"  aria-controls="DataTables_Table_1">
+                    <input type="text" name="goods_id" value=""  aria-controls="DataTables_Table_1">
 
                 </label>
                 <button class='btn btn-info'>搜索</button>
             </div>
-            </form>
 
             <table id="table" class="display datatable dataTable no-footer dtr-inline" role="grid">
                 <thead>
@@ -53,7 +51,7 @@
                         colspan="1" aria-label="Product: activate to sort column ascending" aria-sort="descending">
                             <font style="vertical-align: inherit;">
                                 <font style="vertical-align: inherit;">
-                                    总金额
+                                    用户名
                                 </font>
                             </font>
                         </th>
@@ -61,23 +59,7 @@
                         colspan="1" aria-label="Product: activate to sort column ascending" aria-sort="descending">
                             <font style="vertical-align: inherit;">
                                 <font style="vertical-align: inherit;">
-                                    下单时间
-                                </font>
-                            </font>
-                        </th>
-                        <th class="sorting_desc text-center" tabindex="0" aria-controls="table" rowspan="1"
-                        colspan="1" aria-label="Product: activate to sort column ascending" aria-sort="descending">
-                            <font style="vertical-align: inherit;">
-                                <font style="vertical-align: inherit;">
-                                    数量
-                                </font>
-                            </font>
-                        </th>
-                        <th class="sorting_desc text-center" tabindex="0" aria-controls="table" rowspan="1"
-                        colspan="1" aria-label="Product: activate to sort column ascending" aria-sort="descending">
-                            <font style="vertical-align: inherit;">
-                                <font style="vertical-align: inherit;">
-                                    买家留言
+                                    收货信息
                                 </font>
                             </font>
                         </th>
@@ -93,63 +75,58 @@
                         colspan="1" aria-label="Product: activate to sort column ascending" aria-sort="descending">
                             <font style="vertical-align: inherit;">
                                 <font style="vertical-align: inherit;">
-                                    操作
+                                    下单时间
+                                </font>
+                            </font>
+                        </th>
+                        <th class="sorting_desc text-center" tabindex="0" aria-controls="table" rowspan="1"
+                        colspan="1" aria-label="Product: activate to sort column ascending" aria-sort="descending">
+                            <font style="vertical-align: inherit;">
+                                <font style="vertical-align: inherit;">
+                                    状态
                                 </font>
                             </font>
                         </th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($res as $k => $v)
+                    @foreach($data as $value)
                     <tr role="row" class="text-center">
-                        <td width="15%">
-                            {{$v->goods_id}}
+                        <td width="16%"><a href="/admin/lists?code={{$value->code}}">{{$value->code}}</a></td>
+
+                        <td width="16%">
+                            {{$value->username}}
                         </td>
 
-                        <td width="10%">
-                            {{$v->goods_prices}}
+                        <td width="15%">
+                            <a href="/admin/addr?id={{$value->addr}}">收货人信息</a>
+                        </td>
+
+                        <td width="15%">
+                            {{$value->name}}
                         </td>
 
                         <td width="20%">
-                            {{ date('Y-m-d H:i:s',$v->create_time) }}
-                        </td>
-
-                        <td width="9%">
-                            {{$v->count}}
-                        </td>
-
-                        <td width="15%">
-                            {{$v->user_msg}}
-                        </td>
-
-                        <td width="10%">
-                            @if($v->status=='0')
-                                    <font color="#FF0000">未发货</font>
-                                @elseif($v->status=='1')
-                                    <font color="#F68EF1">已发货</font>
-                                @elseif($v->status=='2')
-                                    <font color="#1FF0A0">交易完成</font>
-                            @endif
+                            {{date("Y-m-d H:i:s"),$value->create_time}}
                         </td>
 
                         <td>
-                            <a href="/admin/order/{{$v->goods_id}}/edit" class="btn btn-primary btn-sm shiny">
-                                <i class="fa fa-edit"></i> 编辑
-                            </a>
-                            <a href="{{ url("/admin/order/{$v->oid}/show") }}" class="btn btn-primary btn-sm shiny">
-                                <i class="fa  fa-calendar"></i> 订单详情
-                            </a>
-                            <a href="/admin/order/{{$v->id}}/edit" class="btn btn-primary btn-sm shiny">
-                                <i class="fa  fa-truck"></i> 发货
-                            </a>
+                            @if($value->status==6)
+                            <a href="javascript:;">修改状态</a>
+                            @else
+                            <a href="/admin/edit?status={{$value->status}}&code={{$value->code}}">修改状态</a>
+                            @endif
+
                         </td>
                     </tr>
                     @endforeach
                 </tbody>
             </table>
+                <div class="dataTables_paginate paging_full_numbers" id="DataTables_Table_1_paginate"style="margin-right: 100px;margin-top: -20px">
+                    {{$res->appends($request->all())->links()}}
+                </div>
         </div>
     </div>
 </div>
-
 @stop
 

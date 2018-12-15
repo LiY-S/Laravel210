@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\Home\Cart;
 use DB;
+use Session;
 
 class CartController extends Controller
 {
@@ -64,7 +65,6 @@ class CartController extends Controller
         return view('home.cart.nullcart',['title'=>'购物车']);
     }
 
-
     public function ajaxjiesuan(Request $request)
     {
         $data = $request->data;
@@ -79,5 +79,69 @@ class CartController extends Controller
         // dd($res);
         session(['gouwuche'=>$res]);
         return '1';
+    }
+
+
+    /**
+     * 结算.
+     *
+     * @return \Illuminate\Http\Response
+     */
+
+    public function jiesuan(Request $request)
+    {
+        $user_id = session('user');
+        //dd($user_id);
+        $address = DB::table('shop_address')->where('user_id',$user_id)->get();
+        $res = session::get('gouwuche');
+        // dump($res);
+        // 需要遍历 两个时 键名是商品的id   值是商品的数量 以数组的形式存储
+        $count = [];
+        $goods = [];
+        foreach ($res as $k => $v) {
+            $count[] = $v;
+            $goods[] = $k;
+        }
+        // dd($count);
+        //dump($goods);
+        //dump($res);
+        $shop = Cart::where(function($query) use($goods){
+            foreach ($goods as $count) {
+                //dd($value);
+                $query -> orWhere('id', '=', $count);
+            }
+        }) -> get();
+
+        //$shop->session()->put('shop',$shop);
+
+        // $collection = collect($shop);
+
+        // $collection = $collection->map(function ($item, $attributes) {
+        //     return collect($item)->except(['aa', 'bb']);
+        // });
+
+        // $data = $collection->toArray();
+
+        // dump($data);
+
+        //声明新数组
+        // $newArr = [];
+
+        // // 遍历购物车中所有的商品
+        // foreach ($shop as $key => $value) {
+
+        //    // dd($value);
+        //     $newArr[] = $value;
+        // }
+
+        // //dd($newArr);
+
+        return view('home.cart.jiesuan',[
+            'shop'=>$shop,
+            'address'=>$address,
+            // 'counts'=>$count
+            'res' => $res
+        ]);
+
     }
 }
