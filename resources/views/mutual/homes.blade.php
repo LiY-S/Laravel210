@@ -51,7 +51,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                   <a href="{{$v->url}}" target="_blank" name="">
                     <img src="{{$v->pics}}" alt="365天放心购" class="ad" title="{{$v->title}}"/>
                   </a>
-
               </li>
              </ul>
         </div>
