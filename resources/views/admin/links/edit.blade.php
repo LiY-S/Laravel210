@@ -77,16 +77,6 @@
                                 </div>
                             </div>
 
-                            <div class="form-group">
-                                <label class="control-label info-color">
-                                    状态
-                                </label>
-                                    <ul class="info-color inline" style="list-style:none;">
-                                        <li style="display: inline; float:left;margin-right:20px"><label><input type="radio" name='status' value="1" @if($res->status == 1) checked @endif>开启</label></li>
-                                        <li><label><input type="radio" name='status' value="0" style='display:inline' @if($res->status == 0) checked @endif>禁用</label></li>
-                                    </ul>
-                            </div>
-
                             <div class="mws-button-row">
                                 {{csrf_field()}}
 

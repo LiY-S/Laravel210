@@ -87,7 +87,7 @@
 
                         </td>
                         <td>
-                            <a href="/home/status">确认收货</a>
+                            <a href="/home/status?code={{$v->code}}">确认收货</a>
                         </td>
                     </tr>
                     @endforeach
