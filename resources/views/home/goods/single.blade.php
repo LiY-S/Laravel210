@@ -142,8 +142,8 @@
 						{{csrf_field()}}
 						<div class="occasion-cart" style="margin-top: 50px;width: 350px">
 							<button class="tijiao"><a class="item_add">加入购物车</a></button>&nbsp;&nbsp;&nbsp;
-							<input type="hidden" name="shoucang" value="{{$v->id}}">
-							
+							<input type="hidden" value="{{$v->id}}">
+
 							<?php
 
 								$sql = DB::table('shop_collect')->where('goods_id',$v->id)->get();
@@ -175,7 +175,7 @@
 									})
 								});
 							</script>
-								
+
 						</div>
 					</div>
 				</div>

@@ -214,5 +214,44 @@ class PersonalController extends Controller
         }
 
     }
+    public function xgsh(Request $request)
+    {
+        $id = $request -> xgsh;
+        $data = DB::table('shop_address')->where('id',$id)->get();
+        // dd($data);
+        return $data;
+    }
+    public function wcxg(Request $request)
+    {
+        $data = [];
+        $data['address'] = $request -> input('addressval');
+        $data['phone'] = $request -> input('phoneval');
+        $data['consignee'] = $request -> input('consigneeval');
+        $id = $request -> input('id');
+        // dump($id);
+        DB::table('shop_address')->where('id',$id)->update($data);
+        return 1;
+
+    }
+    public function dzajax(Request $request)
+    {
+        $b = ['status'=>'0'];
+        $c = ['status'=>'1'];
+
+        $res = DB::table('shop_address')->where('status','1')->first();
+        $a = $res->id;
+        $re = DB::table('shop_address')->where('id',$a)->update($b);
+        $dat = DB::table('shop_address')->where('id',$request->id)->update($c);
+
+        // dd($re);
+        // $id = $request->id;
+        // echo $a;
+        if ($dat) {
+            return 1;
+        } else {
+            return 0;
+        }
+
+    }
 
 }

@@ -105,7 +105,7 @@
         @endphp
     <ul class="slides">
          @foreach($px as $k=>$v)
-         
+
         <li>
             <a title="" target="_blank" href="{!!$v->ad_a!!}">
                 <img style="background: url({!!$v->ad_src!!})no-repeat center;" src="/homes/lbt/images/alpha.png">
@@ -157,27 +157,27 @@
 
                     </div>
                 </div>
-                <div class="banner-bottom-grid-right animated wow slideInRight" data-wow-delay=".5s">
-                    <div class="banner-bottom-grid-left-grid grid-left-grid1">
-                        <div class="banner-bottom-grid-left-grid1">
-                            <ul id="gonggao" style="list-style: none;">
-                                @foreach($gonggao as $va)
-                                <li><a style="color: #000" href="/home/notice/{{$va->id}}">{{$va->title}}
-                                    <span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span>
-                                    <span style="float: right;">{{date('Y-m-d H:i',$va->tiantime)}}</span></a></li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+
                 <div class="clearfix"> </div>
             </div>
         </div>
     </div>
+        <div id="moveDiv" data-wow-delay=".5s" style="position: absolute;top: 800px;right:-400px;">
+        <div class="banner-bottom-grid-left-grid grid-left-grid1" style="width: 350px;">
+            <div class="banner-bottom-grid-left-grid1">
+                <h4 style="font-size: 22px;background-color: #888;color: #fff;">公告</h4>
+                <ul id="gonggao" style="height:177px;list-style: none;background-color: #eee;text-align: left;">
+                    @foreach($gonggao as $va)
+                    <li><a style="color: #000;line-height: 30px;" href="/home/notice/{{$va->id}}">{{$va->title}}</a></li>
+                    @endforeach
+                </ul>
+            </div>
+        </div>
+    </div>
 <!-- //banner-bottom -->
-
-
-
+<script>
+    $("#moveDiv").animate({right: 40}, 2000);
+</script>
 <!-- collections -->
     <div class="new-collections">
         <div class="container">

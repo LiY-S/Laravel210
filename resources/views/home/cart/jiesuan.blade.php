@@ -21,33 +21,34 @@
 {{ csrf_field() }}
 <div class="checkout">
 
+        <div class="col-md-8" id="xxdz" style="margin-left: 352px;display: none; width: 1200px;">
+        	@foreach($address as $v1)
+        	<input type="hidden" name="dizhi[]" checked value="{{$v1->id}}">
 
-	@foreach($address as $v1)
-	<input type="hidden" name="dizhi[]" checked value="{{$v1->id}}">
-
-	<div  class="col-md-2 col-md-offset-1" style="margin-left: 207px;">
-		<table class="timetable_sub">
-                <tr>
-                    <th style="text-align:left;">地址管理</th>
-                </tr>
-            <tr class="rem1">
-                <td class="invert" style="text-align: left;">
-					收货人：{{$v1->consignee}}
-                	<br>
-                	phone:{{$v1->phone}}
-                	<br>
-                    {{$v1->province}}省
-                    <br>
-                    {{$v1->city}}市
-                    <br>
-                    {{$v1->county}}区
-                    <br>
-                    详细地址：{{$v1->address}}
-                </td>
-            </tr>
-        </table>
-	</div>
-	@endforeach
+        	<div  class="col-md-3">
+        		<table class="timetable_sub">
+                        <tr>
+                            <th  colspan="2" style="text-align:left;">地址管理</th>
+                        </tr>
+                    <tr class="rem1">
+                        <td class="invert" style="text-align: left;">
+        					收货人：{{$v1->consignee}}
+                        	<br>
+                        	手机:{{$v1->phone}}
+                        	<br>
+                            区域：{{$v1->province}}-{{$v1->city}}-{{$v1->county}}
+                            <br>
+                            详细地址：{{$v1->address}}
+                        </td>
+                        <td>默认</td>
+                    </tr>
+                </table>
+        	</div>
+        	@endforeach
+        </div>
+        <script>
+            $("#xxdz").show(1000);
+        </script>
         <div class="container">
             <div class="checkout-right animated wow slideInUp" data-wow-delay=".5s">
                 <table class="timetable_sub">
