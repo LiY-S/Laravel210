@@ -138,7 +138,6 @@
                         商品颜色
                     </label>
                     <div class="col-sm-10"> -->
-                        <input type="hidden" class="form-control" id="inputPassword3" name="color" value="{{$v->color}}">
                     <!-- </div>
                 </div> -->
                 <div class="form-group">
@@ -156,9 +155,7 @@
                     <div class="col-sm-10">
                         <meta name="csrf-token" content="{{ csrf_token() }}">
                         <input type="file" name="photo[]" multiple style="margin-top: 10px" id="file_upload">
-                            <img src="{{$v->photo['0']}}" alt="" width="80" id="imgs0">
-                            <img src="{{$v->photo['1']}}" alt="" width="80" id="imgs1">
-                            <img src="{{$v->photo['2']}}" alt="" width="80" id="imgs2">
+                            <img src="{{$v->cover}}" alt="" width="80" id="imgs0">
                     </div>
                 </div>
                 <div class="form-group">
@@ -315,8 +312,8 @@
     $(function () {
         $("#file_upload").change(function () {
             var files = this.files;
-            if (files && files.length != 3) {
-                alert("请上传三张展示图");
+            if (files && files.length != 1) {
+                alert("只能上传一张封面图");
                 // console.log(files.length);
                 this.value = "" //删除选择
                 return;
@@ -353,7 +350,7 @@
                 success: function(data) {
                     for (var i = 0; i < data.length; i++) {
                         $('#imgs'+[i]).attr('src',data[i]);
-                        var photo = $('<input type="hidden" name="photos[]" value='+data[i]+'>');
+                        var photo = $('<input type="hidden" name="cover" value='+data[i]+'>');
                         $('#file_upload').after(photo);
                     }
                 },

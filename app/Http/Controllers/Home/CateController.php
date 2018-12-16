@@ -22,13 +22,7 @@ class CateController extends Controller
         ->where('status','1')
     	->paginate(9);
         foreach ($goods as $v) {
-            $color = Color::where('goods_id',$v->id)->get();
-            foreach ($color as $key => $value) {
-                $v->color = $value->color;
-                $v->photo = $value->photo;
-            }
             $v->size = explode(',',$v->size);
-            $v->photo = explode(',',$v->photo);
         }
     	$newGoods = DB::table('shop_goods')
                     ->where('status','1')
@@ -37,12 +31,7 @@ class CateController extends Controller
                 	->get();
         foreach ($newGoods as $v) {
             $color = Color::where('goods_id',$v->id)->get();
-            foreach ($color as $key => $value) {
-                $v->color = $value->color;
-                $v->photo = $value->photo;
-            }
             $v->size = explode(',',$v->size);
-            $v->photo = explode(',',$v->photo);
         }
     	// dump($goods);
     	return view('home.cate.category',[

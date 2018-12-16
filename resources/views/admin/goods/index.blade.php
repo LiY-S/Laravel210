@@ -63,7 +63,7 @@
                             	{{$v->cate_id}}
                             </td>
                             <td>
-                                <img src="{{$v->photo[0]}}" alt="" width="60">
+                                <img src="{{$v->cover}}" alt="" width="60">
                             </td>
                             <td>
                             	{{$v->goods_name}}
@@ -87,9 +87,9 @@
                             		下架
                             	@endif
                             </td>
-                            <td><!-- 
-                                <a href="javascript:;" class="btn-info btn-sm waves-effect" id="showModal{{$v->id}}"></a>
-                                <a href="javascript:;" class="btn-info btn-sm waves-effect" id="showModal{{$v->id}}a"></a> -->
+                            <td>
+                                <a href="/admins/colors/create/{{$v->id}}" class="btn-info btn-sm waves-effect" style="text-align: center;line-height: 15px;min-width: 0px;" target="_blank">添加颜色</a>
+                                <a href="/admins/colors/{{$v->id}}" class="btn-info btn-sm waves-effect" style="text-align: center;line-height: 15px;min-width: 0px;" target="_blank">查看颜色</a><br>
                                 <a href="/admins/goods/{{$v->id}}/edit" class="btn-info btn-sm waves-effect" style="min-width: 0px;line-height: 15px;">修改</a>
                                 <form action="/admins/goods/{{$v->id}}" method='post' style='display:inline'>
                             		{{csrf_field()}}
@@ -100,58 +100,6 @@
                             	</form>
                             </td>
                         </tr>
-                <!-- 添加属性表单窗口 -->
-                <!-- <div id="modal{{$v->id}}" class="modal">
-                    <div class="modal-dialog animated">
-                        <div class="modal-content">
-                            <form class="form-horizontal" method="get">
-                                <div class="modal-header">
-                                    <strong>添加商品颜色</strong>
-                                </div>
-
-                                <div class="modal-body">
-                                    <div class="form-group">
-                                        <label for="dummyText" class="control-label col-xs-4">???</label>
-                                        <div class="input-group col-xs-7">
-                                            <input type="text" name="dummyText" id="dummyText" class="form-control" />
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="modal-footer">
-                                    <button class="btn btn-default" type="button" onclick="modal{{$v->id}}.close();">取消</button>
-                                    <button class="btn btn-primary" type="submit" onclick="modal{{$v->id}}.close();">保存</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div> -->
-                <!-- 查看属性列表窗口 -->
-                <!-- <div id="modal{{$v->id}}a" class="modal">
-                    <div class="modal-dialog animated">
-                        <div class="modal-content">
-                            <form class="form-horizontal" method="get">
-                                <div class="modal-header">
-                                    <strong>HELLO，我是rmodal.js话框！</strong>
-                                </div>
-
-                                <div class="modal-body">
-                                    <div class="form-group">
-                                        <label for="dummyText" class="control-label col-xs-4">描述文本</label>
-                                        <div class="input-group col-xs-7">
-                                            <input type="text" name="dummyText" id="dummyText" class="form-control" />
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="modal-footer">
-                                    <button class="btn btn-default" type="button" onclick="modal{{$v->id}}a.close();">取消</button>
-                                    <button class="btn btn-primary" type="submit" onclick="modal{{$v->id}}a.close();">保存</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div> -->
                         @endforeach
                     </tbody>
                 </table>

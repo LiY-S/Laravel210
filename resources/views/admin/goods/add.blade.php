@@ -139,7 +139,7 @@
                         <input type="text" class="form-control" id="inputPassword3" name="color">
                     </div>
                 </div> -->
-                <input type="hidden" name="color" value="1">
+                <!-- <input type="hidden" name="color" value="1"> -->
                 <div class="form-group">
                     <label for="inputPassword3" class="col-sm-2 control-label">
                         商品库存
@@ -150,11 +150,11 @@
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">
-                        商品展示
+                        商品封面
                     </label>
                     <div class="col-sm-10">
                         <meta name="csrf-token" content="{{ csrf_token() }}">
-                        <input type="file" name="photo[]" multiple style="margin-top: 10px" id="file_upload">
+                        <input type="file"  style="margin-top: 10px" id="file_upload">
                     </div>
                 </div>
                 <div class="form-group">
@@ -309,8 +309,8 @@
     $(function () {
         $("#file_upload").change(function () {
             var files = this.files;
-            if (files && files.length != 3) {
-                alert("请上传三张展示图");
+            if (files && files.length != 1) {
+                alert("只能上传一张封面图");
                 // console.log(files.length);
                 this.value = "" //删除选择
                 return;
@@ -348,7 +348,7 @@
                     for (var i = 0; i < data.length; i++) {
                         var imgs = $('<img src="'+data[i]+'" alt="" id="imgs'+[i]+'" width="80">');
                         $('#file_upload').after(imgs);
-                        var photo = $('<input type="hidden" name="photos[]" value='+data[i]+'>');
+                        var photo = $('<input type="hidden" name="cover" value='+data[i]+'>');
                         $('#file_upload').after(photo);
                     }
                 },

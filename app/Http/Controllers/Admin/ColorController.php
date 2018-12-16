@@ -4,50 +4,41 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Model\Admin\Cate;
 use App\Model\Admin\Goods;
 use App\Model\Admin\Color;
 use DB;
-use Intervention\Image\ImageManagerStatic as Image;
 
-class GoodsController extends Controller
+class ColorController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index(Request $request,$id)
     {
-        $cate = Cate::select()->get();
-        $res = Goods::orderBy('id','asc')
+        $goods = Goods::where('id',$id)->first();
+        $colors = Color::where('goods_id',$id)->orderBy('id','asc')
             ->where(function($query) use($request){
                 //检测关键字
-                $gname = $request->input('goods_name');
+                $color = $request->input('color');
                 //如果商品名不为空
-                if(!empty($gname)) {
-                    $query->where('goods_name','like','%'.$gname.'%');
+                if(!empty($color)) {
+                    $query->where('color','like','%'.$color.'%');
                 }
             })
         ->paginate($request->input('num', 10));
-        foreach ($res as $v) {
-            foreach ($cate as $key => $value) {
-                if ($value->id == $v->cate_id) {
-                    $v->cate_id = $value->cate_name;
-                }
-            }
-            // $color = Color::where('goods_id',$v->id)->get();
-            /*foreach ($color as $key => $value) {
-                $v->color = $value->color;
-                $v->photo = $value->photo;
-            }
-            // dd($res);
-            $v->photo = explode(',', $v->photo);*/
+        foreach ($colors as $v) {
+            // dd($v);
+            $v->photo = explode(',', $v->photo);
         }
-        // dd($res);
-        // dump($res);
-        // dump($color);
-        return view('admin.goods.index',['title'=>'商品列表','res'=>$res,'request'=>$request]);
+        // dd($colors);
+        return view('admin.color.index',[
+            'title'=>'商品颜色列表',
+            'goods'=>$goods,
+            'colors'=>$colors,
+            'request'=>$request
+        ]);
     }
 
     /**
@@ -55,16 +46,13 @@ class GoodsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request,$id)
     {
-        $cate = Cate::select(DB::raw('*,CONCAT(path,id) as paths'))->orderBy('paths')->get();
-        foreach ($cate as $k => $v) {
-            $ps = substr_count($v->path,',')-1;
-            $v->cate_name = str_repeat('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',$ps).'|--'.$v->cate_name;
-        }
-        return view('admin.goods.add',[
-            'title'=>'商品添加页面',
-            'cate'=>$cate
+        $goods = Goods::where('id',$id)->get();
+        // dd($goods);
+        return view('admin.color.add',[
+            'title'=>'颜色添加页面',
+            'goods'=>$goods
         ]);
     }
 
@@ -74,15 +62,17 @@ class GoodsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,$id)
     {
-        $res = $request -> except('_token');
-        $res['size'] = implode(',', $res['size']);
-        // dd($res);
+        $color = $request -> except('_token','photo','photos');
+        $photos = $request->input('photos');
+        $color['goods_id'] = $id;
+        $color['photo'] = implode(',',$photos);
         try{
-            $data = Goods::create($res);
+
+            $data = Color::create($color);
             if($data){
-                return redirect('/admins/goods')->with('success','添加成功');
+                return redirect('/admins/colors/'.$id)->with('success','添加成功');
             }
 
         }catch(\Exception $e){
@@ -110,17 +100,14 @@ class GoodsController extends Controller
      */
     public function edit($id)
     {
-        $cate = Cate::select(DB::raw('*,CONCAT(path,id) as paths'))->orderBy('paths')->get();
-        foreach ($cate as $k => $v) {
-            $ps = substr_count($v->path,',')-1;
-            $v->cate_name = str_repeat('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',$ps).'|--'.$v->cate_name;
-        }
-        $res = Goods::where('id',$id)->get();
-        foreach ($res as $v) {
-            $v->size = explode(',',$v->size);
-        }
-        // dump($res);
-        return view('admin.goods.edit',['title'=>'商品信息修改','res'=>$res,'cate'=>$cate]);
+        $color = Color::where('id',$id)->first();
+        $goods = Goods::where('id',$color->goods_id)->get();
+        $color->photo = explode(',',$color->photo);
+        return view('admin.color.edit',[
+            'title'=>'颜色修改页面',
+            'color'=>$color,
+            'goods'=>$goods
+        ]);
     }
 
     /**
@@ -132,18 +119,20 @@ class GoodsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $res = $request->except('photo','_token','_method','color','photos');
-        // $color = $request->only('color','photos');
-        $res['size'] = implode(',',$res['size']);
-        // dump($res);
-        // dump($color);
-        // dump($id);
+        // dd($id);
+        $goods_id = Color::where('id',$id)->first()->goods_id;
+        // dd($goods_id);
+        $color = $request -> except('_token','photo','photos');
+        $photos = $request->input('photos');
+        $color['goods_id'] = $goods_id;
+        $color['photo'] = implode(',',$photos);
+        // dd($color);
         try{
 
-            $data = Goods::where('id',$id)->update($res);
+            $data = Color::where('id',$id)->update($color);
             // dump($data);
             if($data){
-                return redirect('/admins/goods')->with('success','修改成功');
+                return redirect('/admins/colors/'.$goods_id)->with('success','修改成功');
             }
 
         }catch(\Exception $e){
@@ -160,12 +149,14 @@ class GoodsController extends Controller
      */
     public function destroy($id)
     {
-        // echo $id;
+        // dd($id);
+        $colors = Color::where('id',$id)->first();
+        $goods = Goods::where('id',$colors->goods_id)->first();
         try{
-            $data = Goods::destroy($id);
-            DB::table('shop_goods_color')->where('goods_id',$id)->delete();
+            // dd($id);
+            $data = DB::table('shop_goods_color')->delete($id);
             if($data){
-                return redirect('/admins/goods')->with('success','删除成功');
+                return redirect('/admins/colors/'.$goods->id)->with('success','删除成功');
             }
 
         }catch(\Exception $e){
@@ -174,9 +165,8 @@ class GoodsController extends Controller
         }
     }
 
-
     /**
-     *  添加展示图方法
+     *  上传商品图片
      *
      *  @return \Illuminate\Http\Response
      */
