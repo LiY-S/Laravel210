@@ -19,26 +19,14 @@ class IndexController extends Controller
                 ->take(4)
                 ->get();
         foreach ($goods as $v) {
-            $color = Color::where('goods_id',$v->id)->get();
-            foreach ($color as $key => $value) {
-                $v->color = $value->color;
-                $v->photo = $value->photo;
-            }
             $v->size = explode(',',$v->size);
-            $v->photo = explode(',',$v->photo);
         }
         $newGoods = DB::table('shop_goods')
                     ->where('status','1')
                     ->orderBy('id', 'desc')
                     ->first();
                     // dump($newGoods);
-        $color = Color::where('goods_id',$newGoods->id)->get();
-        foreach ($color as $key => $value) {
-            $newGoods->color = $value->color;
-            $newGoods->photo = $value->photo;
-        }
         $newGoods->size = explode(',',$newGoods->size);
-        $newGoods->photo = explode(',',$newGoods->photo);
         // dump($newGoods);
         // dump($goods);
     	$res = DB::table('shop_ad')->get();

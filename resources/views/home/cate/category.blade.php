@@ -39,7 +39,7 @@
 						@foreach ($newGoods as $v)
 						<div class="new-products-grid">
 							<div class="new-products-grid-left">
-								<a href="/home/single/{{$v->id}}" target="view_window"><img src="{{$v->photo[0]}}" alt=" " class="img-responsive" /></a>
+								<a href="/home/single/{{$v->id}}" target="view_window"><img src="{{$v->cover}}" alt=" " class="img-responsive" /></a>
 							</div>
 							<div class="new-products-grid-right">
 								<h4><a href="/home/single/{{$v->id}}" target="view_window">{{$v->goods_name}}</a></h4>
@@ -59,7 +59,7 @@
 				@foreach ($goods as $v)
 				<div class="new-collections-grid1 products-right-grid1 animated wow slideInUp  col-md-4 " data-wow-delay=".5s" style="margin-top:0px;">
 					<div class="new-collections-grid1-image">
-						<a href="/home/single/{{$v->id}}" class="product-image"  target="view_window"><img src="{{$v->photo[0]}}" alt=" " class="img-responsive"></a>
+						<a href="/home/single/{{$v->id}}" class="product-image"  target="view_window"><img src="{{$v->cover}}" alt=" " class="img-responsive"></a>
 						<div class="new-collections-grid1-image-pos products-right-grids-pos">
 							<a href="/home/single/{{$v->id}}"  target="view_window">查看详情</a>
 						</div>

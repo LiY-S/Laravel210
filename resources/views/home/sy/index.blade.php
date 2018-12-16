@@ -188,7 +188,7 @@
                 <div class="col-md-3 new-collections-grid">
                     <div class="new-collections-grid1 animated wow slideInUp" data-wow-delay=".5s">
                         <div class="new-collections-grid1-image">
-                            <a href="/home/single/{{$v->id}}" class="product-image"  target="view_window"><img src="{{$v->photo[0]}}" alt=" " class="img-responsive" /></a>
+                            <a href="/home/single/{{$v->id}}" class="product-image"  target="view_window"><img src="{{$v->cover}}" alt=" " class="img-responsive" /></a>
                             <div class="new-collections-grid1-image-pos">
                                 <a href="/home/single/{{$v->id}}"  target="view_window">查看详情</a>
                             </div>
@@ -225,7 +225,7 @@
                 </div>
                 <div class="col-md-4 timer-grid-right animated wow slideInRight" data-wow-delay=".5s">
                     <div class="timer-grid-right1">
-                        <a href="/home/single/{{$newGoods->id}}"><img src="{{$newGoods->photo[0]}}" alt=" " class="img-responsive" /></a>
+                        <a href="/home/single/{{$newGoods->id}}"><img src="{{$newGoods->cover}}" alt=" " class="img-responsive" /></a>
                         <div class="timer-grid-right-pos">
                             <h4>New</h4>
                         </div>

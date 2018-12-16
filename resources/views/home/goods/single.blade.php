@@ -45,12 +45,12 @@
 					</ul>
 				</div>
 			</div>
-			@foreach ($res as $v)
 			<div class="col-md-8 single-right">
-				<div class="col-md-5 single-right-left animated wow slideInUp" data-wow-delay=".5s">
-			    	<div class="flexslider">
+				<div class="col-md-5 single-right-left animated wow slideInUp  " data-wow-delay=".5s">
+					@foreach ($color as $v)
+			    	<div class="flexslider ty{{$v->id}}b kzyc">
 						<ul class="slides">
-							<li data-thumb="{{$v->photo[2]}}">
+							<li data-thumb="{{$v->photo[2]}}" >
 								<div class="thumb-image"> <img src="{{$v->photo[2]}}" data-imagezoom="true" class="img-responsive"> </div>
 							</li>
 							<li data-thumb="{{$v->photo[0]}}">
@@ -61,6 +61,7 @@
 							</li>
 						</ul>
 					</div>
+				@endforeach
 			   		<!-- flixslider -->
 						<script defer src="/homes/js/jquery.flexslider.js"></script>
 						<link rel="stylesheet" href="/homes/css/flexslider.css" type="text/css" media="screen" />
@@ -75,9 +76,39 @@
 						</script>
 					<!-- flixslider -->
 				</div>
+				<script>
+					divs = $('.kzyc');
+					for (var i = 0; i <divs.length; i++) {
+						if (i != 0) {
+							$(divs[i]).css('position','absolute');
+							$(divs[i]).css('top','-999rem');
+						}
+					}
+				</script>
+				@foreach ($res as $v)
 				<div class="col-md-7 single-right-left simpleCart_shelfItem animated wow slideInRight animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: slideInRight;">
 					<h3>{{$v->goods_name}}</h3>
 					<h4><span class="item_price">${{$v->goods_price}}</span></h4>
+					<div class="color-quality">
+						<div class="color-quality-left">
+							<h5>颜色 : </h5>
+							<ul>
+								@foreach ($color as $val)
+								<li class="ty{{$val->id}}"><button class="label label-default">{{$val->color}}</button></li>
+								<script>
+									$(function(){
+										lione = $('.ty{{$val->id}}');
+										lione.click(function(){
+											$('.kzyc').css('top','-999rem');
+											$('.ty{{$val->id}}b').css('top','0');
+										})
+									})
+
+
+								</script>
+								@endforeach
+							</ul>
+						</div><br><br>
 					<div class="occasional">
 						<h5>鞋码 :</h5>
 						@foreach ($v->size as $val)
@@ -87,13 +118,6 @@
 						@endforeach
 						<div class="clearfix"> </div>
 					</div>
-					<div class="color-quality">
-						<!-- <div class="color-quality-left">
-							<h5>颜色 : </h5>
-							<ul>
-								<li><button class="label label-default">{{$v->color}}</button></li>
-							</ul>
-						</div> -->
 						<div class="color-quality-left" style="margin-top: -20px;">
 							<h5>数量 :</h5>
 							<input class="shuliang" type="number" style="width: 100px;" value="1">
@@ -146,7 +170,7 @@
                 <div class="col-md-3 new-collections-grid">
                     <div class="new-collections-grid1 animated wow slideInUp" data-wow-delay=".5s">
                         <div class="new-collections-grid1-image">
-                            <a href="/home/single/{{$v->id}}" class="product-image"  target="view_window"><img src="{{$v->photo[0]}}" alt=" " class="img-responsive" /></a>
+                            <a href="/home/single/{{$v->id}}" class="product-image"  target="view_window"><img src="{{$v->cover}}" alt=" " class="img-responsive" /></a>
                             <div class="new-collections-grid1-image-pos">
                                 <a href="/home/single/{{$v->id}}"  target="view_window">查看详情</a>
                             </div>
