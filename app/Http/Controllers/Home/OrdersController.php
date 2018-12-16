@@ -123,6 +123,13 @@ class OrdersController extends Controller
 
     public function status(Request $request)
     {
+        $code = $request->all();
+        //dd($code);
 
+        //$order = DB::table('shop_order')->where('code',$code)->get();
+
+        DB::table('shop_order')->where('code',$code)->update(['status'=>6]);
+
+        return redirect("/home/mylist");
     }
 }

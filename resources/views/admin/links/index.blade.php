@@ -82,14 +82,6 @@
                                 </font>
                             </font>
                         </th>
-                        <th class="sorting_desc text-center" tabindex="0" aria-controls="table" rowspan="1"
-                        colspan="1" aria-label="Product: activate to sort column ascending" aria-sort="descending">
-                            <font style="vertical-align: inherit;">
-                                <font style="vertical-align: inherit;">
-                                    状态
-                                </font>
-                            </font>
-                        </th>
                         <th class="sorting_desc text-center" tabindex="0" aria-controls="table" rowspan="1" align="center"
                         colspan="1" aria-label="Product: activate to sort column ascending" aria-sort="descending">
                             <font style="vertical-align: inherit;">
@@ -122,19 +114,6 @@
 
                         <td>
                             <img src="{{$v->logo}}" alt="" width="50px" height="50px">
-                        </td>
-
-                        <td>
-                            @if($v->status == 1)
-
-                                启用
-
-                            @else
-
-                                禁用
-
-                            @endif
-
                         </td>
 
                         <td align="center" width="20%">
