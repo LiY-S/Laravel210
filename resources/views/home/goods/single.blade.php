@@ -69,6 +69,7 @@
 					</ul>
 				</div>
 			</div>
+			<form action="/home/cart/tian/{{$v->id}}" method="post">
 			<div class="col-md-8 single-right">
 				<div class="col-md-5 single-right-left animated wow slideInUp  " data-wow-delay=".5s">
 					@foreach ($color as $v)
@@ -78,7 +79,7 @@
 								<div class="thumb-image"> <img src="{{$v->photo[2]}}" data-imagezoom="true" class="img-responsive"> </div>
 							</li>
 							<li data-thumb="{{$v->photo[0]}}">
-								 <div class="thumb-image"> <img src="{{$v->photo[0]}}" data-imagezoom="true" class="img-responsive"> </div>
+								 <div class="thumb-image"> <input type="hidden" name="goods_pic" value="{{$v->photo[0]}}"> <img src="{{$v->photo[0]}}" data-imagezoom="true" class="img-responsive"> </div>
 							</li>
 							<li data-thumb="{{$v->photo[1]}}">
 							   <div class="thumb-image"> <img src="{{$v->photo[1]}}" data-imagezoom="true" class="img-responsive"> </div>
@@ -119,7 +120,7 @@
 							<h5>颜色 : </h5>
 							<ul>
 								@foreach ($color as $val)
-								<li class="ty{{$val->id}}"><button class="label label-default">{{$val->color}}</button></li>
+								<li class="ty{{$val->id}}" style="margin: 5px;"><a class="label label-default">{{$val->color}}</a></li>
 								<script>
 									$(function(){
 										lione = $('.ty{{$val->id}}');
@@ -134,7 +135,7 @@
 								@endforeach
 							</ul>
 						</div><br><br>
-					<div class="occasional">
+					<div class="occasional" style="margin-top: 75px;">
 						<h5>鞋码 :</h5>
 						@foreach ($v->size as $val)
 						<div class="colr ert">
@@ -166,7 +167,7 @@
 						{{csrf_field()}}
 						<div class="occasion-cart" style="margin-top: 50px;width: 350px">
 							<button class="tijiao"><a class="item_add">加入购物车</a></button>&nbsp;&nbsp;&nbsp;
-							<input type="hidden" name="shoucang" value="{{$v->id}}">
+							<input type="hidden" value="{{$v->id}}">
 
 							<?php
 

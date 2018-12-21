@@ -20,7 +20,7 @@
     <div class="content-box">
         <div class="head warning-bg clearfix">
             <h5 class="content-title pull-left">
-                商品添加
+                商品颜色添加
             </h5>
         </div>
         <div class="content">
@@ -104,7 +104,7 @@
             });
             $.ajax({
                 type: "POST",
-                url: "/admins/colors/upload",
+                url: "/admins/goods/upload",
                 data: formData,
                 contentType: false,
                 processData: false,

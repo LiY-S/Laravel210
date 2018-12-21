@@ -125,7 +125,11 @@ class ColorController extends Controller
         $color = $request -> except('_token','photo','photos');
         $photos = $request->input('photos');
         $color['goods_id'] = $goods_id;
-        $color['photo'] = implode(',',$photos);
+        // dd($photos);
+        if($photos){
+            $color['photo'] = implode(',',$photos);
+        }
+
         // dd($color);
         try{
 

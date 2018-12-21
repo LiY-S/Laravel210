@@ -57,14 +57,14 @@
 
                 @endphp
 				<div class="pull-right">
-					<div class="pull-left search-container searchbox" style="width: 150px; margin-top: 30px;font-size: 22px;">
-						嘿&nbsp;,&nbsp;&nbsp;&nbsp; {{$res->username}}
+					<div class="pull-left search-container searchbox" style="width: 160px; margin-top: 30px;font-size: 20px;">
+						嘿&nbsp;,&nbsp;&nbsp;{{$res->username}}
 					</div>
 					<ul class="nav pull-right right-menu">
 						<li class="">
 							<a class="" data-toggle="dropdown" aria-expanded="true">
 								<!-- <i class="zmdi zmdi-account-circle"> -->
-								<img class="zmdi zmdi-account-circle" src="{{$res->profile}}" style="width: 45px;height:40px;border-radius: 50%">
+								<img class="zmdi zmdi-account-circle" src="{{$res->profile}}" style="margin-right:20px;width: 45px;height:40px;border-radius: 50%">
 								<!-- </i> -->
 							</a>
 							<div class="more-opt-container dropdown-menu">
@@ -163,6 +163,16 @@
 					<li><a href="/admin/links">浏览链接</a></li>
 				</ul>
 			</li>
+            <li>
+                <a href="#"><i class="zmdi zmdi-view-dashboard"></i>广告管理<span class="zmdi arrow"></span></a>
+                <ul class="nav nav-inside collapse"><li class="inside-title">广告管理</li>
+                    <li><a href="/admin/poster/create">添加广告</a></li>
+                    <li><a href="/admin/poster">浏览广告</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="/admins/conf">网站配置</a>
+            </li>
 		</ul>
 	</aside>
 	<div class="row">

@@ -13,7 +13,7 @@
 }
 </style>
 
-<div class="col-md-7 col-center-block">
+<div class="col-md-8 col-center-block">
     <div class="data-info">
         <div id="table_wrapper" class="dataTables_wrapper no-footer">
             <div class="toolbar tool" style="padding: 7px 20px;">

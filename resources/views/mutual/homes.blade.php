@@ -83,14 +83,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </div>
             <div class="logo-nav">
                 <div class="logo-nav-left animated wow zoomIn" data-wow-delay=".5s">
-                    <h1><a href="/">淘 鞋 吧<span></span></a></h1>
+                    @php
+                        $conf = DB::table('shop_conf')->first();
+                    @endphp
+                    <h1><a href="/"><img src="{{$conf->values}}" alt=""><span></span></a></h1>
                 </div>
                 <div class="logo-nav-left1">
                     <nav class="navbar navbar-default">
                     <!-- Brand and toggle get grouped for better mobile display -->
                     <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
                         <ul class="nav navbar-nav">
-                            <li class="active"><a href="" class="act">Home</a></li>
+                            <li class="active"><a href="/" class="act">Home</a></li>
                             <!-- Mega Menu -->
                             @php
                                 $res = DB::table('shop_category')->get();
@@ -106,7 +109,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                             <ul class="multi-column-dropdown">
                                                 @foreach ($res as $val)
                                                     @if ($val->pid == $v->id)
-                                                        <li><a href="products.html"> &nbsp; &nbsp; &nbsp;{{$val->cate_name}}</a></li>
+                                                        <li><a href="/home/cate/{{$val->id}}"> &nbsp; &nbsp; &nbsp;{{$val->cate_name}}</a></li>
                                                     @endif
                                                 @endforeach
                                             </ul>
@@ -136,7 +139,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <div class="cart box_1">
                         <a href="/home/cart">
                             <h3> <div class="total">
-                                <img src="/homes/images/bag.png" style="width:30px;" alt="" />
+                                <img src="/homes/images/bag.png" style="width:30px;" alt="" /><span><span> &nbsp; &nbsp; (</span>{{count($cart)}}<span>)</span></span>
                             </h3>
                         </a>
                         <div class="clearfix"> </div>
@@ -181,8 +184,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div class="col-md-3 footer-grid animated wow slideInLeft" data-wow-delay=".7s">
                     <h3>友情链接</h3>
                     @foreach($links as $kl => $vl)
-                    <div class="footer-grid-left">
-                        <a href="{{$vl->url}}"><img src="{{$vl->logo}}" alt=" " title="{{$vl->title}}" class="img-responsive"  width="40px" height="40px" /></a>
+                    <div class="footer-grid-left" style="float: left;">
+                        <a href="{{$vl->url}}"><img src="{{$vl->logo}}" alt=" " title="{{$vl->title}}" class="img-responsive"  width="70px" /></a>
                     </div>
                     @endforeach
 

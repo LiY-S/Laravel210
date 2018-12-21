@@ -43,7 +43,9 @@ class LoginController extends Controller
         // echo $request->code;die;
 		if($code != $request->code){
             // dd( $request->code);die;
-		  return back()->with('error','验证码错误');
+            session()->flash('username', $request->username);
+            session()->flash('password', $request->password);
+		    return back()->with('error','验证码错误');
 		}
 
 		//存点信息  session

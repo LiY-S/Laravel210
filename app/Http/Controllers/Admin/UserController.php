@@ -195,7 +195,7 @@ class UserController extends Controller
 
         //dd($id);
 
-        $rs = session(['uid'=>$id]);
+        // $rs = session(['uid'=>$id]);
 
         return view('admin.user.edit',[
             'title'=>'用户的修改页面',

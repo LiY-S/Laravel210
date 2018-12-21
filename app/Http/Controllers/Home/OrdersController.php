@@ -26,22 +26,14 @@ class OrdersController extends Controller
         $user_id['user_id'] = session('user');
 
         $uid = $user_id['user_id'];
-
         // dump($uid);
-
         $code = "dz_".time().rand();
-
         $time = time();
-
         $price = $request->input('price');
-
         $goods_name = $request->input('gname');
         // dump($goods_name);
-
         $goods_pic = $request->input('pic');
-
         //dd($goods_pic);
-
         $size = $request->input('size');
         // dump($size);
 
@@ -67,8 +59,8 @@ class OrdersController extends Controller
             $data['create_time']=$time;
             $data['goods_pic']=$goods_pic[$i];
             //dd($data);
-
             DB::table('shop_order')->insert($data);
+            DB::table('shop_cart')->where('user_id',$uid)->where('goods_id',$ids[$i])->delete();
 
             //$shop = session('shop');
 
@@ -97,11 +89,6 @@ class OrdersController extends Controller
 
     }
 
-    public function pay($code)
-    {
-        //dd($code);
-        return view("home.order.pay");
-    }
 
     public function mylist(Request $request)
     {

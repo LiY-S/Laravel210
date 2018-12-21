@@ -20,11 +20,11 @@
 <form action="/home/order" method="post">
 {{ csrf_field() }}
 <div class="checkout">
-
+        <!-- margin-left: 352px; -->
         <div class="col-md-8" id="xxdz" style="margin-left: 352px;display: none; width: 1200px;">
         	@foreach($address as $v1)
         	<input type="hidden" name="dizhi[]" checked value="{{$v1->id}}">
-
+            @if($v1 -> status == 1)
         	<div  class="col-md-3">
         		<table class="timetable_sub">
                         <tr>
@@ -44,6 +44,7 @@
                     </tr>
                 </table>
         	</div>
+            @endif
         	@endforeach
         </div>
         <script>
@@ -121,6 +122,8 @@
 
 @section('js')
 <script>
-
+    $('.qujiesuan').click(function(){
+        alert('已支付成功');
+    })
 </script>
 @stop

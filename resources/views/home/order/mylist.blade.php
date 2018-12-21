@@ -31,7 +31,7 @@
                             <th>单价(元)</th>
                             <th>数量</th>
                             <th>总价(元)</th>
-                            <th>收货信息</th>
+                            <!-- <th>收货信息</th> -->
                             <th>订单状态</th>
                             <th>确认收货</th>
                         </tr>
@@ -57,6 +57,7 @@
                         <td class="invert shanp">{{$v->goods_prices * $v->count}}</td>
 
                         @foreach($dz as $va)
+                        @if($va->status == 1)
                         <td class="invert" style="text-align: left;">
 
                             收货人：{{$va->consignee}}<?php echo '<br>';?>
@@ -66,7 +67,7 @@
                             {{$va->county}}区<?php echo '<br>';?>
                             详细地址:{{$va->address}}<?php echo '<br>';?>
                         </td>
-
+                        @endif
                         @endforeach
                         <td class="invert">
                             @php

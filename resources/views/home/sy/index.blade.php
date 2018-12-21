@@ -134,50 +134,42 @@
                         <figure class="effect-julia">
                             <img src="/homes/images/1.jpg" alt=" " class="img-responsive" />
                             <figcaption>
-                                <h3>Best <span>Store</span><i> in online shopping</i></h3>
-                                <div>
-                                    <p>Cupidatat non proident, sunt</p>
-                                    <p>Officia deserunt mollit anim</p>
-                                    <p>Laboris nisi ut aliquip consequat</p>
-                                </div>
+                                <h3>买鞋 <span style="font-size: 20px;">就来</span><br>淘鞋吧</h3>
                             </figcaption>
                         </figure>
                     </div>
                 </div>
-                <div class="banner-bottom-grid-left1 animated wow slideInUp" data-wow-delay=".5s">
-                    <div class="banner-bottom-grid-left-grid left1-grid grid-left-grid1">
-                        <div class="banner-bottom-grid-left-grid1">
+                <div class="banner-bottom-grid-left animated wow slideInLeft" data-wow-delay=".5s">
+                    <div class="grid">
+                        <figure class="effect-julia">
                             <img src="/homes/images/2.jpg" alt=" " class="img-responsive" />
-                        </div>
-                        <div class="banner-bottom-grid-left1-pos">
-                            <p>Discount 45%</p>
-                        </div>
-                    </div>
-                    <div class="banner-bottom-grid-left-grid left1-grid grid-left-grid1">
-
+                            <figcaption>
+                                <h3>Best <span>Store</span><i> in online shopping</i></h3>
+                            </figcaption>
+                        </figure>
                     </div>
                 </div>
-
+                <div class="banner-bottom-grid-left animated wow slideInLeft" data-wow-delay=".5s">
+                    <div class="grid">
+                        <div class="banner-bottom-grid-left-grid grid-left-grid1" style="width: 350px;height: 203px;">
+                        <div class="banner-bottom-grid-left-grid1">
+                            <h4 style="font-size: 22px;background-color: #888;color: #fff;">公告</h4>
+                            <ul id="gonggao" style="list-style: none;background-color: #eee;text-align: left;">
+                                @foreach($gonggao as $va)
+                                <li><a style="color: #000;line-height: 30px;" href="/home/notice/{{$va->id}}">{{$va->title}}</a></li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
+                    </div>
+                </div>
                 <div class="clearfix"> </div>
             </div>
         </div>
     </div>
-        <div id="moveDiv" data-wow-delay=".5s" style="position: absolute;top: 800px;right:-400px;">
-        <div class="banner-bottom-grid-left-grid grid-left-grid1" style="width: 350px;">
-            <div class="banner-bottom-grid-left-grid1">
-                <h4 style="font-size: 22px;background-color: #888;color: #fff;">公告</h4>
-                <ul id="gonggao" style="height:177px;list-style: none;background-color: #eee;text-align: left;">
-                    @foreach($gonggao as $va)
-                    <li><a style="color: #000;line-height: 30px;" href="/home/notice/{{$va->id}}">{{$va->title}}</a></li>
-                    @endforeach
-                </ul>
-            </div>
-        </div>
-    </div>
+
 <!-- //banner-bottom -->
-<script>
-    $("#moveDiv").animate({right: 40}, 2000);
-</script>
+
 <!-- collections -->
     <div class="new-collections">
         <div class="container">
